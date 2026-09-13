@@ -1,5 +1,7 @@
 # 🎤 NyanyiKu — Aplikasi Karaoke (v0.6.1)
 
+> **📱 Muat turun APK siap pasang:** [NyanyiKu-v0.6.1-release.apk](https://github.com/yusarmy/NyanyiKu/releases/download/v0.6.1/NyanyiKu-v0.6.1-release.apk) (7.4 MB, Android 6.0+) · [Semua keluaran](https://github.com/yusarmy/NyanyiKu/releases)
+
 Aplikasi karaoke ala **StarMaker** untuk Android, dibina dengan HTML/CSS/JavaScript
 dan dibungkus sebagai APK asli menggunakan **Capacitor**. Boleh berfungsi luar talian,
 dan menyokong bilik sembang/koir berbilang pengguna apabila pelayan dijalankan.
