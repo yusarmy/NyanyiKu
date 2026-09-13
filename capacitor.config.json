@@ -1,0 +1,10 @@
+{
+  "appId": "app.nyanyiku.karaoke",
+  "appName": "NyanyiKu",
+  "webDir": "www",
+  "android": {
+    "allowMixedContent": false,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": false
+  }
+}

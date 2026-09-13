@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0d0620">
+<meta name="description" content="NyanyiKu — aplikasi karaoke percuma: lirik bergerak, rakaman dengan kesan suara, AI cipta lagu, bilik solo, sembang & koir. Tersedia untuk Android.">
+<title>NyanyiKu — Karaoke, AI Cipta Lagu & Bilik Koir</title>
+<link rel="icon" href="assets/icon.png">
+<style>
+  :root{
+    --bg:#0d0620; --bg1:#1a0b3d; --gold:#ffd75e; --pink:#ff5ea8;
+    --violet:#8b5cf6; --cyan:#4fd8ff; --text:#f4f0ff; --dim:#b6abdE;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC",sans-serif;
+    color:var(--text);background:var(--bg);line-height:1.6;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 22px}
+  .grad-text{background:linear-gradient(90deg,var(--gold),var(--pink) 60%,var(--violet));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* ---------- NAV ---------- */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
+    background:rgba(13,6,32,.82);border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav-in{display:flex;align-items:center;gap:10px;height:62px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px}
+  .logo img{width:34px;height:34px;border-radius:10px}
+  .nav-links{display:flex;gap:22px;margin-left:26px;font-size:14px;color:var(--dim)}
+  .nav-links a:hover{color:#fff}
+  .nav-cta{margin-left:auto}
+  .btn{display:inline-flex;align-items:center;gap:9px;border-radius:99px;padding:12px 24px;
+    font-weight:700;font-size:14.5px;cursor:pointer;border:none;transition:transform .15s,box-shadow .2s;white-space:nowrap}
+  .btn:active{transform:scale(.96)}
+  .btn-primary{background:linear-gradient(90deg,var(--violet),var(--pink));color:#fff;
+    box-shadow:0 10px 30px rgba(255,94,168,.35)}
+  .btn-ghost{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);color:#fff}
+  .btn-gold{background:linear-gradient(90deg,#ffc94d,#ff8a3d);color:#241000;
+    box-shadow:0 10px 30px rgba(255,170,60,.35)}
+  .btn-lg{padding:16px 32px;font-size:16px}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;padding:74px 0 60px;
+    background:radial-gradient(90% 70% at 75% -10%,rgba(139,92,246,.35),transparent 60%),
+               radial-gradient(80% 60% at 10% 0%,rgba(255,94,168,.22),transparent 55%)}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+  .pill{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--gold);
+    border:1px solid rgba(255,215,94,.35);background:rgba(255,215,94,.09);
+    padding:7px 15px;border-radius:99px;margin-bottom:20px}
+  h1{font-size:clamp(32px,5vw,52px);line-height:1.12;letter-spacing:-.5px;font-weight:800}
+  .hero p.lead{color:var(--dim);font-size:17px;margin:20px 0 30px;max-width:520px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .stores{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap;color:var(--dim);font-size:12.5px;align-items:center}
+  .badge-android{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:8px 13px;color:#fff;font-size:12.5px}
+  .stats{display:flex;gap:34px;margin-top:42px;flex-wrap:wrap}
+  .stat b{font-size:26px;display:block;background:linear-gradient(90deg,var(--gold),var(--pink));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat span{font-size:12.5px;color:var(--dim)}
+
+  /* telefon */
+  .phone-wrap{position:relative;display:flex;justify-content:center}
+  .phone{width:286px;border-radius:38px;padding:9px;background:linear-gradient(160deg,#3a2470,#170b33);
+    box-shadow:0 40px 90px rgba(0,0,0,.55),0 0 0 2px rgba(255,255,255,.07);position:relative;animation:float 5.5s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(.6deg)}50%{transform:translateY(-14px) rotate(-.6deg)}}
+  .phone img{border-radius:30px}
+  .glow{position:absolute;width:320px;height:320px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,94,168,.35),transparent 65%);filter:blur(30px);z-index:-1}
+
+  /* ---------- LOGO CLOUD ---------- */
+  .marquee{overflow:hidden;border-top:1px solid rgba(255,255,255,.07);
+    border-bottom:1px solid rgba(255,255,255,.07);padding:16px 0;background:rgba(255,255,255,.02)}
+  .marquee-in{display:flex;gap:46px;width:max-content;animation:scroll 26s linear infinite}
+  .marquee-in span{color:var(--dim);font-size:14px;white-space:nowrap;display:flex;gap:9px;align-items:center}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* ---------- SECTION ---------- */
+  section.block{padding:78px 0}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 48px}
+  .sec-kick{font-size:12.5px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700}
+  h2{font-size:clamp(25px,3.4vw,36px);font-weight:800;margin:10px 0 12px;line-height:1.2}
+  .sec-head p{color:var(--dim);font-size:15.5px}
+
+  /* lagu */
+  .albums{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+  .album{aspect-ratio:1;border-radius:18px;display:flex;flex-direction:column;justify-content:flex-end;
+    padding:12px;position:relative;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+  .album .em{position:absolute;inset:0;display:grid;place-items:center;font-size:42px;opacity:.9}
+  .album b{position:relative;font-size:12px;line-height:1.25;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+  .album span{position:relative;font-size:10px;opacity:.85}
+  .album.ai{border:2px dashed rgba(255,215,94,.55);background:rgba(255,215,94,.06)!important;
+    display:grid;place-items:center;text-align:center;aspect-ratio:1}
+  .album.ai b{position:static;font-size:12.5px;color:var(--gold)}
+
+  /* feature rows */
+  .feat{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;margin-bottom:96px}
+  .feat:last-child{margin-bottom:0}
+  .feat.rev .ftext{order:2}
+  .feat.rev .fshot{order:1}
+  .fshot{display:flex;justify-content:center;position:relative}
+  .fshot .phone{width:250px;animation:none}
+  .fshot .glow{width:270px;height:270px}
+  .ficon{font-size:30px;margin-bottom:14px}
+  h3{font-size:24px;font-weight:800;margin-bottom:12px}
+  .ftext p{color:var(--dim);font-size:15px;margin-bottom:18px}
+  .flist{list-style:none;display:flex;flex-direction:column;gap:11px}
+  .flist li{position:relative;padding-left:34px;font-size:14.5px;line-height:1.55}
+  .flist .ck{position:absolute;left:0;top:1px;width:23px;height:23px;border-radius:50%;display:grid;place-items:center;font-size:12px;
+    background:linear-gradient(135deg,var(--violet),var(--pink))}
+
+  /* kesan */
+  .fx-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+  .fx{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:18px;
+    padding:24px 12px;text-align:center}
+  .fx .fi{font-size:34px;display:block;margin-bottom:11px}
+  .fx b{font-size:14px;display:block}
+  .fx span{font-size:11.5px;color:var(--dim)}
+
+  /* bilik mini shots */
+  .mini-shots{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+  .mini-shots .phone{width:100%;max-width:230px;margin:0 auto;padding:6px;border-radius:28px;animation:none}
+  .mini-shots .phone img{border-radius:22px}
+  .mini-cap{text-align:center;font-size:13px;color:var(--dim);margin-top:12px}
+  .mini-cap b{display:block;color:#fff;font-size:14.5px;margin-bottom:2px}
+
+  /* butang gaya gedung */
+  .store-badges{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+  .store-badge{display:inline-flex;align-items:center;gap:11px;background:#0b0518;
+    border:1px solid rgba(255,255,255,.22);border-radius:13px;padding:9px 18px 9px 13px;color:#fff;transition:transform .15s,border-color .2s}
+  .store-badge:hover{border-color:var(--gold)}
+  .store-badge:active{transform:scale(.97)}
+  .store-badge .si{font-size:25px;line-height:1}
+  .store-badge small{display:block;font-size:9.5px;letter-spacing:1.4px;color:var(--dim);line-height:1.2}
+  .store-badge b{font-size:15.5px;line-height:1.25;display:block}
+  .store-badge.web{background:linear-gradient(135deg,rgba(139,92,246,.28),rgba(255,94,168,.22))}
+
+  /* testimoni */
+  .testi-band{padding:70px 0 76px;position:relative;
+    background:radial-gradient(80% 120% at 50% 0%,rgba(255,94,168,.1),transparent 60%)}
+  .testi{max-width:680px;margin:0 auto;text-align:center;min-height:200px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .t-stars{font-size:22px;letter-spacing:5px;margin-bottom:16px}
+  .t-card{font-size:clamp(17px,2.2vw,21px);line-height:1.65;font-weight:600;min-height:92px;
+    max-width:620px;transition:opacity .35s;opacity:1}
+  .t-who{margin-top:20px;display:flex;align-items:center;gap:13px}
+  .t-ava{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#fff;font-size:18px}
+  .t-who b{display:block;font-size:15px}
+  .t-who span{font-size:12.5px;color:var(--dim)}
+  .t-dots{display:flex;gap:8px;justify-content:center;margin-top:26px}
+  .t-dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.22);cursor:pointer;transition:all .25s}
+  .t-dots i.on{background:var(--gold);width:24px;border-radius:99px}
+
+  /* peraduan */
+  .contest{border-radius:28px;overflow:hidden;position:relative;
+    background:linear-gradient(135deg,#3a1268,#7a1450 55%,#a3331b);
+    box-shadow:0 30px 80px rgba(160,40,90,.3);display:grid;grid-template-columns:1.15fr .85fr;align-items:center}
+  .contest-in{padding:52px 46px}
+  .contest .tag{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:800;letter-spacing:2px;
+    background:rgba(255,215,94,.2);border:1px solid rgba(255,215,94,.5);color:var(--gold);
+    padding:6px 13px;border-radius:99px;margin-bottom:18px}
+  .contest h3{font-size:clamp(23px,3vw,31px);font-weight:800;line-height:1.2;margin-bottom:14px}
+  .contest p{color:rgba(255,255,255,.85);font-size:14.5px;margin-bottom:18px}
+  .contest .clist{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+  .contest .clist li{display:flex;gap:10px;font-size:14px;align-items:flex-start}
+  .contest .clist .ck{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:11px;
+    background:rgba(255,215,94,.9);color:#331400;font-weight:800;margin-top:1px}
+  .contest-side{padding:30px;display:flex;justify-content:center}
+  .medal{font-size:150px;line-height:1;filter:drop-shadow(0 18px 34px rgba(0,0,0,.45));animation:floatMedal 4.5s ease-in-out infinite}
+  @keyframes floatMedal{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-16px) rotate(5deg)}}
+
+  /* langkah */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .step{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:24px 20px}
+  .step .no{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:800;
+    background:linear-gradient(135deg,var(--violet),var(--pink));margin-bottom:14px;font-size:17px}
+  .step b{font-size:15.5px;display:block;margin-bottom:6px}
+  .step span{font-size:13px;color:var(--dim)}
+
+  /* CTA */
+  .cta-band{border-radius:28px;padding:56px 34px;text-align:center;position:relative;overflow:hidden;
+    background:linear-gradient(135deg,rgba(139,92,246,.9),rgba(255,94,168,.9));
+    box-shadow:0 30px 80px rgba(139,92,246,.35)}
+  .cta-band h2{color:#fff}
+  .cta-band p{color:rgba(255,255,255,.88);margin-bottom:26px}
+  .cta-band .btn-gold{margin:4px}
+  .cta-band .btn-ghost{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.4);margin:4px}
+
+  footer{border-top:1px solid rgba(255,255,255,.08);padding:38px 0 120px;color:var(--dim);font-size:13px}
+  .foot-in{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  footer b{color:#fff;font-size:15px}
+
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr;gap:46px}
+    .phone-wrap{order:-1}
+    .feat{grid-template-columns:1fr;gap:26px;margin-bottom:64px}
+    .feat.rev .ftext{order:1}.feat.rev .fshot{order:2}
+    .albums{grid-template-columns:repeat(3,1fr)}
+    .fx-grid{grid-template-columns:repeat(2,1fr)}
+    .fx-grid .fx:last-child{grid-column:span 2}
+    .steps{grid-template-columns:repeat(2,1fr)}
+    .nav-links{display:none}
+    .mini-shots{grid-template-columns:1fr}
+    .phone{width:250px}
+    .contest{grid-template-columns:1fr}
+    .contest-in{padding:36px 28px 10px}
+    .contest-side{padding:6px 0 36px}
+    .medal{font-size:110px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo" href="#top"><img src="assets/icon.png" alt="">NyanyiKu</a>
+    <div class="nav-links">
+      <a href="#ciri">Ciri</a>
+      <a href="#cari">Cari Lagu</a>
+      <a href="#skor">Skor Pic</a>
+      <a href="#ai">AI Cipta</a>
+      <a href="#bilik">Bilik</a>
+      <a href="#naiknama">Naik Nama</a>
+      <a href="#muat-turun">Muat Turun</a>
+    </div>
+    <a class="btn btn-primary nav-cta" href="#muat-turun">⬇ Muat Turun</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="pill">🎤 Aplikasi karaoke Bahasa Melayu — percuma</div>
+      <h1>Nyanyi, <span class="grad-text">cipta lagu dengan AI</span>, dan sertai <span class="grad-text">bilik koir</span> bersama rakan</h1>
+      <p class="lead">Lirik bergerak, rakaman dengan kesan suara studio, penjana lagu AI, serta bilik solo, sembang dan koir — semuanya dalam satu aplikasi ringan yang berfungsi di luar talian.</p>
+      <div class="hero-cta">
+        <a class="btn btn-gold btn-lg" href="#muat-turun">⬇ Muat Turun APK Android</a>
+        <a class="btn btn-ghost btn-lg" href="app/">▶ Cuba di Pelayar</a>
+      </div>
+      <div class="store-badges">
+        <a class="store-badge" href="download/nyanyiku.apk" download>
+          <span class="si">🤖</span>
+          <span><small>MUAT TURUN UNTUK</small><b>Android (APK)</b></span>
+        </a>
+        <a class="store-badge web" href="app/">
+          <span class="si">🌐</span>
+          <span><small>CUBA TERUS</small><b>Versi Web</b></span>
+        </a>
+      </div>
+      <div class="stores">
+        <span class="badge-android">🤖 Android 6.0+</span>
+        <span class="badge-android">📦 Saiz ~7 MB</span>
+        <span class="badge-android">🎧 Fon kepala disyorkan</span>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>4</b><span>Mood AI pencipta lagu</span></div>
+        <div class="stat"><b>5</b><span>Kesan suara studio</span></div>
+        <div class="stat"><b>3</b><span>Jenis bilik</span></div>
+        <div class="stat"><b>∞</b><span>Lagu boleh dicipta</span></div>
+      </div>
+    </div>
+    <div class="phone-wrap">
+      <div class="glow"></div>
+      <div class="phone"><img src="assets/showcase/sing.jpg" alt="Skrin nyanyian NyanyiKu dengan lirik bergerak"></div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee">
+  <div class="marquee-in">
+    <span>🎤 Lirik bergerak selari masa</span><span>🔎 Cari lirik dalam talian, percuma</span><span>🌐 Cari artis, Pop/Balada/Rock</span><span>🤖 AI cipta lagu ikut mood</span>
+    <span>🏛️ Kesan gema, bilik, konsert &amp; gereja</span><span>🎶 Bilik koir nyanyi bersama</span>
+    <span>💬 Bilik sembang &amp; cari kawan duet</span><span>⬇ Muat turun rakaman</span>
+    <span>🎤 Lirik bergerak selari masa</span><span>🔎 Cari lirik dalam talian, percuma</span><span>🌐 Cari artis, Pop/Balada/Rock</span><span>🤖 AI cipta lagu ikut mood</span>
+    <span>🏛️ Kesan gema, bilik, konsert &amp; gereja</span><span>🎶 Bilik koir nyanyi bersama</span>
+    <span>💬 Bilik sembang &amp; cari kawan duet</span><span>⬇ Muat turun rakaman</span>
+  </div>
+</div>
+
+<!-- TESTIMONI -->
+<section class="testi-band">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:26px">
+      <div class="sec-kick">Kata penyanyi</div>
+      <h2>Penilaian <span class="grad-text">5 bintang</span> daripada pengguna</h2>
+    </div>
+    <div class="testi" id="testi">
+      <div class="t-stars" id="t-stars">★★★★★</div>
+      <div class="t-card" id="t-text">…</div>
+      <div class="t-who">
+        <div class="t-ava" id="t-ava" style="background:linear-gradient(135deg,#8e2de2,#4a00e0)">A</div>
+        <div style="text-align:left"><b id="t-name"></b><span id="t-role"></span></div>
+      </div>
+    </div>
+    <div class="t-dots" id="t-dots"></div>
+  </div>
+</section>
+
+<!-- LAGU -->
+<section class="block" id="ciri">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kick">Perpustakaan &amp; AI</div>
+      <h2>Lagu demo, lagu anda sendiri, dan lagu <span class="grad-text">ciptaan AI</span></h2>
+      <p>Muat naik fail MP3 dan <b>lirik bergerak dicari automatik dalam talian</b> (percuma, tanpa kunci API) — atau guna fail .LRC anda sendiri. Mahu lagu asli? Taip lirik dan biar AI menggubah melodi, kord serta rentak — setiap ciptaan unik dan terus boleh dinyanyi.</p>
+    </div>
+    <div class="albums">
+      <div class="album" style="background:linear-gradient(135deg,#f7b733,#fc4a1a)"><span class="em">⭐</span><b>Twinkle Twinkle</b><span>Domain awam</span></div>
+      <div class="album" style="background:linear-gradient(135deg,#8e2de2,#4a00e0)"><span class="em">🌙</span><b>Bintang Malam</b><span>Gubahan asli</span></div>
+      <div class="album" style="background:linear-gradient(135deg,#f7971e,#ffd200)"><span class="em">😄</span><b>Lagu Ceria AI</b><span>Dijana AI</span></div>
+      <div class="album" style="background:linear-gradient(135deg,#fc5c7d,#6a82fb)"><span class="em">🥰</span><b>Lagu Romantis AI</b><span>Dijana AI</span></div>
+      <div class="album" style="background:linear-gradient(135deg,#f953c6,#b91d73)"><span class="em">🔥</span><b>Lagu Semangat AI</b><span>Dijana AI</span></div>
+      <div class="album ai"><b>✨ Taip lirik &amp;<br>jana lagu anda</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE 1: nyanyi -->
+<section class="block" style="padding-top:20px">
+  <div class="wrap feat">
+    <div class="ftext">
+      <div class="ficon">🎙️</div>
+      <h3>Karaoke dengan lirik bergerak &amp; kesan suara</h3>
+      <p>Sama seperti aplikasi karaoke profesional: baris lirik bersinar mengikut masa, dan suara anda dirakam bersama iringan.</p>
+      <ul class="flist">
+        <li><span class="ck">✓</span>Lirik selari masa format .LRC dengan bar aktif bercahaya</li>
+        <li><span class="ck">✓</span><b>Cari lirik automatik dalam talian</b> untuk MP3 anda — percuma, tanpa kunci API</li>
+        <li><span class="ck">✓</span>Rakam suara, dengar diri dalam fon kepala, meter suara langsung</li>
+        <li><span class="ck">✓</span>5 kesan: Gema, Bilik, Konsert, Gereja, Suara Asli</li>
+        <li><span class="ck">✓</span>Kawalan muzik, gulung semula, dan muat turun rakaman</li>
+      </ul>
+    </div>
+    <div class="fshot"><div class="glow"></div><div class="phone"><img src="assets/showcase/sing.jpg" alt="Skrin lirik dan rakaman"></div></div>
+  </div>
+</section>
+
+<!-- FEATURE 1b: PIC & SKOR -->
+<section class="block" id="skor" style="padding-top:0">
+  <div class="wrap feat rev">
+    <div class="ftext">
+      <div class="ficon">🎯</div>
+      <h3>Maklum balas pic masa nyata &amp; skor nyanyian</h3>
+      <p>Sambil anda menyanyi, aplikasi mengesan pic suara anda dan membandingkannya dengan nota sasaran lagu secara langsung — jarum hijau bermakna anda tepat pada nadanya.</p>
+      <ul class="flist">
+        <li><span class="ck">✓</span>Penunjuk ♭ / ● / ♯: terlalu rendah, tepat, atau terlalu tinggi</li>
+        <li><span class="ck">✓</span>Nota sasaran &amp; nota anda dikemas kini setiap 0.13 saat</li>
+        <li><span class="ck">✓</span>Selepas rakaman: skor 0–100, bintang ⭐ dan gred S/A/B/C</li>
+        <li><span class="ck">✓</span>Berfungsi untuk lagu demo dan lagu ciptaan AI — terus dalam peranti</li>
+      </ul>
+    </div>
+    <div class="fshot"><div class="glow" style="background:radial-gradient(circle,rgba(255,215,94,.35),transparent 65%)"></div>
+      <div class="phone"><img src="assets/showcase/skor.jpg" alt="Skrin skor nyanyian dengan bintang dan gred"></div></div>
+  </div>
+</section>
+
+<!-- FEATURE 1c: CARI DALAM TALIAN -->
+<section class="block" id="cari" style="padding-top:0">
+  <div class="wrap feat">
+    <div class="ftext">
+      <div class="ficon">🌐</div>
+      <h3>Cari lagu artis kegemaran anda — ikut jenis Pop, Balada, Rock</h3>
+      <p>Butang <b>Cari Lagu Dalam Talian</b> membuka katalog luas terus dalam aplikasi: cari mana-mana artis atau lagu, atau layari carta tersusun mengikut genre. Percuma, tanpa daftar atau kunci API.</p>
+      <ul class="flist">
+        <li><span class="ck">✓</span>Carta Teratas, <b>Pop</b>, <b>Balada/Akustik</b> dan <b>Rock</b> — termasuk lagu Melayu &amp; Indonesia</li>
+        <li><span class="ck">✓</span>Dengar <b>pratonton 30 saat</b> dengan kulit album sebenar sebelum memilih</li>
+        <li><span class="ck">✓</span>Satu sentuhan <b>Nyanyi</b>: klip disimpan ke peranti dan lirik dicari automatik</li>
+        <li><span class="ck">✓</span>Sumber: iTunes Search (pratonton) + LRCLIB (lirik) — gagal? muat naik MP3 anda sendiri</li>
+      </ul>
+      <p style="font-size:12px;opacity:.75;margin-top:10px">ℹ️ Klip pratonton mengandungi vokal asal (30 saat) untuk latihan &amp; penerokaan; bukan trek karaoke penuh.</p>
+    </div>
+    <div class="fshot"><div class="glow" style="background:radial-gradient(circle,rgba(79,216,255,.32),transparent 65%)"></div>
+      <div class="phone"><img src="assets/showcase/discover.jpg" alt="Skrin cari lagu dalam talian dengan pilihan genre Pop, Balada, Rock"></div></div>
+  </div>
+</section>
+
+<!-- FEATURE 2: AI -->
+<section class="block" id="ai" style="padding-top:10px">
+  <div class="wrap feat rev">
+    <div class="ftext">
+      <div class="ficon">🤖</div>
+      <h3>AI Cipta Lagu daripada lirik anda</h3>
+      <p>Taip beberapa baris lirik, pilih perasaan — Ceria, Romantis, Semangat atau Sedih — dan AI mengubah melodi mengikut suku kata, memilih kord, bes dan rentak yang sesuai.</p>
+      <ul class="flist">
+        <li><span class="ck">✓</span>Melodi bergerak secara semula jadi dengan frasa yang selesa</li>
+        <li><span class="ck">✓</span>Balada perlahan untuk sedih/romantis, pop rancak untuk ceria/semangat</li>
+        <li><span class="ck">✓</span>Lagu disimpan dalam peranti, sedia untuk dinyanyi &amp; dirakam</li>
+        <li><span class="ck">✓</span>Berfungsi sepenuhnya di luar talian — tiada langganan</li>
+      </ul>
+    </div>
+    <div class="fshot"><div class="glow" style="background:radial-gradient(circle,rgba(139,92,246,.4),transparent 65%)"></div>
+      <div class="phone"><img src="assets/showcase/create.jpg" alt="Skrin AI cipta lagu"></div></div>
+  </div>
+</section>
+
+<!-- KESAN -->
+<section class="block" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kick">Kesan suara</div>
+      <h2>Suara anda, <span class="grad-text">suasana berbeza</span></h2>
+      <p>Tukar kesan dengan satu sentuhan semasa merakam — gema klasik karaoke atau ruang gema yang luas.</p>
+    </div>
+    <div class="fx-grid">
+      <div class="fx"><span class="fi">🎙️</span><b>Gema</b><span>Gema karaoke klasik</span></div>
+      <div class="fx"><span class="fi">🚿</span><b>Bilik</b><span>Gema pendek &amp; rapat</span></div>
+      <div class="fx"><span class="fi">🏛️</span><b>Konsert</b><span>Dewan yang hangat</span></div>
+      <div class="fx"><span class="fi">⛪</span><b>Gereja</b><span>Gema panjang &amp; megah</span></div>
+      <div class="fx"><span class="fi">🎤</span><b>Suara Asli</b><span>Tanpa kesan</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BILIK -->
+<section class="block" id="bilik" style="padding-top:10px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kick">Bilik NyanyiKu</div>
+      <h3 style="font-size:clamp(25px,3.4vw,36px)">Tiga cara untuk <span class="grad-text">menyanyi bersama</span></h3>
+      <p style="color:var(--dim);font-size:15.5px">Berlatih sendirian dalam Bilik Solo, berbual dalam Bilik Sembang, atau naik pentas dalam Bilik Koir dengan suara ahli lain melalui WebRTC masa nyata.</p>
+    </div>
+    <div class="mini-shots">
+      <div>
+        <div class="phone"><img src="assets/showcase/rooms.jpg" alt="Senarai bilik"></div>
+        <div class="mini-cap"><b>🚪 Hab Bilik</b>Pilih solo, sembang atau koir</div>
+      </div>
+      <div>
+        <div class="phone"><img src="assets/showcase/chat.jpg" alt="Bilik sembang"></div>
+        <div class="mini-cap"><b>💬 Bilik Sembang</b>Bual, cari kawan duet</div>
+      </div>
+      <div>
+        <div class="phone"><img src="assets/showcase/choir.jpg" alt="Bilik koir"></div>
+        <div class="mini-cap"><b>🎶 Bilik Koir</b>Naik pentas, nyanyi bersama</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERADUAN -->
+<section class="block" id="naiknama" style="padding-top:10px">
+  <div class="wrap">
+    <div class="contest">
+      <div class="contest-in">
+        <span class="tag">🏆 NAIK NAMA — AKAN DATANG</span>
+        <h3>Cabaran nyanyian bermusim, naik pentas &amp; jadi bintang</h3>
+        <p>Dalam kemas kini akan datang, NyanyiKu akan menganjurkan cabaran nyanyian mengikut tema — hantar rakaman terbaik anda, kumpul skor pic tertinggi, dan naik papan pendahulu komuniti.</p>
+        <ul class="clist">
+          <li><span class="ck">✓</span>Dua musim cabaran setiap tahun, lengkap dengan tema &amp; hashtag</li>
+          <li><span class="ck">✓</span>Skor pic 0–100 dan gred S/A/B/C yang sedia ada menjadi asas pemarkahan</li>
+          <li><span class="ck">✓</span>Lencana &amp; gelaran untuk pemenang: Juara Bilik, Suara Emas, Raja Koir</li>
+          <li><span class="ck">✓</span>Undian komuniti melalui Bilik Sembang — tiada bayaran untuk menyertai</li>
+        </ul>
+        <a class="btn btn-gold" href="app/">🎤 Berlatih mula sekarang</a>
+      </div>
+      <div class="contest-side"><div class="medal">🏅</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LANGKAH -->
+<section class="block" id="muat-turun" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kick">Mula menyanyi</div>
+      <h2>Empat langkah sahaja</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="no">1</div><b>Muat turun APK</b><span>Pasang fail APK di telefon Android 6.0 ke atas.</span></div>
+      <div class="step"><div class="no">2</div><b>Pilih atau cipta lagu</b><span>Lagu demo, muat naik MP3 (lirik dicari automatik), atau jana dengan AI.</span></div>
+      <div class="step"><div class="no">3</div><b>Pakai fon kepala &amp; nyanyi</b><span>Tekan butang merah — jarum pic membimbing anda ke nota yang tepat.</span></div>
+      <div class="step"><div class="no">4</div><b>Lihat skor &amp; kongsi</b><span>Dapatkan skor, bintang dan gred, kemudian muat turun rakaman.</span></div>
+    </div>
+    <div style="height:56px"></div>
+    <div class="cta-band">
+      <h2>Sedia untuk pegang mikrofon? 🎤</h2>
+      <p>Muat turun NyanyiKu v0.6 untuk Android — kini boleh cari mana-mana artis dengan pilihan Pop, Balada &amp; Rock — atau cuba terus dalam pelayar. Percuma, tanpa akaun.</p>
+      <a class="btn btn-gold btn-lg" href="download/nyanyiku.apk" download>⬇ Muat Turun APK (~7 MB)</a>
+      <a class="btn btn-ghost btn-lg" href="app/">▶ Cuba di Pelayar</a>
+      <div style="margin-top:18px;font-size:12.5px;color:rgba(255,255,255,.8)">Versi 0.6 · nama pakej app.nyanyiku.karaoke · kemas kini September 2026</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <div>
+      <b>NyanyiKu 🎤</b>
+      <div style="margin-top:6px;max-width:420px">Prototaip aplikasi karaoke dengan penjana lagu AI dan bilik nyanyian. Muzik yang disertakan adalah gubahan asli, terjana atau domain awam.</div>
+    </div>
+    <div>
+      <b>Pautan</b>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-top:6px">
+        <a href="#ciri">Ciri aplikasi</a>
+        <a href="#cari">Cari lagu dalam talian</a>
+        <a href="#skor">Skor pic &amp; bintang</a>
+        <a href="#ai">AI cipta lagu</a>
+        <a href="#bilik">Bilik koir &amp; sembang</a>
+        <a href="#naiknama">Peraduan Naik Nama</a>
+        <a href="app/">Buka aplikasi web</a>
+      </div>
+    </div>
+    <div>
+      <b>Notis</b>
+      <div style="margin-top:6px;max-width:280px">Lagu komersial memerlukan fail instrumental yang sah dan lesen pemegang hak cipta. Bilik berbilang pengguna sebenar memerlukan pelayan disertakan dalam pakej sumber.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------- Karusel testimoni 5 bintang ---------- */
+const TESTIMONI=[
+  {n:'Aishah',  r:'Peminat balada, Johor',   c:'#fc5c7d,#6a82fb', t:'Penunjuk pic tu memang membantu! Saya selalu sumbang, sekarang jarum hijau jadi kepuasan hati. Skor 3 bintang pertama saya rasa macam menang peraduan betul-betul. 😭⭐'},
+  {n:'Faizal', r:'Penyanyi bilik koir, KL',  c:'#11998e,#38ef7d', t:'Bilik koir paling best — rasa naik pentas betul-betul. Tambah pula boleh rakam dengan kesan konsert, member saya ingat saya guna mic mahal! 🎤'},
+  {n:'Nureen', r:'Cipta lagu untuk kawan',   c:'#f7971e,#ffd200', t:'Saya taip lirik untuk hari jadi kawan, pilih mood romantis, dan AI terus gubah lagu. Kawan saya menangis dengar dia punya lagu khas. Terima kasih NyanyiKu! 🥹'},
+  {n:'Danish', r:'Berlatih setiap hari',      c:'#8e2de2,#4a00e0', t:'Dulu malu nak nyanyi. Sekarang saya rekod tiap malam, tengok skor naik dari C ke A. Aplikasinya ringan dan jalan tanpa internet — memang puas hati. 🔥'},
+  {n:'Meera',  r:'Mahasiswa, Pulau Pinang',  c:'#f953c6,#b91d73', t:'Suka sangat pilihan kesan suara! Gema gereja buat lagu Raya saya rasa penuh dan megah. Muat turun rakaman pun senang, terus hantar dalam grup keluarga. ⛪🎶'},
+  {n:'Hafiz',  r:'Cari kawan duet',           c:'#43cea2,#185a9d', t:'Bilik sembang santai je tapi seronok, akhirnya jumpa kawan duit… eh kawan duet! Aplikasi percuma tapi tak rasa macam prototaip langsung. 👏'},
+  {n:'Suraya', r:'Ibu & penyanyi hobi',       c:'#ff9966,#ff5e62', t:'Anak saya pun suka — lagu Twinkle ada sekali, lirik bergerak jelas. Yang paling penting selamat, tiada iklan pelik dan tak perlu langganan apa-apa. 💕'},
+  {n:'Iman',   r:'Pencipta lagu amatur',      c:'#5b86e5,#36d1dc', t:'Saya guna AI Cipta Lagu untuk cuba melodi pada puisi saya. Boleh pilih ceria, sedih, semangat — macam ada komposer sendiri dalam telefon. Luar biasa untuk app percuma! 🤖✨'}
+];
+(function(){
+  const $=id=>document.getElementById(id);
+  const dots=$('t-dots');
+  let i=0,timer;
+  TESTIMONI.forEach((_,k)=>{ const d=document.createElement('i'); d.onclick=()=>{show(k);reset()}; dots.appendChild(d); });
+  function show(k){
+    i=k; const x=TESTIMONI[k];
+    const card=$('t-text'); card.style.opacity=0;
+    setTimeout(()=>{
+      card.textContent='“'+x.t+'”';
+      $('t-name').textContent=x.n; $('t-role').textContent=x.r;
+      const av=$('t-ava'); av.textContent=x.n[0];
+      av.style.background='linear-gradient(135deg,'+x.c+')';
+      card.style.opacity=1;
+    },220);
+    [...dots.children].forEach((d,j)=>d.classList.toggle('on',j===k));
+  }
+  function reset(){ clearInterval(timer); timer=setInterval(()=>show((i+1)%TESTIMONI.length),5200); }
+  show(0); reset();
+})();
+</script>
+</body>
+</html>

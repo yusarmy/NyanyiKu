@@ -1,0 +1,13 @@
+node_modules/
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+*.keystore
+keystore.properties
+
+# APK dikeluarkan melalui halaman GitHub Releases, bukan dalam repo
+apk/
+
+.DS_Store
+*.log
