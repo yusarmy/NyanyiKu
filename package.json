@@ -1,6 +1,6 @@
 {
   "name": "nyanyiku",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "description": "NyanyiKu — aplikasi karaoke dengan AI cipta lagu, bilik solo, sembang & koir",
   "private": true,
   "scripts": {

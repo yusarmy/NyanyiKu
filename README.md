@@ -1,6 +1,6 @@
-# 🎤 NyanyiKu — Aplikasi Karaoke (v0.6.1)
+# 🎤 NyanyiKu — Aplikasi Karaoke (v0.7.0)
 
-> **📱 Muat turun APK siap pasang:** [NyanyiKu-v0.6.1-release.apk](https://github.com/yusarmy/NyanyiKu/releases/download/v0.6.1/NyanyiKu-v0.6.1-release.apk) (7.4 MB, Android 6.0+) · [Semua keluaran](https://github.com/yusarmy/NyanyiKu/releases)
+> **📱 Muat turun APK siap pasang:** [NyanyiKu-v0.7.0-release.apk](https://github.com/yusarmy/NyanyiKu/releases/download/v0.7.0/NyanyiKu-v0.7.0-release.apk) (7.4 MB, Android 6.0+) · [Semua keluaran](https://github.com/yusarmy/NyanyiKu/releases)
 
 Aplikasi karaoke ala **StarMaker** untuk Android, dibina dengan HTML/CSS/JavaScript
 dan dibungkus sebagai APK asli menggunakan **Capacitor**. Boleh berfungsi luar talian,
@@ -11,7 +11,8 @@ dan menyokong bilik sembang/koir berbilang pengguna apabila pelayan dijalankan.
 ### Nyanyian
 - Lirik bergerak selari masa (format `.LRC`)
 - Main / jeda / gulung semula / bar kemajuan boleh disentuh
-- Rakam suara + **5 kesan suara**: 🎙️ Gema, 🚿 Bilik, 🏛️ Konsert, ⛪ Gereja, 🎤 Suara Asli
+- Rakam suara + **8 kesan suara**: 🎙️ Gema, 🚿 Bilik, 🏛️ Konsert, ⛪ Gereja, 🎤 Suara Asli,
+  🌤️ Hangat (warm saturation), 💿 Piring Hitam (lo-fi vinyl), 🎉 Parti (slap delay)
 - Dengar diri, meter suara, kawalan volum, skrin hasil & muat turun rakaman
 - **Maklum balas pic masa nyata** (baharu v0.4): jarum ♭/●/♯ membimbing anda ke nota
   sasaran, diikuti **skor 0–100, bintang ⭐ dan gred S/A/B/C** selepas rakaman
@@ -41,18 +42,45 @@ dan menyokong bilik sembang/koir berbilang pengguna apabila pelayan dijalankan.
   (melodi ikut suku kata, dilaraskan kepada nada kord pada hujung frasa)
 - Lagu AI disimpan dalam tab Lagu (lencana ungu "AI ✨") dan boleh dinyanyi/dirakam
 
-### 🚪 Bilik (baharu v0.2)
-- **Bilik Solo** 🎤 — pintas terus ke senarai lagu untuk nyanyi & rakam sendirian
-- **Bilik Sembang** 💬 — 3 ruang: Sembang Santai, Cari Kawan Duet, Permintaan Lagu
+### 👤 Profil & pemperibadian (baharu v0.7)
+- **Profil pengguna** tempatan: nama, gambar profil (muat naik dari galeri, dimampatkan
+  dalam peranti), logo/emoji pilihan, bio, status harian dan negeri — boleh diedit bila-bila
+- **Bilik Solo** kini boleh **tukar teman**: 5 teman maya (Aisha, Faiz, Maria, Zack, Si
+  Comel) yang memberi galakan semasa menyanyi dan mengulas skor mengikut keputusan
+- **6 tema bilik** (Malam Ungu, Senja, Lautan, Emas Mewah, Sakura, Neon) pada gelembung
+  sembang & pentas koir
+
+### 🚪 Bilik
+- **Bilik Solo** 🎤 — pilih teman, kemudian pilih lagu untuk nyanyi & rakam sendirian
+- **Bilik Sembang** 💬 — 3 ruang pratetap: Sembang Santai, Cari Kawan Duet, Permintaan Lagu
 - **Bilik Koir** 🎶 — pentas 8 kerusi, lihat siapa sedang menyanyi, naik/turun pentas
+- **Cipta bilik sendiri** (baharu v0.7): nama, ikon, pilihan tema, jenis sembang/koir;
+  bilik tersimpan dalam peranti dan boleh dipadam
+- **Kunci/buka bilik dengan PIN 4 digit** (baharu v0.7): pencipta mengunci bilik dan
+  berkongsi PIN; butang kunci dalam bilik membuka semula kunci bila-bila
 - Audio berbilang pengguna menggunakan **WebRTC** (suara terus antara peranti, P2P)
 - **Mod demo luar talian**: tanpa pelayan, bilik diisi penyanyi & mesej simulasi
   supaya aplikasi tetap boleh dicuba dan dirasai
-- Nama samaran anda tersimpan; butang kembali Android berfungsi pada setiap skrin
+- Nama/profil anda tersimpan; butang kembali Android berfungsi pada setiap skrin
+
+### 🌟 Komuniti & ganjaran (baharu v0.7 — olahan ciri StarMaker, semuanya tempatan)
+- **Kad Vokal radar 5 dimensi** selepas setiap rakaman: Ketepatan Pic, Kestabilan,
+  Kuasa Suara, Julat Nada, Rentak & Hayatan (dilukis atas kanvas, tiada pelayan)
+- **Galeri Rakaman Saya**: rakaman tersimpan automatik ke IndexedDB dengan skor, boleh
+  dimain/dipadam terus dalam app (sebelum ini hanya muat turun fail)
+- **Suapan NyanyiKu**: setiap rakaman anda muncul sebagai pos cover lengkap dengan
+  butang suka & ruang komen (komen/suka anda tersimpan tempatan; pos lain simulasi dan
+  dilabel jujur sebagai mod demo)
+- **Misi harian, daftar masuk berangkai, syiling 🪙, XP & 7 tahap gelaran**
+  (Peminat Baru → Lagenda NyanyiKu) — **percuma sepenuhnya, tiada pembelian dalam app,
+  tiada kotak nasib, tiada iklan**
+- **Papan mata mingguan** bersaing dengan penyanyi simulasi; markah anda daripada
+  rakaman sebenar minggu semasa
+- **Lagu kegemaran ♥** ditanda pada mana-mana kad lagu, dikumpul di atas tab Lagu
 
 ## 📦 Pasang APK
 
-Muat turun APK siap dari **[halaman GitHub Releases](https://github.com/yusarmy/NyanyiKu/releases)** (fail `NyanyiKu-v0.6.1-release.apk`).
+Muat turun APK siap dari **[halaman GitHub Releases](https://github.com/yusarmy/NyanyiKu/releases)** (fail `NyanyiKu-v0.7.0-release.apk`).
 Salin ke telefon Android 6.0+ → buka fail → benarkan pemasangan dari sumber ini → Pasang.
 Semasa pertama kali merakam atau naik pentas, benarkan akses **mikrofon**.
 🎧 Pakai fon kepala semasa menyanyi/koir untuk elak dengung.
@@ -109,10 +137,12 @@ karaoke-app/
 - [x] AI cipta lagu (melodi/kord/rentak ikut mood)
 - [x] Bilik solo, sembang, koir (demo + pelayan WebSocket/WebRTC)
 - [x] **Skor nyanyian** dengan maklum balas pic masa nyata (v0.4)
+- [x] Profil penuh, teman Bilik Solo, tema bilik, kunci PIN (v0.7)
+- [x] Kad Vokal radar, galeri rakaman, suapan/misi/syiling/papan mata tempatan (v0.7)
 - [ ] Sorotan lirik perkataan demi perkataan
-- [ ] Lebih kesan suara (pop, konsert, robot) & campur rakaman ke MP4
+- [ ] Kesan suara tambahan (robot, AutoTune) & campur rakaman ke MP4
 - [ ] Rakaman video muka, mod duet terancang dengan garisan panduan
-- [ ] Akaun pengguna, kawan, suapan komuniti, suka/komen
+- [ ] Akaun pelayan, kawan, suapan komuniti penyanyi sebenar (versi tempatan sudah ada)
 - [ ] Katalog lagu dalam talian (perlukan lesen hak cipta)
 
 ## ⚖️ Nota hak cipta
@@ -120,4 +150,4 @@ karaoke-app/
 Hanya muzik domain awam dan gubahan asli/terjana disertakan. Lagu komersial
 memerlukan fail instrumental yang sah dan lesen pemegang hak cipta.
 
-- Pakej: `app.nyanyiku.karaoke` · versi 0.6.1 (versionCode 7) · minSdk 23, targetSdk 35
+- Pakej: `app.nyanyiku.karaoke` · versi 0.7.0 (versionCode 8) · minSdk 23, targetSdk 35

@@ -305,6 +305,145 @@
   .dr-btn.add{background:linear-gradient(135deg,var(--violet),var(--pink));border:none;width:auto;padding:0 14px;font-size:12.5px;font-weight:700}
   .dr-btn.playing{background:rgba(61,220,132,.25);border-color:rgba(61,220,132,.6);color:#3ddc84}
   .disc-note{font-size:11.5px;color:var(--dim);text-align:center;line-height:1.6;margin:6px 10px 2px}
+
+  /* ---------- PROFIL ---------- */
+  .prof-card{display:flex;align-items:center;gap:12px;background:var(--glass);border:1px solid var(--glass-brd);
+    border-radius:18px;padding:11px 14px;margin:6px 0 10px;cursor:pointer}
+  .prof-card:active{transform:scale(.98)}
+  .prof-ava{width:52px;height:52px;border-radius:50%;object-fit:cover;flex:none;display:grid;place-items:center;
+    font-size:21px;color:#fff;border:2px solid rgba(255,215,94,.55);overflow:hidden;background:linear-gradient(135deg,#8e2de2,#4a00e0)}
+  .prof-ava img{width:100%;height:100%;object-fit:cover}
+  .prof-card .pc-meta{flex:1;min-width:0}
+  .prof-card b{font-size:15px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .prof-card .pc-sub{font-size:11.5px;color:var(--dim);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .prof-card .pc-edit{font-size:11px;color:var(--gold);border:1px solid rgba(255,215,94,.4);border-radius:99px;padding:5px 11px;flex:none}
+  .prof-dp-wrap{position:relative;width:96px;height:96px;margin:2px auto 12px}
+  .prof-dp{width:96px;height:96px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;
+    font-size:38px;color:#fff;overflow:hidden;background:var(--glass)}
+  .prof-dp img{width:100%;height:100%;object-fit:cover}
+  .prof-cam{position:absolute;right:-2px;bottom:-2px;width:34px;height:34px;border-radius:50%;border:none;
+    background:linear-gradient(135deg,var(--violet),var(--pink));color:#fff;font-size:15px;cursor:pointer}
+  .seg{display:flex;background:var(--glass);border:1px solid var(--glass-brd);border-radius:12px;overflow:hidden;margin-top:8px}
+  .seg button{flex:1;background:none;border:none;color:var(--dim);padding:11px;font-size:13.5px;cursor:pointer;font-family:inherit}
+  .seg button.on{background:linear-gradient(90deg,var(--violet),var(--pink));color:#fff}
+  .icon-row{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .icon-row .chip{padding:8px 13px;font-size:18px}
+  .icon-row .chip.on{font-size:18px}
+  .swatch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:8px}
+  .swatch{border:1px solid var(--glass-brd);border-radius:14px;padding:9px 6px 8px;text-align:center;cursor:pointer;
+    color:#fff;font-size:11px;font-family:inherit;background:#22164a}
+  .swatch .sw-dot{display:block;width:100%;height:32px;border-radius:9px;margin-bottom:6px;border:1px solid rgba(255,255,255,.2)}
+  .swatch.on{border-color:var(--gold);box-shadow:0 0 0 1.5px var(--gold)}
+  .lock-row{display:flex;align-items:center;gap:10px;margin-top:16px;padding:12px 14px;border:1px solid var(--glass-brd);
+    border-radius:13px;background:var(--glass);cursor:pointer;font-size:13.5px}
+  .lock-row .lr-ico{font-size:17px}
+  .lock-row .lr-state{margin-left:auto;font-size:11px;color:var(--dim)}
+  #room-pin-wrap{display:none;margin-top:10px}
+  #room-pin-wrap.show{display:block}
+  .room-card{position:relative}
+  .mini-del{position:absolute;top:5px;right:7px;width:24px;height:24px;border-radius:50%;border:none;
+    background:rgba(0,0,0,.4);color:#ff8095;font-size:12px;z-index:2;cursor:pointer;display:grid;place-items:center}
+  .rm-lock{font-size:12px}
+
+  /* ---------- TEMA BILIK ---------- */
+  #screen-chat.themed,#screen-choir.themed{background-image:var(--room-bg);background-size:cover}
+  .msg.me{background-image:var(--me-grad,linear-gradient(135deg,rgba(139,92,246,.92),rgba(255,94,168,.92)))}
+  .stage{background-image:var(--stage-grad,linear-gradient(160deg,rgba(255,94,168,.15),rgba(139,92,246,.1)))}
+  #screen-chat.themed .msg.them{background:rgba(0,0,0,.28);border-color:rgba(255,255,255,.16)}
+  #screen-choir .drawer{background:rgba(14,7,32,.97)}
+
+  /* ---------- TEMAN SOLO (BUDDY) ---------- */
+  .buddy{position:absolute;top:12px;right:16px;z-index:4;display:none;align-items:center;gap:8px;cursor:pointer;max-width:78%}
+  .buddy.show{display:flex}
+  .buddy-bubble{background:rgba(26,15,60,.95);border:1px solid var(--glass-brd);border-radius:14px 4px 14px 14px;
+    padding:7px 12px;font-size:12px;line-height:1.45;opacity:0;transform:translateX(10px);transition:.25s;pointer-events:none}
+  .buddy-bubble.show{opacity:1;transform:none}
+  .buddy-face{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:21px;flex:none;
+    border:2px solid rgba(255,255,255,.28);box-shadow:0 6px 16px rgba(0,0,0,.4)}
+  .buddy-pick{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+  .buddy-opt{display:flex;align-items:center;gap:12px;background:var(--glass);border:1px solid var(--glass-brd);
+    border-radius:14px;padding:10px 13px;cursor:pointer;text-align:left;font-family:inherit;color:var(--text);width:100%}
+  .buddy-opt.on{border-color:var(--gold);background:rgba(255,215,94,.08)}
+  .buddy-opt .bo-face{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-size:20px;flex:none;border:2px solid rgba(255,255,255,.18)}
+  .buddy-opt b{font-size:13.5px;display:block}
+  .buddy-opt span{font-size:11px;color:var(--dim)}
+  .buddy-verdict{display:none;align-items:center;gap:10px;max-width:320px;background:var(--glass);
+    border:1px solid var(--glass-brd);border-radius:16px;padding:10px 14px;font-size:12.5px;line-height:1.5;text-align:left}
+  .buddy-verdict.show{display:flex}
+  .buddy-verdict .bv-face{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:19px;flex:none}
+
+  /* ---------- KOMUNITI, SYILING, MISI, RADAR (inspirasi StarMaker, olahan sendiri) ---------- */
+  .coin-chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:var(--gold);
+    background:rgba(255,215,94,.12);border:1px solid rgba(255,215,94,.35);border-radius:99px;padding:6px 12px}
+  .coin-head{display:flex;gap:8px;align-items:center}
+  .check-card{border-radius:18px;padding:14px 16px;margin-bottom:12px;
+    background:linear-gradient(120deg,rgba(255,215,94,.18),rgba(255,94,168,.14));border:1px solid var(--glass-brd);
+    display:flex;align-items:center;gap:12px}
+  .check-card .cc-cal{font-size:30px}
+  .check-card .cc-meta{flex:1;min-width:0}
+  .check-card b{font-size:14px;display:block}
+  .check-card span{font-size:11.5px;color:var(--dim)}
+  .check-card button{border:none;border-radius:99px;padding:9px 15px;font-size:12.5px;font-weight:700;cursor:pointer;
+    background:linear-gradient(90deg,var(--gold),#ff9d3d);color:#241500;flex:none}
+  .check-card button:disabled{background:var(--glass);color:var(--dim);border:1px solid var(--glass-brd)}
+  .mis-list{display:flex;flex-direction:column;gap:8px;margin-bottom:6px}
+  .mis-row{display:flex;align-items:center;gap:10px;background:var(--glass);border:1px solid var(--glass-brd);
+    border-radius:13px;padding:10px 12px}
+  .mis-row .mi-ico{font-size:19px;flex:none}
+  .mis-row .mi-meta{flex:1;min-width:0}
+  .mis-row b{font-size:12.5px;display:block}
+  .mis-bar{height:5px;border-radius:99px;background:rgba(255,255,255,.1);margin-top:5px;overflow:hidden}
+  .mis-bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--violet),var(--pink))}
+  .mis-row .mi-rw{font-size:10.5px;color:var(--gold);font-weight:700;flex:none;white-space:nowrap}
+  .mis-row.done{opacity:.6}
+  .mis-row.done .mi-rw{color:#3ddc84}
+  .lb-card{background:var(--glass);border:1px solid var(--glass-brd);border-radius:16px;overflow:hidden;margin-bottom:12px}
+  .lb-row{display:flex;align-items:center;gap:10px;padding:9px 13px;font-size:13px}
+  .lb-row:nth-child(odd){background:rgba(255,255,255,.03)}
+  .lb-row .rk{width:24px;text-align:center;font-weight:700;color:var(--dim);flex:none}
+  .lb-row.top1 .rk{color:var(--gold)} .lb-row.top2 .rk{color:#cfd8e3} .lb-row.top3 .rk{color:#d98c5f}
+  .lb-row .nm{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .lb-row .sc{font-weight:700;color:var(--pink);flex:none}
+  .lb-row.me{background:rgba(255,215,94,.1);font-weight:700}
+  .feed-post{background:var(--glass);border:1px solid var(--glass-brd);border-radius:16px;padding:12px 14px;margin-bottom:11px}
+  .fp-head{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+  .fp-ava{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;flex:none;
+    background:linear-gradient(135deg,#8e2de2,#4a00e0)}
+  .fp-meta{flex:1;min-width:0}
+  .fp-meta b{font-size:13px;display:block}
+  .fp-meta span{font-size:10.5px;color:var(--dim)}
+  .fp-badge{font-size:18px}
+  .fp-song{display:flex;gap:10px;align-items:center;background:rgba(0,0,0,.22);border-radius:12px;padding:9px 11px;margin:6px 0}
+  .fp-song .fs-cover{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font-size:19px;flex:none}
+  .fp-song b{font-size:12.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .fp-song span{font-size:10.5px;color:var(--dim)}
+  .fp-play{width:36px;height:36px;border-radius:50%;border:none;flex:none;cursor:pointer;color:#fff;
+    background:linear-gradient(135deg,var(--violet),var(--pink));font-size:14px}
+  .fp-play.playing{background:#3ddc84}
+  .fp-actions{display:flex;gap:16px;margin-top:9px;font-size:12px;color:var(--dim)}
+  .fp-actions span{cursor:pointer}
+  .fp-actions .liked{color:var(--pink)}
+  .fp-comments{margin-top:8px;display:flex;flex-direction:column;gap:5px}
+  .fp-cmt{font-size:11.5px;background:rgba(0,0,0,.25);border-radius:10px;padding:6px 10px}
+  .fp-cmt b{color:var(--gold)}
+  .fp-cmt-in{display:flex;gap:7px;margin-top:7px}
+  .fp-cmt-in input{flex:1;background:rgba(0,0,0,.3);border:1px solid var(--glass-brd);border-radius:99px;
+    padding:8px 12px;color:#fff;font-size:12px}
+  .fp-cmt-in button{border:none;border-radius:99px;padding:0 13px;background:var(--glass);color:#fff;font-size:12px;cursor:pointer}
+  .rec-row{display:flex;align-items:center;gap:10px;background:var(--glass);border:1px solid var(--glass-brd);
+    border-radius:14px;padding:9px 12px;margin-bottom:9px}
+  .rec-row .rr-cover{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;font-size:19px;flex:none}
+  .rec-row .rr-meta{flex:1;min-width:0}
+  .rec-row b{font-size:13px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rec-row span{font-size:10.5px;color:var(--dim);display:block}
+  .rec-row button{width:36px;height:36px;border-radius:50%;border:none;cursor:pointer;color:#fff;font-size:14px;flex:none}
+  .rec-row .rr-play{background:linear-gradient(135deg,var(--violet),var(--pink))}
+  .rec-row .rr-play.playing{background:#3ddc84}
+  .rec-row .rr-del{background:rgba(255,80,100,.25);color:#ff8095;font-size:12px;width:30px;height:30px}
+  #radar-canvas{margin:2px auto 0;display:block}
+  .lvl-pill{display:inline-block;font-size:10.5px;color:var(--gold);border:1px solid rgba(255,215,94,.4);
+    background:rgba(255,215,94,.08);border-radius:99px;padding:2px 9px;margin-left:6px}
+  .fav-btn{font-size:15px;flex:none;cursor:pointer;padding:4px}
 </style>
 </head>
 <body>
@@ -313,7 +452,7 @@
   <!-- ====== HOME ====== -->
   <section class="screen active" id="screen-home">
     <div class="home-head">
-      <img src="assets/icon.png" alt="logo">
+      <img src="assets/icon.png" alt="logo" id="home-logo" style="cursor:pointer" title="Ketik untuk profil">
       <div>
         <h1>NyanyiKu 🎤</h1>
         <p>Karaoke di tanganmu — nyanyi, rakam &amp; kongsi</p>
@@ -329,6 +468,8 @@
         </div>
         <span class="go">›</span>
       </div>
+      <div class="section-label" id="lbl-favs" style="display:none">♥ Lagu Kegemaran</div>
+      <div id="fav-songs"></div>
       <div class="section-label">Lagu Demo</div>
       <div id="demo-songs"></div>
       <div class="section-label" id="lbl-ai" style="display:none">✨ Ciptaan AI Saya</div>
@@ -362,6 +503,10 @@
 
     <div class="lyrics-viewport" id="lyrics-viewport">
       <div class="lyrics-track" id="lyrics-track"></div>
+      <div class="buddy" id="buddy">
+        <div class="buddy-bubble" id="buddy-bubble"></div>
+        <div class="buddy-face" id="buddy-face">🎀</div>
+      </div>
     </div>
 
     <div class="progress-wrap">
@@ -413,8 +558,13 @@
         <div class="score-ring" id="score-ring"><div class="sr-inner"><b id="score-num">0</b><span>SKOR</span></div></div>
         <div class="score-stars" id="score-stars"></div>
         <div id="score-label" style="font-size:13px;color:var(--dim)"></div>
+        <div id="radar-wrap" style="display:none">
+          <canvas id="radar-canvas" width="280" height="230"></canvas>
+          <div class="hint" id="radar-caption"></div>
+        </div>
       </div>
-      <p id="result-text">Dengar semula nyanyian anda dengan muzik iringan.<br>Muat turun untuk disimpan atau dikongsi.</p>
+      <p id="result-text">Dengar semula nyanyian anda dengan muzik iringan.<br>Rakaman tersimpan di tab 🌟 Komuniti, atau muat turun untuk dikongsi.</p>
+      <div class="buddy-verdict" id="buddy-verdict"><div class="bv-face" id="bv-face">🎀</div><span id="bv-text"></span></div>
       <button class="play-result" id="btn-play-result">▶️</button>
       <div class="progress-wrap" style="width:100%;max-width:320px">
         <div class="progress" id="progress2"><div class="fill" id="prog2-fill"></div><div class="knob" id="prog2-knob"></div></div>
@@ -430,19 +580,29 @@
 
   <!-- ====== ROOMS (BILIK) ====== -->
   <section class="screen" id="screen-rooms">
-    <div class="page-head">
+    <div class="page-head" style="padding-bottom:0">
       <h2>🚪 Bilik NyanyiKu</h2>
-      <div class="name-row">Nama anda:
-        <input type="text" id="my-name" maxlength="14" placeholder="Nama samaran">
-      </div>
     </div>
     <div class="page-scroll">
+      <div class="prof-card" id="prof-card">
+        <div class="prof-ava" id="prof-ava">🎤</div>
+        <div class="pc-meta">
+          <b id="prof-name">—</b>
+          <span class="pc-sub" id="prof-sub">Ketik untuk lengkapkan profil anda</span>
+        </div>
+        <span class="pc-edit">✏️ Profil</span>
+      </div>
       <div class="room-big" id="room-solo">
         🎤
-        <div><b>Bilik Solo</b><span>Nyanyi &amp; rakam sendirian — pilih lagu</span></div>
+        <div><b>Bilik Solo</b><span>Nyanyi &amp; rakam sendirian — boleh tukar teman</span></div>
       </div>
+      <button class="btn-block" id="btn-new-room" style="margin:2px 0 12px;padding:13px">＋ Cipta Bilik Baharu (tema &amp; kunci)</button>
+      <div class="section-label" id="lbl-my-chat" style="display:none">⭐ Bilik Sembang Anda</div>
+      <div id="my-chat-rooms"></div>
       <div class="section-label">💬 Bilik Sembang</div>
       <div id="chat-rooms"></div>
+      <div class="section-label" id="lbl-my-choir" style="display:none">⭐ Bilik Koir Anda</div>
+      <div id="my-choir-rooms"></div>
       <div class="section-label">🎶 Bilik Koir (Nyanyi Bersama)</div>
       <div id="choir-rooms"></div>
       <div class="server-row">
@@ -484,6 +644,7 @@ Tentang mimpi yang kita cari</textarea>
       <div class="ttl"><b id="chat-title">—</b>
         <span class="online-pill"><i></i><span id="chat-count">0</span> dalam bilik</span>
       </div>
+      <button class="icon-btn" id="btn-chat-lock" style="display:none" title="Kunci/buka bilik">🔓</button>
     </div>
     <div class="chat-scroll" id="chat-msgs"></div>
     <div class="typing" id="chat-typing"></div>
@@ -500,6 +661,7 @@ Tentang mimpi yang kita cari</textarea>
       <div class="ttl"><b id="choir-title">—</b>
         <span class="online-pill"><i></i><span id="choir-count">0</span> penyanyi</span>
       </div>
+      <button class="icon-btn" id="btn-choir-lock" style="display:none" title="Kunci/buka bilik">🔓</button>
       <button class="icon-btn" id="btn-choir-chat">💬</button>
     </div>
     <div class="choir-body">
@@ -542,9 +704,41 @@ Tentang mimpi yang kita cari</textarea>
     <div class="page-scroll" id="disc-results" style="padding:8px 18px 96px"></div>
   </section>
 
+  <!-- ====== KOMUNITI ====== -->
+  <section class="screen" id="screen-community">
+    <div class="page-head" style="padding-bottom:0">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <h2>🌟 Komuniti NyanyiKu</h2>
+        <div class="coin-head">
+          <span class="coin-chip">🪙 <span id="coin-num">0</span></span>
+          <span class="coin-chip" title="Hari berturut daftar masuk">🔥 <span id="streak-num">0</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="page-scroll">
+      <div class="check-card">
+        <span class="cc-cal">📅</span>
+        <div class="cc-meta"><b>Daftar masuk hari ini</b>
+          <span id="check-sub">Tuntut syiling percuma — tanpa sebarang pembelian</span></div>
+        <button id="btn-checkin">Tuntut</button>
+      </div>
+      <div class="section-label" style="margin-top:2px">🎯 Misi hari ini</div>
+      <div class="mis-list" id="mis-list"></div>
+      <div class="section-label">🎤 Rakaman Saya</div>
+      <div id="my-recordings"></div>
+      <div class="section-label">🏆 Papan mata mingguan</div>
+      <div class="lb-card" id="leaderboard"></div>
+      <div class="section-label">📻 Suapan NyanyiKu</div>
+      <div id="feed-list"></div>
+      <p class="hint" style="margin:8px 10px 4px">Suapan & papan mata dalam mod demo memaparkan penyanyi simulasi
+        supaya app tetap meriah luar talian. Sebaik ada pelayan bilik, penyanyi sebenar yang menyertai bilik anda akan muncul.</p>
+    </div>
+  </section>
+
   <nav class="tabbar" id="tabbar">
     <button data-tab="home" class="on"><span class="ti">🎵</span>Lagu</button>
     <button data-tab="rooms"><span class="ti">🚪</span>Bilik</button>
+    <button data-tab="community"><span class="ti">🌟</span>Komuniti</button>
     <button data-tab="create"><span class="ti">🤖</span>Cipta</button>
   </nav>
 
@@ -571,6 +765,109 @@ Tentang mimpi yang kita cari</textarea>
     </div>
   </div>
 
+  <!-- MODAL PROFIL -->
+  <div class="modal-overlay" id="prof-modal">
+    <div class="modal">
+      <div class="modal-head">
+        <b>👤 Profil Anda</b>
+        <button class="mini-btn" id="prof-close">✕</button>
+      </div>
+      <div class="modal-body form">
+        <div class="prof-dp-wrap">
+          <div class="prof-dp" id="prof-dp">🎤</div>
+          <button class="prof-cam" id="prof-cam" type="button">📷</button>
+        </div>
+        <div id="prof-level" class="hint" style="margin:0 0 4px"></div>
+        <input type="file" id="file-dp" class="hidden-file" accept="image/*">
+        <label>Logo / emoji profil</label>
+        <div class="icon-row chips" id="prof-logos"></div>
+        <label>Nama panggilan</label>
+        <input type="text" id="prof-name-in" maxlength="16" placeholder="Nama anda di bilik">
+        <label>Bio (cerita serba sedikit)</label>
+        <textarea id="prof-bio" maxlength="120" style="height:84px" placeholder="cth: Suka balada & lagu jiwang 🎤"></textarea>
+        <label>Status / mood hari ini</label>
+        <input type="text" id="prof-status" maxlength="40" placeholder="cth: Rasa macam bintang hari ni ⭐">
+        <label>Negeri</label>
+        <input type="text" id="prof-negeri" maxlength="24" placeholder="cth: Johor">
+      </div>
+      <div class="modal-foot">
+        <button class="mini-btn" id="prof-skip" style="flex:.8">Langkau</button>
+        <button class="mini-btn" id="prof-save" style="background:linear-gradient(90deg,#8b5cf6,#ff5ea8);border:none;font-weight:700">Simpan Profil</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL CIPTA BILIK -->
+  <div class="modal-overlay" id="room-modal">
+    <div class="modal">
+      <div class="modal-head">
+        <b>＋ Cipta Bilik Baharu</b>
+        <button class="mini-btn" id="room-modal-close">✕</button>
+      </div>
+      <div class="modal-body form">
+        <label>Nama bilik</label>
+        <input type="text" id="room-name" maxlength="26" placeholder="cth: Bilik Jiwang Malam Jumaat">
+        <label>Jenis bilik</label>
+        <div class="seg" id="room-kind-seg">
+          <button type="button" data-kind="chat" class="on">💬 Sembang</button>
+          <button type="button" data-kind="choir">🎶 Koir</button>
+        </div>
+        <label>Ikon bilik</label>
+        <div class="icon-row chips" id="room-icons">
+          <div class="chip on" data-ico="💬">💬</div><div class="chip" data-ico="🌟">🌟</div>
+          <div class="chip" data-ico="🔥">🔥</div><div class="chip" data-ico="🕯️">🕯️</div>
+          <div class="chip" data-ico="💝">💝</div><div class="chip" data-ico="🎮">🎮</div>
+          <div class="chip" data-ico="🎤">🎤</div><div class="chip" data-ico="🌙">🌙</div>
+        </div>
+        <label>Tema warna bilik</label>
+        <div class="swatch-grid" id="room-themes"></div>
+        <div class="lock-row" id="room-lock-row">
+          <span class="lr-ico" id="lock-ico">🔓</span>
+          <span>Kunci bilik dengan PIN</span>
+          <span class="lr-state" id="lock-state">Terbuka</span>
+        </div>
+        <div id="room-pin-wrap">
+          <label>PIN 4 digit (berkongsi dengan kawan untuk jemputan)</label>
+          <input type="text" id="room-pin" inputmode="numeric" maxlength="4" placeholder="••••">
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="mini-btn" id="room-cancel">Batal</button>
+        <button class="mini-btn" id="room-create" style="background:linear-gradient(90deg,#8b5cf6,#ff5ea8);border:none;font-weight:700">Cipta &amp; Masuk</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL BILIK SOLO (PILIH TEMAN) -->
+  <div class="modal-overlay" id="buddy-modal">
+    <div class="modal" style="max-height:70%">
+      <div class="modal-head">
+        <b>🎤 Bilik Solo</b>
+        <button class="mini-btn" id="buddy-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="hint" style="margin:0 0 4px">Pilih teman untuk Bilik Solo — dia akan bagi galakan semasa anda menyanyi dan mengulas skor anda.</p>
+        <div class="buddy-pick" id="buddy-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL PIN BILIK KUNCI -->
+  <div class="modal-overlay" id="pin-modal">
+    <div class="modal" style="max-width:340px">
+      <div class="modal-head"><b id="pin-title">🔒 Bilik Berkunci</b>
+        <button class="mini-btn" id="pin-close">✕</button></div>
+      <div class="modal-body form">
+        <p class="hint" id="pin-desc" style="margin:0 0 6px">Masukkan 4 digit PIN untuk masuk.</p>
+        <input type="text" id="pin-input" inputmode="numeric" maxlength="4" placeholder="••••" style="text-align:center;font-size:26px;letter-spacing:14px;text-indent:14px">
+      </div>
+      <div class="modal-foot">
+        <button class="mini-btn" id="pin-cancel">Batal</button>
+        <button class="mini-btn" id="pin-ok" style="background:linear-gradient(90deg,#8b5cf6,#ff5ea8);border:none;font-weight:700">Masuk</button>
+      </div>
+    </div>
+  </div>
+
   <div id="toast"></div>
   <div id="loader"><div class="spinner"></div><div id="loader-text">Memuatkan…</div></div>
 </div>
@@ -590,13 +887,14 @@ function toast(msg, ms=2600){
 }
 function loader(show,text='Memuatkan…'){ $('loader-text').textContent=text; $('loader').classList.toggle('show',show); }
 function fmt(s){ s=Math.max(0,Math.floor(s)); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
-const TAB_SCREENS=['home','rooms','create'];
+const TAB_SCREENS=['home','rooms','community','create'];
 function screen(name){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   $('screen-'+name).classList.add('active');
   const tab=$('tabbar');
   tab.classList.toggle('hidden',!TAB_SCREENS.includes(name));
   tab.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.tab===name));
+  if(name==='community'&&typeof renderCommunity==='function') renderCommunity();
 }
 
 /* ---------------- Nota muzik ---------------- */
@@ -680,6 +978,14 @@ function makeImpulse(ctx,dur=1.4,decay=2.6){
   for(let ch=0;ch<2;ch++){const d=imp.getChannelData(ch);
     for(let i=0;i<len;i++) d[i]=(Math.random()*2-1)*Math.pow(1-i/len,decay);}
   return imp;
+}
+/* Keluk WaveShaper lembut untuk kesan Hangat/Piring Hitam */
+function makeShaperCurve(amt){
+  const n=1024,c=new Float32Array(n);
+  const k=amt*4;
+  for(let i=0;i<n;i++){ const x=i*2/n-1;
+    c[i]=k?Math.tanh(k*x)/Math.tanh(k):x; }
+  return c;
 }
 function makeNoise(ctx,dur){
   const b=ctx.createBuffer(1,ctx.sampleRate*dur,ctx.sampleRate),d=b.getChannelData(0);
@@ -855,7 +1161,7 @@ const AudioCtx=window.AudioContext||window.webkitAudioContext;
 let actx=null, musicBuffer=null, musicGain=null;
 let srcNode=null, playing=false, schedAt=0, offset=0, songDur=0;
 let micStream=null, micAnalyser=null, pitchAnalyser=null, recMediaDest=null, mediaRec=null, recChunks=[];
-let pitchRAF=0, scoreData=null, currentMelody=null;
+let pitchRAF=0, scoreData=null, currentMelody=null, vocalStats=null;
 let echoOn=true, monitorOn=true, voiceBlob=null;
 let currentSong=null, activeLine=-1;
 
@@ -925,12 +1231,16 @@ async function setupMic(){
   const convWet=actx.createGain(); convWet.gain.value=0;
   const monitor=actx.createGain(); monitor.gain.value=monitorOn?1:0;
   recMediaDest=actx.createMediaStreamDestination();
+  const toneFilter=actx.createBiquadFilter();
+  toneFilter.type='lowpass'; toneFilter.frequency.value=14000; toneFilter.Q.value=1;
+  const shaper=actx.createWaveShaper(); shaper.curve=makeShaperCurve(0);
   src.connect(dry);
-  dry.connect(recMediaDest);
-  dry.connect(monitor);
-  dry.connect(delay); delay.connect(fb); fb.connect(delay);
+  dry.connect(toneFilter); toneFilter.connect(shaper);
+  shaper.connect(recMediaDest);
+  shaper.connect(monitor);
+  shaper.connect(delay); delay.connect(fb); fb.connect(delay);
   delay.connect(wet); wet.connect(recMediaDest); wet.connect(monitor);
-  dry.connect(conv); conv.connect(convWet);
+  shaper.connect(conv); conv.connect(convWet);
   convWet.connect(recMediaDest); convWet.connect(monitor);
   monitor.connect(actx.destination);
   // VU meter
@@ -941,11 +1251,14 @@ async function setupMic(){
   dry.connect(pitchAnalyser);
   /* Pratetap kesan suara */
   const PRESETS={
-    gema:  {label:'🎙️ Gema',      echo:.30, fb:.33, conv:0,    ir:[1.8,2.6]},
-    bilik: {label:'🚿 Bilik',     echo:0,   fb:0,   conv:.16, ir:[.5,2.2]},
-    konsert:{label:'🏛️ Konsert', echo:0,   fb:0,   conv:.26, ir:[1.9,2.6]},
-    gereja:{label:'⛪ Gereja',    echo:0,   fb:0,   conv:.38, ir:[3.4,3.2]},
-    asli:  {label:'🎤 Suara Asli',echo:0,  fb:0,   conv:0,    ir:[1.8,2.6]}
+    gema:  {label:'🎙️ Gema',      echo:.30, fb:.33, conv:0,    ir:[1.8,2.6], tone:['lowpass',14000], drive:0},
+    bilik: {label:'🚿 Bilik',     echo:0,   fb:0,   conv:.16, ir:[.5,2.2], tone:['lowpass',14000], drive:0},
+    konsert:{label:'🏛️ Konsert', echo:0,   fb:0,   conv:.26, ir:[1.9,2.6], tone:['lowpass',14000], drive:0},
+    gereja:{label:'⛪ Gereja',    echo:0,   fb:0,   conv:.38, ir:[3.4,3.2], tone:['lowpass',14000], drive:0},
+    asli:  {label:'🎤 Suara Asli',echo:0,  fb:0,   conv:0,    ir:[1.8,2.6], tone:['lowpass',14000], drive:0},
+    hangat:{label:'🌤️ Hangat',   echo:.10, fb:.18, conv:.10, ir:[1.4,2.4], tone:['lowpass',3200],  drive:.35},
+    piring:{label:'💿 Piring Hitam',echo:.04,fb:.08,conv:0,    ir:[1.4,2.4], tone:['bandpass',1500,.8],drive:.8},
+    parti: {label:'🎉 Parti',     echo:.17, fb:.40, conv:.08, ir:[1.6,2.2], tone:['lowpass',12000], drive:0}
   };
   const FX_ORDER=['gema','bilik','konsert','gereja','asli'];
   window.setVoiceFx=(name,silent)=>{
@@ -955,6 +1268,10 @@ async function setupMic(){
     fb.gain.setTargetAtTime(p.fb,t,.05);
     convWet.gain.setTargetAtTime(p.conv,t,.08);
     if(p.ir) conv.buffer=makeImpulse(actx,p.ir[0],p.ir[1]);
+    if(toneFilter){ toneFilter.type=p.tone?p.tone[0]:'lowpass';
+      toneFilter.frequency.value=p.tone?p.tone[1]:14000;
+      toneFilter.Q.value=(p.tone&&p.tone[2])?p.tone[2]:1; }
+    if(shaper) shaper.curve=makeShaperCurve(p.drive||0);
     const chip=$('fx-effect'); chip.textContent=p.label;
     chip.classList.toggle('on',name!=='asli');
     echoOn = name==='gema';
@@ -988,7 +1305,7 @@ function freqToNote(f){
   const exact=69+12*Math.log2(f/440);
   const midi=Math.round(exact);
   return {name:NOTE_NAMES[((midi%12)+12)%12]+(Math.floor(midi/12)-1),
-          cents:Math.round((exact-midi)*100)};
+          cents:Math.round((exact-midi)*100), midi:exact};
 }
 /* Autokorelasi bebas-AMDF untuk anggaran frekuensi suara */
 function detectPitch(buf,sr){
@@ -1038,30 +1355,96 @@ function startPitchLoop(){
       if(now-last>130){ last=now;
         pitchAnalyser.getFloatTimeDomainData(buf);
         const f=detectPitch(buf,actx.sampleRate);
-        onPitch(f);
+        onPitch(f,buf);
       }
     }
     pitchRAF=requestAnimationFrame(loop);
   };
   pitchRAF=requestAnimationFrame(loop);
 }
-function onPitch(f){
+function onPitch(f,buf){
   const needle=$('pp-needle'), yours=$('pp-yours'), targetEl=$('pp-target');
   // nota sasaran mengikut melodi pada masa semasa
   const t=Track.time;
   const target=currentMelody?currentMelody.find(n=>t>=n.t0&&t<n.t1):null;
   targetEl.textContent=target?target.name:'—';
+  if(target && vocalStats) vocalStats.targetFrames++;
   if(!f){ yours.textContent='—'; needle.className='pp-needle off'; needle.style.left='50%'; return; }
   const n=freqToNote(f); yours.textContent=n.name;
+  if(vocalStats && buf){
+    let rms=0; for(let i=0;i<buf.length;i++) rms+=buf[i]*buf[i]; rms=Math.sqrt(rms/buf.length);
+    vocalStats.rmsSum+=rms; vocalStats.rmsN++;
+    if(vocalStats.minMidi===null){ vocalStats.minMidi=vocalStats.maxMidi=n.midi; }
+    else { vocalStats.minMidi=Math.min(vocalStats.minMidi,n.midi); vocalStats.maxMidi=Math.max(vocalStats.maxMidi,n.midi); }
+  }
   if(!target){ needle.className='pp-needle'; needle.style.left=(50+n.cents/2)+'%'; return; }
+  if(vocalStats) vocalStats.voiceFrames++;
   // beza pic dalam semiton, dilipat ke dalam satu oktaf (maafkan beza oktaf)
   let semis=(12*Math.log2(f/target.f));
   semis=((Math.round(semis)%12)+12)%12; if(semis>6) semis-=12;
   const cents=Math.max(-100,Math.min(100,semis*100));
   needle.style.left=(50+cents/2)+'%';
   needle.className='pp-needle'+(Math.abs(cents)<=55?' tune':'');
+  if(vocalStats) vocalStats.centsVals.push(cents);
   if(!scoreData) scoreData={hit:0,total:0};
   scoreData.total++; if(Math.abs(cents)<=55) scoreData.hit++;
+}
+/* ---------------- Kad Vokal (radar 5 dimensi) ---------------- */
+function computeRadar(pct){
+  if(!vocalStats || vocalStats.rmsN<5) return null;
+  const vs=vocalStats;
+  const mean=vs.centsVals.reduce((a,c)=>a+c,0)/(vs.centsVals.length||1);
+  const variance=vs.centsVals.reduce((a,c)=>a+(c-mean)*(c-mean),0)/(vs.centsVals.length||1);
+  const stabil=Math.max(15,Math.min(100,Math.round(100-Math.sqrt(variance)*0.9)));
+  const kuasa=Math.max(12,Math.min(100,Math.round((vs.rmsSum/vs.rmsN)/0.16*100)));
+  const span=(vs.maxMidi!==null)?(vs.maxMidi-vs.minMidi):0;
+  const julat=Math.max(12,Math.min(100,Math.round(span/22*100)));
+  const rentak=vs.targetFrames?Math.max(10,Math.min(100,Math.round(vs.voiceFrames/vs.targetFrames*100))):40;
+  return {pic:pct,stabil,kuasa,julat,rentak};
+}
+const RADAR_DIMS=[['pic','Pic','#ffd75e'],['stabil','Stabil','#ff5ea8'],
+  ['kuasa','Kuasa','#3ddc84'],['julat','Julat','#4fd8ff'],['rentak','Rentak','#8b5cf6']];
+function drawRadar(canvas,radar){
+  const dpr=window.devicePixelRatio||1;
+  canvas.width=280*dpr; canvas.height=230*dpr; canvas.style.width='280px'; canvas.style.height='230px';
+  const ctx=canvas.getContext('2d');
+  if(!ctx) return;
+  ctx.scale(dpr,dpr);
+  const cx=140,cy=106,R=72,N=RADAR_DIMS.length;
+  ctx.clearRect(0,0,280,230);
+  ctx.strokeStyle='rgba(255,255,255,.14)';
+  for(let ring=1;ring<=4;ring++){
+    ctx.beginPath();
+    for(let i=0;i<N;i++){
+      const a=-Math.PI/2+i*2*Math.PI/N, rr=R*ring/4;
+      const x=cx+Math.cos(a)*rr, y=cy+Math.sin(a)*rr;
+      i?ctx.lineTo(x,y):ctx.moveTo(x,y);
+    }
+    ctx.closePath(); ctx.stroke();
+  }
+  for(let i=0;i<N;i++){
+    const a=-Math.PI/2+i*2*Math.PI/N;
+    ctx.beginPath(); ctx.moveTo(cx,cy);
+    ctx.lineTo(cx+Math.cos(a)*R,cy+Math.sin(a)*R); ctx.stroke();
+  }
+  ctx.beginPath();
+  RADAR_DIMS.forEach(([key],i)=>{
+    const a=-Math.PI/2+i*2*Math.PI/N, v=Math.max(6,radar[key])/100;
+    const x=cx+Math.cos(a)*R*v, y=cy+Math.sin(a)*R*v;
+    i?ctx.lineTo(x,y):ctx.moveTo(x,y);
+  });
+  ctx.closePath();
+  ctx.fillStyle='rgba(255,94,168,.28)'; ctx.fill();
+  ctx.strokeStyle='#ff5ea8'; ctx.lineWidth=2; ctx.stroke();
+  RADAR_DIMS.forEach(([key,label,color],i)=>{
+    const a=-Math.PI/2+i*2*Math.PI/N, v=Math.max(6,radar[key])/100;
+    ctx.beginPath(); ctx.arc(cx+Math.cos(a)*R*v,cy+Math.sin(a)*R*v,3.2,0,7);
+    ctx.fillStyle=color; ctx.fill();
+    const lx=cx+Math.cos(a)*(R+20), ly=cy+Math.sin(a)*(R+18)+3;
+    ctx.font='10.5px sans-serif'; ctx.fillStyle='#cfc7ee';
+    ctx.textAlign=Math.abs(Math.cos(a))<.3?'center':(Math.cos(a)>0?'left':'right');
+    ctx.fillText(label+' '+Math.round(radar[key]),lx,ly);
+  });
 }
 function renderScore(){
   const block=$('score-block');
@@ -1084,7 +1467,9 @@ async function startRecording(){
   const ok=await setupMic(); if(!ok) return;
   Track.pause(); offset=0; updateLyrics();updateProgress();
   scoreData={hit:0,total:0};
+  vocalStats={rmsSum:0,rmsN:0,minMidi:null,maxMidi:null,centsVals:[],targetFrames:0,voiceFrames:0};
   $('score-block').style.display='none'; $('result-text').style.display='block';
+  $('radar-wrap').style.display='none';
   $('pitch-panel').classList.add('show');
   startPitchLoop();
   let mime='audio/webm;codecs=opus';
@@ -1101,10 +1486,12 @@ async function startRecording(){
   $('btn-record').classList.add('rec'); $('btn-record').textContent='⏹';
   $('now-sub').innerHTML='<span class="rec-dot"></span>Sedang merakam…';
   recStart=performance.now();
+  startBuddyCheer();
 }
 let recStart=0;
 async function stopRecording(auto=false){
   if(mediaRec&&mediaRec.state==='recording') mediaRec.stop();
+  stopBuddyCheer();
   Track.pause();
   cancelAnimationFrame(pitchRAF);
   $('pitch-panel').classList.remove('show');
@@ -1136,7 +1523,22 @@ async function showResult(){
     rNodes={voiceBuf, voiceEl:null, startedAt:0, off:0, playing:false};
     $('r-dur').textContent=fmt(songDur);
     $('score-block').style.display='none'; $('result-text').style.display='block';
-    renderScore();
+    const pct=renderScore();
+    renderBuddyVerdict(pct);
+    let radar=null;
+    if(pct!=null){
+      radar=computeRadar(pct);
+      if(radar){
+        $('radar-wrap').style.display='block';
+        drawRadar($('radar-canvas'),radar);
+        const vals=RADAR_DIMS.map(([k])=>({k,v:radar[k]}));
+        const best=vals.slice().sort((a,b)=>b.v-a.v)[0];
+        const weak=vals.slice().sort((a,b)=>a.v-b.v)[0];
+        const lbl={pic:'ketepatan pic',stabil:'kestabilan',kuasa:'kuasa suara',julat:'julat nada',rentak:'rentak'};
+        $('radar-caption').textContent=`Kuat: ${lbl[best.k]} · Latih lagi: ${lbl[weak.k]}`;
+      }
+    }
+    saveRecording(pct,radar);
   }finally{ loader(false); }
 }
 function resultPlay(){
@@ -1282,12 +1684,20 @@ function songCard(s){
     :s.kind==='online'?'<span class="badge" style="background:rgba(79,216,255,.14);color:var(--cyan);border-color:rgba(79,216,255,.4)">🌐</span>':'';
   d.innerHTML=`${coverArt}
     <div class="song-meta"><b>${escapeHtml(s.title)}</b><span>${escapeHtml(s.artist||'—')}</span></div>
-    ${badge}<span class="go">›</span>`;
-  d.onclick=()=>openSong(s); return d;
+    ${badge}<span class="fav-btn" data-fav="${s.id}">${getFavs().includes(s.id)?'♥':'♡'}</span><span class="go">›</span>`;
+  d.onclick=()=>openSong(s);
+  const favBtn=d.querySelector('[data-fav]');
+  favBtn.onclick=e=>{e.stopPropagation();toggleFav(s.id);};
+  return d;
 }
 function refreshHome(){
   const d=$('demo-songs'); d.innerHTML='';
   DEMO_SONGS.forEach(s=>d.appendChild(songCard(s)));
+  const favIds=getFavs();
+  const favs=[...DEMO_SONGS,...userSongs].filter(s=>favIds.includes(s.id));
+  $('lbl-favs').style.display=favs.length?'block':'none';
+  const fbox=$('fav-songs'); fbox.innerHTML='';
+  favs.forEach(s=>fbox.appendChild(songCard(s)));
   const ai=userSongs.filter(s=>s.kind==='ai'), mine=userSongs.filter(s=>s.kind!=='ai');
   $('lbl-ai').style.display=ai.length?'block':'none';
   const a=$('ai-songs'); a.innerHTML='';
@@ -1301,11 +1711,24 @@ function refreshHome(){
 let userSongs=[];
 function idb(){
   return new Promise((res,rej)=>{
-    const r=indexedDB.open('nyanyiku',1);
-    r.onupgradeneeded=()=>r.result.createObjectStore('songs',{keyPath:'id'});
+    const r=indexedDB.open('nyanyiku',2);
+    r.onupgradeneeded=()=>{
+      const db=r.result;
+      if(!db.objectStoreNames.contains('songs')) db.createObjectStore('songs',{keyPath:'id'});
+      if(!db.objectStoreNames.contains('recordings')) db.createObjectStore('recordings',{keyPath:'id'});
+    };
     r.onsuccess=()=>res(r.result); r.onerror=()=>rej(r.error);
   });
 }
+async function idbRecAll(){ const db=await idb(); return new Promise((res,rej)=>{
+  const q=db.transaction('recordings').objectStore('recordings').getAll();
+  q.onsuccess=()=>res((q.result||[]).sort((a,b)=>b.createdAt-a.createdAt)); q.onerror=()=>rej(q.error); }); }
+async function idbRecPut(o){ const db=await idb(); return new Promise((res,rej)=>{
+  const t=db.transaction('recordings','readwrite'); t.objectStore('recordings').put(o);
+  t.oncomplete=()=>res(); t.onerror=()=>rej(t.error); }); }
+async function idbRecDel(id){ const db=await idb(); return new Promise((res,rej)=>{
+  const t=db.transaction('recordings','readwrite'); t.objectStore('recordings').delete(id);
+  t.oncomplete=()=>res(); t.onerror=()=>rej(t.error); }); }
 async function idbAll(){ const db=await idb(); return new Promise((res,rej)=>{
   const q=db.transaction('songs').objectStore('songs').getAll();
   q.onsuccess=()=>res(q.result||[]); q.onerror=()=>rej(q.error); }); }
@@ -1343,6 +1766,7 @@ $('btn-back').onclick=async()=>{
     $('btn-play').textContent='▶️'; $('now-sub').textContent='Sedia untuk menyanyi';
     mediaRec=null;
   }
+  stopBuddyCheer();
   Track.pause(); offset=0; screen('home');
 };
 $('btn-record').onclick=async()=>{
@@ -1353,8 +1777,9 @@ $('btn-record').onclick=async()=>{
   }
 };
 let voiceFx='gema';
-const FX_LABEL={gema:'🎙️ Gema',bilik:'🚿 Bilik',konsert:'🏛️ Konsert',gereja:'⛪ Gereja',asli:'🎤 Suara Asli'};
-const FX_ORDER_CYCLE=['gema','bilik','konsert','gereja','asli'];
+const FX_LABEL={gema:'🎙️ Gema',bilik:'🚿 Bilik',konsert:'🏛️ Konsert',gereja:'⛪ Gereja',asli:'🎤 Suara Asli',
+  hangat:'🌤️ Hangat',piring:'💿 Piring Hitam',parti:'🎉 Parti'};
+const FX_ORDER_CYCLE=['gema','bilik','konsert','gereja','asli','hangat','piring','parti'];
 $('fx-effect').onclick=function(){
   const i=FX_ORDER_CYCLE.indexOf(voiceFx);
   voiceFx=FX_ORDER_CYCLE[(i+1)%FX_ORDER_CYCLE.length];
@@ -1681,48 +2106,415 @@ $('btn-ai-generate').onclick=async()=>{
 /* =========================================================
    BILIK — senarai & rangkaian
    ========================================================= */
-let meName=localStorage.getItem('nyanyiku-name')||('Peminat'+Math.floor(100+Math.random()*899));
-$('my-name').value=meName;
-$('my-name').oninput=e=>{ meName=e.target.value.trim()||'Saya';
-  localStorage.setItem('nyanyiku-name',meName); };
+/* =========================================================
+   PROFIL PENGGUNA (tempatan, luar talian)
+   ========================================================= */
+function defaultProfile(){
+  return {name:'Peminat'+Math.floor(100+Math.random()*899), bio:'', negeri:'', status:'',
+    dp:'', logo:'', companion:'aisha'};
+}
+function getProfile(){
+  let p=null;
+  try{ p=JSON.parse(localStorage.getItem('nyanyiku-profile')); }catch(e){}
+  if(!p||!p.name){ const old=localStorage.getItem('nyanyiku-name'); p=Object.assign(defaultProfile(),old?{name:old}:{}); }
+  return Object.assign(defaultProfile(),p);
+}
+let profile=getProfile();
+let meName=profile.name;
+function saveProfile(patch){
+  profile=Object.assign(profile,patch);
+  if(patch.name) meName=patch.name.trim()||'Saya';
+  localStorage.setItem('nyanyiku-profile',JSON.stringify(profile));
+  localStorage.setItem('nyanyiku-name',meName);
+  renderProfileCard(); renderHomeLogo();
+}
+function initialOf(name){ const c=(name||'?').replace(/[^\p{L} ]/gu,'').trim(); return (c[0]||'P').toUpperCase(); }
+function profGradient(name){
+  const i=Math.abs([...(name||'x')].reduce((a,c)=>a+c.charCodeAt(0),0))%AVAS.length;
+  const [c1,c2]=AVAS[i].split(','); return `linear-gradient(135deg,${c1},${c2})`;
+}
+function avaHTML(sizeClass,name,extra){
+  if(profile.dp) return `<div class="${sizeClass}" ${extra||''}><img src="${profile.dp}" alt=""></div>`;
+  return `<div class="${sizeClass}" style="background:${profGradient(name)}" ${extra||''}>${initialOf(name)}</div>`;
+}
+function renderProfileCard(){
+  const ava=$('prof-ava');
+  if(!ava) return;
+  const inner=profile.dp?`<img src="${profile.dp}" alt="">`:profile.logo||initialOf(profile.name);
+  const bg=profile.dp?'':` style="background:${profGradient(profile.name)}"`;
+  ava.outerHTML=`<div class="prof-ava" id="prof-ava"${bg}>${inner}</div>`;
+  $('prof-name').textContent=profile.name+(profile.negeri?' · '+profile.negeri:'');
+  const lvl=profileLevel();
+  $('prof-sub').textContent=(lvl?lvl.title+' · ':'')+(profile.status||profile.bio||'Ketik untuk lengkapkan profil anda');
+}
+const PROFILE_LOGOS=['🎤','🎀','🌟','🔥','🌸','🎸','🎧','🦋','⭐','🌙','💎','🐱','🎹','🥁','🌈','😎'];
+let profDraftLogo='';
+function renderLogoPicker(){
+  $('prof-logos').innerHTML=PROFILE_LOGOS.map(e=>`<div class="chip logo-chip ${e===profDraftLogo?'on':''}" data-logo="${e}"
+    style="font-size:17px;padding:7px 12px">${e}</div>`).join('')
+   +'<div class="chip logo-chip" data-logo="" style="font-size:11px;padding:9px 12px">🔤 Huruf</div>';
+  document.querySelectorAll('#prof-logos .logo-chip').forEach(c=>c.onclick=()=>{
+    profDraftLogo=c.dataset.logo;
+    if(!profDraftDP) drawProfDP();
+    document.querySelectorAll('#prof-logos .logo-chip').forEach(x=>x.classList.toggle('on',x===c));
+  });
+}
+function renderHomeLogo(){
+  const img=$('home-logo'); if(!img) return;
+  img.src=profile.dp||'assets/icon.png';
+}
+/* Pemprosesan gambar DP → data URL kecil (bulat, 220px) */
+function fileToSmallDataURL(file,size=220){
+  return new Promise((res,rej)=>{
+    const img=new Image(), url=URL.createObjectURL(file);
+    img.onload=()=>{
+      const c=document.createElement('canvas'); c.width=c.height=size;
+      const ctx=c.getContext('2d'); const s=Math.min(img.width,img.height);
+      ctx.drawImage(img,(img.width-s)/2,(img.height-s)/2,s,s,0,0,size,size);
+      URL.revokeObjectURL(url); res(c.toDataURL('image/jpeg',.82));
+    };
+    img.onerror=()=>{ URL.revokeObjectURL(url); rej(new Error('gagal baca gambar')); };
+    img.src=url;
+  });
+}
+let profFirstRun=false, profDraftDP='';
+function openProfileEditor(firstRun){
+  profFirstRun=!!firstRun; profDraftDP=profile.dp||''; profDraftLogo=profile.logo||'';
+  $('prof-name-in').value=profile.name||'';
+  $('prof-bio').value=profile.bio||'';
+  $('prof-status').value=profile.status||'';
+  $('prof-negeri').value=profile.negeri||'';
+  renderLogoPicker();
+  drawProfDP();
+  $('prof-skip').style.display=firstRun?'block':'none';
+  $('prof-close').style.display=firstRun?'none':'block';
+  const lv=profileLevel();
+  $('prof-level').innerHTML=`<span class="lvl-pill">⭐ Tahap ${lv.level+1} · ${lv.title}</span>
+    🪙 ${game.coins} syiling${lv.next?` · ${game.xp-lv.cur}/${lv.next-lv.cur} XP ke tahap seterusnya`:' · tahap maksimum!'}`;
+  $('prof-modal').classList.add('show');
+}
+function drawProfDP(){
+  const box=$('prof-dp');
+  box.innerHTML=profDraftDP?`<img src="${profDraftDP}" alt="">`:profDraftLogo||initialOf(profile.name||'P');
+}
+function closeProfileEditor(){ $('prof-modal').classList.remove('show'); }
+$('prof-card').onclick=()=>openProfileEditor(false);
+$('home-logo')&&($('home-logo').onclick=()=>openProfileEditor(false));
+$('prof-cam').onclick=()=>$('file-dp').click();
+$('file-dp').onchange=async e=>{
+  const f=e.target.files[0]; if(!f) return;
+  try{ profDraftDP=await fileToSmallDataURL(f); drawProfDP(); }
+  catch(err){ toast('⚠️ Gambar tidak boleh dibaca'); }
+  e.target.value='';
+};
+$('prof-save').onclick=()=>{
+  const name=$('prof-name-in').value.trim();
+  if(!name){ toast('Taip nama panggilan anda dahulu'); return; }
+  saveProfile({name, bio:$('prof-bio').value.trim(), status:$('prof-status').value.trim(),
+    negeri:$('prof-negeri').value.trim(), dp:profDraftDP, logo:profDraftLogo});
+  closeProfileEditor(); toast('✅ Profil disimpan');
+};
+$('prof-close').onclick=closeProfileEditor;
+$('prof-skip').onclick=()=>{ saveProfile({}); closeProfileEditor(); toast('Anda boleh isi profil bila-bila masa di tab Bilik 👤',2800); };
 $('btn-server').onclick=()=>{
   const cur=localStorage.getItem('nyanyiku-server')||'';
   const v=prompt('Alamat pelayan bilik (wss://...). Kosongkan untuk auto / mod demo luar talian:',cur);
   if(v!==null){ localStorage.setItem('nyanyiku-server',v.trim());
     toast(v.trim()?'Pelayan disimpan ✅':'Mod auto (demo jika tiada pelayan)'); }
 };
+/* Tema visual bilik */
+const ROOM_THEMES=[
+  {id:'malam', label:'Malam Ungu', sw:'linear-gradient(135deg,#8b5cf6,#ff5ea8)',
+   bg:'radial-gradient(120% 80% at 80% -10%,#3b1d80 0%,#1a0b3d 45%,#0d0620 100%)',
+   me:'linear-gradient(135deg,#8b5cf6,#ff5ea8)', stage:'linear-gradient(160deg,rgba(255,94,168,.15),rgba(139,92,246,.1))'},
+  {id:'senja', label:'Senja', sw:'linear-gradient(135deg,#ff7e5f,#ff5ea8)',
+   bg:'linear-gradient(160deg,#3a1c4d,#7a2d52 55%,#b8553a)',
+   me:'linear-gradient(135deg,#ff7e5f,#ff5ea8)', stage:'linear-gradient(160deg,rgba(255,126,95,.18),rgba(255,94,168,.12))'},
+  {id:'lautan',label:'Lautan', sw:'linear-gradient(135deg,#11998e,#36d1dc)',
+   bg:'linear-gradient(160deg,#062a3f,#0b4a6b 55%,#0a6e7a)',
+   me:'linear-gradient(135deg,#11998e,#36d1dc)', stage:'linear-gradient(160deg,rgba(17,153,142,.2),rgba(54,209,220,.1))'},
+  {id:'emas',  label:'Emas Mewah', sw:'linear-gradient(135deg,#b8860b,#ffd75e)',
+   bg:'linear-gradient(160deg,#1c1408,#3a2a0c 55%,#100c06)',
+   me:'linear-gradient(135deg,#b8860b,#ff9d3d)', stage:'linear-gradient(160deg,rgba(255,215,94,.16),rgba(255,157,61,.1))'},
+  {id:'sakura',label:'Sakura', sw:'linear-gradient(135deg,#ff6fa5,#c44dd6)',
+   bg:'linear-gradient(160deg,#3d1430,#7a2552 60%,#a8456b)',
+   me:'linear-gradient(135deg,#ff6fa5,#c44dd6)', stage:'linear-gradient(160deg,rgba(255,111,165,.18),rgba(196,77,214,.12))'},
+  {id:'neon',  label:'Neon', sw:'linear-gradient(135deg,#00e0ff,#8b5cf6)',
+   bg:'radial-gradient(120% 90% at 20% 0%,#10243a,#0a0a1f 60%,#1a0b2e)',
+   me:'linear-gradient(135deg,#00e0ff,#8b5cf6)', stage:'linear-gradient(160deg,rgba(0,224,255,.14),rgba(139,92,246,.14))'}
+];
 const CHAT_ROOMS=[
-  {id:'umum',name:'Sembang Santai',ico:'💬',d:'Bual kosong & buat kawan',n:18},
-  {id:'duet',name:'Cari Kawan Duet',ico:'👯',d:'Cari pasangan nyanyi duet',n:7},
-  {id:'req',name:'Permintaan Lagu',ico:'🎵',d:'Cadang & minta lagu baharu',n:11}
+  {id:'umum',name:'Sembang Santai',ico:'💬',d:'Bual kosong & buat kawan',n:18,theme:'senja'},
+  {id:'duet',name:'Cari Kawan Duet',ico:'👯',d:'Cari pasangan nyanyi duet',n:7,theme:'sakura'},
+  {id:'req',name:'Permintaan Lagu',ico:'🎵',d:'Cadang & minta lagu baharu',n:11,theme:'lautan'}
 ];
 const CHOIR_ROOMS=[
-  {id:'koir-pop',name:'Koir Pop Melayu',ico:'🌟',d:'Hits pop & lagu trending',n:6},
-  {id:'koir-balada',name:'Koir Balada',ico:'🕯️',d:'Lagu perlahan & penuh jiwa',n:3},
-  {id:'koir-party',name:'Koir Hujung Minggu',ico:'🔥',d:'Lagu cepat & meriah',n:9}
+  {id:'koir-pop',name:'Koir Pop Melayu',ico:'🌟',d:'Hits pop & lagu trending',n:6,theme:'neon'},
+  {id:'koir-balada',name:'Koir Balada',ico:'🕯️',d:'Lagu perlahan & penuh jiwa',n:3,theme:'malam'},
+  {id:'koir-party',name:'Koir Hujung Minggu',ico:'🔥',d:'Lagu cepat & meriah',n:9,theme:'emas'}
 ];
+/* Bilik ciptaan pengguna (tempatan) */
+function loadMyRooms(){ try{ return JSON.parse(localStorage.getItem('nyanyiku-rooms'))||[]; }catch(e){ return []; } }
+function persistMyRooms(){ localStorage.setItem('nyanyiku-rooms',JSON.stringify(myRooms)); }
+let myRooms=loadMyRooms();
 const BOT_NAMES=['Aisha 🎀','Faiz 🎸','Nina 🌸','Daniel 🎹','Maya 🎤','Hafiz 🥁','Siti 🌺','Zack 🎧'];
 const AVAS=['#f7971e,#ffd200','#fc5c7d,#6a82fb','#11998e,#38ef7d','#8e2de2,#4a00e0','#f953c6,#b91d73','#43cea2,#185a9d'];
+/* Bilik ciptaan pengguna: cari & senarai */
+function findRoom(id){ return myRooms.find(r=>r.id===id)||CHAT_ROOMS.find(r=>r.id===id)||CHOIR_ROOMS.find(r=>r.id===id); }
 function roomCard(r,kind){
-  const [c1,c2]=AVAS[Math.abs(r.id.charCodeAt(0)+r.id.length)%AVAS.length].split(',');
+  const th=themeById(r.theme);
   const d=document.createElement('div'); d.className='room-card';
-  d.innerHTML=`<div class="ava" style="background:linear-gradient(135deg,${c1},${c2})">${r.ico}</div>
-    <div class="rm"><b>${r.name}</b><span>${r.d}</span></div>
-    <div class="live"><span class="online-pill"><i></i><b class="cnt">${r.n}</b> dalam</span></div>`;
-  d.onclick=()=> kind==='chat'?openChatRoom(r):openChoirRoom(r);
+  d.innerHTML=`<div class="ava" style="background:${th.sw}">${r.ico||'💬'}</div>
+    <div class="rm"><b>${r.pin?'<span class="rm-lock">🔒</span> ':''}${escapeHtml(r.name)}</b>
+      <span>${escapeHtml(r.d||'Bilik terbuka untuk semua')}</span></div>
+    <div class="live">${r.mine?'<span class="mini-del" title="Padam bilik">🗑️</span>':''}
+      <span class="online-pill"><i></i><b class="cnt">${r.n||0}</b> dalam</span></div>`;
+  d.onclick=ev=>{ if(ev.target.classList.contains('mini-del')) return; enterGate(r.id,kind); };
+  const del=d.querySelector('.mini-del');
+  if(del) del.onclick=ev=>{
+    ev.stopPropagation();
+    if(confirm(`Padam bilik anda "${r.name}"? Tindakan ini tidak boleh undur.`)){
+      myRooms=myRooms.filter(x=>x.id!==r.id); persistMyRooms(); renderRoomLists(); toast('🗑️ Bilik dipadam');
+    }
+  };
   return d;
 }
 function renderRoomLists(){
+  const myC=myRooms.filter(r=>r.kind==='chat'), myK=myRooms.filter(r=>r.kind==='choir');
+  $('lbl-my-chat').style.display=myC.length?'block':'none';
+  $('lbl-my-choir').style.display=myK.length?'block':'none';
+  const mc=$('my-chat-rooms'); mc.innerHTML=''; myC.forEach(r=>mc.appendChild(roomCard(r,'chat')));
+  const mk=$('my-choir-rooms'); mk.innerHTML=''; myK.forEach(r=>mk.appendChild(roomCard(r,'choir')));
   const c=$('chat-rooms'); c.innerHTML='';
   CHAT_ROOMS.forEach(r=>c.appendChild(roomCard(r,'chat')));
   const k=$('choir-rooms'); k.innerHTML='';
-  CHOIR_ROOMS.forEach(r=>k.appendChild(roomCard(r,'koir')));
-  // bilangka yang berubah-ubah sedikit supaya terasa "hidup"
-  setInterval(()=>{ document.querySelectorAll('#screen-rooms .cnt').forEach(el=>{
-    const base=+el.textContent; if(Math.random()<.25) el.textContent=Math.max(1,base+(Math.random()<.5?-1:1));
-  }); },4000);
+  CHOIR_ROOMS.forEach(r=>k.appendChild(roomCard(r,'choir')));
 }
-$('room-solo').onclick=()=>{ screen('home'); toast('🎤 Bilik Solo — pilih lagu untuk mula',2200); };
+/* Bilangka yang berubah-ubah sedikit supaya terasa "hidup" (satu pemasa sahaja) */
+setInterval(()=>{ document.querySelectorAll('#screen-rooms .cnt').forEach(el=>{
+  const base=+el.textContent; if(Math.random()<.25) el.textContent=Math.max(1,base+(Math.random()<.5?-1:1));
+}); },4000);
+
+/* Pintu masuk bilik: semak PIN jika berkunci */
+function enterGate(id,kind){
+  const r=findRoom(id); if(!r) return;
+  const go=()=> kind==='chat'?openChatRoom(r):openChoirRoom(r);
+  if(r.pin) openPinModal('enter',r,ok=>{ if(ok) go(); });
+  else go();
+}
+
+/* ---------------- Modal PIN (masuk bilik kunci / cipta kunci) ---------------- */
+let pinMode=null, pinRoom=null, pinCB=null, pinRefresh=null;
+function openPinModal(mode,room,cb,refresh){
+  pinMode=mode; pinRoom=room; pinCB=cb||null; pinRefresh=refresh||null;
+  if(mode==='enter'){ $('pin-title').textContent='🔒 '+room.name;
+    $('pin-desc').textContent='Masukkan 4 digit PIN untuk masuk bilik ini.'; }
+  else { $('pin-title').textContent='🔒 Kunci Bilik';
+    $('pin-desc').textContent='Cipta PIN 4 digit untuk bilik anda. Kongsikan dengan kawan yang dijemput.'; }
+  $('pin-input').value='';
+  $('pin-modal').classList.add('show');
+  setTimeout(()=>$('pin-input').focus(),60);
+}
+function closePinModal(ok){
+  $('pin-modal').classList.remove('show');
+  const cb=pinCB; pinCB=null; pinMode=null; pinRoom=null; pinRefresh=null;
+  if(cb) cb(ok);
+}
+$('pin-close').onclick=()=>closePinModal(false);
+$('pin-cancel').onclick=()=>closePinModal(false);
+$('pin-input').oninput=e=>{ e.target.value=e.target.value.replace(/\D/g,''); };
+$('pin-input').onkeydown=e=>{ if(e.key==='Enter') $('pin-ok').click(); };
+$('pin-ok').onclick=()=>{
+  const v=$('pin-input').value.trim();
+  if(pinMode==='enter'){
+    if(v===pinRoom.pin) closePinModal(true);
+    else { toast('❌ PIN salah'); $('pin-input').select(); }
+  } else if(pinMode==='set'){
+    if(!/^\d{4}$/.test(v)){ toast('🔒 Taip 4 digit angka'); return; }
+    pinRoom.pin=v; persistMyRooms(); renderRoomLists();
+    if(pinRefresh) pinRefresh();
+    closePinModal(true);
+    toast('🔒 Bilik dikunci — kongsikan PIN dengan kawan',2600);
+  }
+};
+
+/* ---------------- Tema bilik ---------------- */
+const themeById=id=>ROOM_THEMES.find(t=>t.id===id)||ROOM_THEMES[0];
+function applyRoomTheme(themeId){
+  const th=themeById(themeId);
+  ['screen-chat','screen-choir'].forEach(sid=>{
+    const el=$(sid); el.classList.add('themed');
+    el.style.setProperty('--room-bg',th.bg);
+    el.style.setProperty('--me-grad',th.me);
+    el.style.setProperty('--stage-grad',th.stage);
+  });
+}
+function clearRoomTheme(){
+  ['screen-chat','screen-choir'].forEach(sid=>{ const el=$(sid); el.classList.remove('themed');
+    ['--room-bg','--me-grad','--stage-grad'].forEach(v=>el.style.removeProperty(v)); });
+}
+
+/* ---------------- Modal cipta bilik ---------------- */
+let draftKind='chat', draftIco='💬', draftTheme='malam', draftLock=false;
+function buildThemeGrid(){
+  $('room-themes').innerHTML=ROOM_THEMES.map(t=>`<div class="swatch ${t.id===draftTheme?'on':''}" data-t="${t.id}">
+    <span class="sw-dot" style="background:${t.sw}"></span>${t.label}</div>`).join('');
+  document.querySelectorAll('#room-themes .swatch').forEach(s=>s.onclick=()=>{
+    draftTheme=s.dataset.t;
+    document.querySelectorAll('#room-themes .swatch').forEach(x=>x.classList.toggle('on',x===s));
+  });
+}
+function openRoomModal(kind){
+  draftKind=kind||'chat'; draftIco=kind==='choir'?'🌟':'💬'; draftLock=false; draftTheme='malam';
+  $('room-name').value=''; $('room-pin').value='';
+  $('room-pin-wrap').classList.remove('show');
+  $('lock-state').textContent='Terbuka'; $('lock-ico').textContent='🔓';
+  document.querySelectorAll('#room-kind-seg button').forEach(b=>b.classList.toggle('on',b.dataset.kind===draftKind));
+  document.querySelectorAll('#room-icons .chip').forEach(c=>c.classList.toggle('on',c.dataset.ico===draftIco));
+  buildThemeGrid();
+  $('room-modal').classList.add('show');
+}
+document.querySelectorAll('#room-kind-seg button').forEach(b=>b.onclick=()=>{
+  draftKind=b.dataset.kind;
+  document.querySelectorAll('#room-kind-seg button').forEach(x=>x.classList.toggle('on',x===b));
+});
+document.querySelectorAll('#room-icons .chip').forEach(c=>c.onclick=()=>{
+  draftIco=c.dataset.ico;
+  document.querySelectorAll('#room-icons .chip').forEach(x=>x.classList.toggle('on',x===c));
+});
+$('room-lock-row').onclick=()=>{
+  draftLock=!draftLock;
+  $('room-pin-wrap').classList.toggle('show',draftLock);
+  $('lock-state').textContent=draftLock?'Berkunci':'Terbuka';
+  $('lock-ico').textContent=draftLock?'🔒':'🔓';
+  if(draftLock) setTimeout(()=>$('room-pin').focus(),80);
+};
+$('room-pin').oninput=e=>{ e.target.value=e.target.value.replace(/\D/g,''); };
+$('btn-new-room').onclick=()=>openRoomModal('chat');
+$('room-modal-close').onclick=()=>$('room-modal').classList.remove('show');
+$('room-cancel').onclick=()=>$('room-modal').classList.remove('show');
+$('room-create').onclick=()=>{
+  const name=$('room-name').value.trim()||`Bilik ${myRooms.length+1}`;
+  let pin='';
+  if(draftLock){
+    pin=$('room-pin').value.trim();
+    if(!/^\d{4}$/.test(pin)){ toast('🔒 Taip PIN 4 digit dahulu'); return; }
+  }
+  const r={id:'my-'+Date.now(), name, kind:draftKind, ico:draftIco, theme:draftTheme,
+    d:'Bilik ciptaan anda · tema '+themeById(draftTheme).label, n:0, mine:true, pin};
+  myRooms.unshift(r); persistMyRooms(); renderRoomLists();
+  $('room-modal').classList.remove('show');
+  if(typeof trackMission==='function') trackMission('room');
+  toast(`✅ Bilik "${name}" dicipta${pin?' (berkunci)':''}`,2200);
+  setTimeout(()=>enterGate(r.id,draftKind),280);
+};
+/* Butang kunci/buka di dalam bilik (pencipta sahaja) */
+function roomLockUI(r){
+  const btns=[$('btn-chat-lock'),$('btn-choir-lock')];
+  btns.forEach(b=>{ b.style.display=r.mine?'inline-grid':'none'; });
+  const refresh=()=>btns.forEach(b=>b.textContent=r.pin?'🔒':'🔓');
+  const toggle=()=>{
+    if(r.pin){
+      if(confirm('Buka kunci bilik ini supaya semua boleh masuk?')){
+        r.pin=''; persistMyRooms(); refresh(); renderRoomLists(); toast('🔓 Bilik dibuka');
+      }
+    } else openPinModal('set',r,null,refresh);
+  };
+  btns.forEach(b=>{ b.onclick=toggle; });
+  refresh();
+}
+
+/* =========================================================
+   TEMAN SOLO (peneman maya — galakan & ulasan skor)
+   ========================================================= */
+const COMPANIONS=[
+  {id:'aisha', name:'Aisha', face:'🎀', color:'linear-gradient(135deg,#ff5ea8,#8b5cf6)',
+   desc:'Peminat pop yang ceria dan penuh semangat',
+   go:['Jom kita nyanyi! Saya pun ikut sama dalam hati ni 🎤','Jangan malu-malu, anda mesti boleh! 💪','Bila-bila pun boleh mula, saya yang dengar 🎧'],
+   mid:['Wah, sedapnya! Teruskan! 👏','Sedap gila bahagian tadi! 🌟','Fuhh, kelas! Nyanyi sekali lagi 🤩'],
+   verdict:{hi:'Sempurna! Bulu roma saya berdiri dengar tadi! 🏆✨',
+     mid:'Hebat! Lain kali cuba nota tinggi tu pula ya 👏',
+     lo:'Dah cukup bagus untuk latihan! Jangan putus asa, jamming lagi esok ya 💪'}},
+  {id:'faiz', name:'Faiz', face:'🎸', color:'linear-gradient(135deg,#c31432,#240b36)',
+   desc:'Gitaris rock — suka suara garang dan penuh kuasa',
+   go:['Jom! Bagi kuat-kuat macam konsert! 🎸','Rock je, jangan jaga imej 😎','Saya dah sedia buat drum roll ni…'],
+   mid:['Padu! Garang habis! 🔥','Ha, itu baru nama rock! 🤘','Bagi kuasa sikit lagi, jangan takut!'],
+   verdict:{hi:'Legend! Tangan saya yang petik gitar pun terhenti tadi 🔥🤘',
+     mid:'Mantap! Sikit lagi power macam vokalis sebenar 🎸',
+     lo:'Boleh tahan! Latih sikit lagi, nanti kita buka konsert besar 😎'}},
+  {id:'maria', name:'Maria', face:'🌹', color:'linear-gradient(135deg,#ff6fa5,#c44dd6)',
+   desc:'Penyanyi balada — suka yang lembut dan penuh jiwa',
+   go:['Tarik nafas dalam-dalam… nyanyi dari hati 🌹','Saya suka lagu-lagu perlahan. Mulakan 🕯️','Jangan tergopoh-gapah, hayati setiap patah perkataan'],
+   mid:['Syahdunya… saya hampir menangis 🥹','Penuh jiwa bahagian tadi 💕','Lembut tapi menusuk kalbu. Teruskan'],
+   verdict:{hi:'Indah sungguh… macam bintang filem lama 🌹🥹',
+     mid:'Saya dapat rasakan jiwanya. Kawal nafas sikit lagi ya 💕',
+     lo:'Sudah manis, cuma kena berani keluarkan suara. Saya yakin anda boleh 🌹'}},
+  {id:'zack', name:'Zack', face:'🎧', color:'linear-gradient(135deg,#00e0ff,#8b5cf6)',
+   desc:'Penerbit muda — serius pasal pic dan teknikal',
+   go:['Pic anda hari ini saya pantau. Jaga tempo ya 🎚️','Boleh mula, saya kira markah ikut nota 📊','Fon kepala dah sedia? Jom.'],
+   mid:['Nota tadi tepat! Kekalkan 📈','Tempo maintain, bagus ⏱️','Pic stabil — itulah yang saya nak dengar'],
+   verdict:{hi:'Ketepatan pic hampir sempurna. Memang betul-betul berlatih ni 🎧📊',
+     mid:'Kukuh! Cuma beberapa nota lari sikit, skor dah baik 🎚️',
+     lo:'Nota pembukaan tadi lari sedikit — cuba ikut meter pic, mesti naik punya 📈'}},
+  {id:'comel', name:'Si Comel', face:'🐱', color:'linear-gradient(135deg,#f7971e,#ffd200)',
+   desc:'Kucing comel yang tahu memuji sahaja',
+   go:['Meow~! Boleh nyanyi untuk saya tak? 🐱','Saya dah angguk-angguk kepala ni 🎶','Meow meow! (jomlah)'],
+   mid:['Meow meow meow~! (sedapnya!) 😻','Purrr~ saya suka 🐾','Meow!! 🌟'],
+   verdict:{hi:'MEOW!! Ini paling sedap pernah saya dengar! Saya bagi lima ekor ikan 🐟🐟🐟🐟🐟',
+     mid:'Meow~ sedap! Saya gesel-gesel kaki anda sebagai hadiah 😽',
+     lo:'Meow… saya tetap suka. Nyanyi lagi ya, nanti saya boleh lena 🐱💤'}}
+];
+function getCompanion(){ return COMPANIONS.find(c=>c.id===profile.companion)||COMPANIONS[0]; }
+function renderBuddyList(){
+  const cur=getCompanion();
+  $('buddy-list').innerHTML=COMPANIONS.map(c=>`<button class="buddy-opt ${c.id===cur.id?'on':''}" data-c="${c.id}">
+    <span class="bo-face" style="background:${c.color}">${c.face}</span>
+    <span><b>${c.name}</b><span>${c.desc}</span></span></button>`).join('')
+    +'<button class="mini-btn" id="buddy-gosolo" style="width:100%;margin-top:6px;padding:11px;background:linear-gradient(90deg,#8b5cf6,#ff5ea8);border:none;font-weight:700">Pilih & Cari Lagu 🎵</button>';
+  document.querySelectorAll('.buddy-opt').forEach(o=>o.onclick=()=>{
+    saveProfile({companion:o.dataset.c});
+    renderBuddyList(); paintBuddy();
+    if(typeof trackMission==='function') trackMission('buddy');
+    toast('Teman Bilik Solo anda: '+getCompanion().name+' '+getCompanion().face,1600);
+  });
+  $('buddy-gosolo').onclick=()=>{ $('buddy-modal').classList.remove('show'); screen('home'); };
+}
+function paintBuddy(){
+  const c=getCompanion();
+  $('buddy-face').style.background=c.color; $('buddy-face').textContent=c.face;
+  $('bv-face').style.background=c.color; $('bv-face').textContent=c.face;
+}
+function openBuddyPicker(){ renderBuddyList(); $('buddy-modal').classList.add('show'); }
+$('buddy-close').onclick=()=>$('buddy-modal').classList.remove('show');
+$('btn-checkin')&&($('btn-checkin').onclick=doCheckin);
+$('buddy-face').onclick=openBuddyPicker;
+let buddySayTimer=null;
+function buddySay(text,ms=4200){
+  const b=$('buddy-bubble');
+  b.textContent=text; b.classList.add('show');
+  clearTimeout(b._t);
+  b._t=setTimeout(()=>b.classList.remove('show'),ms);
+}
+function startBuddyCheer(){
+  const c=getCompanion();
+  $('buddy').classList.add('show');
+  buddySay(c.go[Math.floor(Math.random()*c.go.length)],4600);
+  clearInterval(buddySayTimer);
+  buddySayTimer=setInterval(()=>{
+    if(!(mediaRec&&mediaRec.state==='recording')) return;
+    const c2=getCompanion();
+    buddySay(c2.mid[Math.floor(Math.random()*c2.mid.length)]);
+  },13000);
+}
+function stopBuddyCheer(){ clearInterval(buddySayTimer); $('buddy-bubble').classList.remove('show'); $('buddy').classList.remove('show'); }
+function renderBuddyVerdict(pct){
+  const box=$('buddy-verdict');
+  if(pct==null){ box.classList.remove('show'); return; }
+  const c=getCompanion(), v=pct>=75?c.verdict.hi:pct>=45?c.verdict.mid:c.verdict.lo;
+  $('bv-text').textContent=c.face+' '+c.name+': '+v;
+  box.classList.add('show');
+}
+$('room-solo').onclick=()=>{ openBuddyPicker(); };
 
 /* ---------- Sambungan pelayan (WebSocket) ---------- */
 function netUrl(){
@@ -1812,7 +2604,8 @@ function seedChat(chat,roomId){
 let curNet=null, curChat=null, curRoom=null, ambientTimer=null, demoMode=false;
 function openChatRoom(r){
   curRoom=r; screen('chat');
-  $('chat-title').textContent=r.ico+' '+r.name;
+  applyRoomTheme(r.theme||'malam'); roomLockUI(r);
+  $('chat-title').textContent=(r.pin?'🔒 ':'')+r.ico+' '+r.name;
   $('chat-count').textContent=r.n; $('chat-typing').textContent='';
   $('chat-msgs').innerHTML=''; $('chat-text').value='';
   curChat=makeChat({listEl:$('chat-msgs'),inputEl:$('chat-text'),sendEl:$('chat-send'),
@@ -1863,6 +2656,7 @@ function handleRoomEvent(m,chat,countId){
 $('btn-chat-back').onclick=leaveRoom;
 function leaveRoom(){
   clearInterval(ambientTimer);
+  clearRoomTheme();
   if($('screen-choir').classList.contains('active')) leaveChoir();
   if(curChat){ curChat.destroy(); curChat=null; }
   if(curNet){ curNet.close(); curNet=null; }
@@ -1907,7 +2701,8 @@ function demoSeats(r){
 }
 function openChoirRoom(r){
   curRoom=r; screen('choir');
-  $('choir-title').textContent=r.ico+' '+r.name;
+  applyRoomTheme(r.theme||'malam'); roomLockUI(r);
+  $('choir-title').textContent=(r.pin?'🔒 ':'')+r.ico+' '+r.name;
   $('choir-count').textContent=r.n;
   $('cchat-msgs').innerHTML=''; $('cchat-text').value='';
   $('btn-stage').className='btn-stage off'; $('btn-stage').textContent='🎤 Naik Pentas';
@@ -2037,8 +2832,245 @@ function leaveChoir(){
   if(choirChat){ choirChat.destroy(); choirChat=null; }
 }
 
+
+/* =========================================================
+   GAMIFIKASI & KOMUNITI (olahan sendiri, semua tempatan/percuma)
+   - Syiling & tahap XP: mata suka-suka, TIADA pembelian
+   - Misi harian + daftar masuk berangkai
+   - Rakaman tersimpan ke galeri & muncul dalam suapan
+   - Papan mata mingguan (lawan simulasi luar talian)
+   ========================================================= */
+const LS_GAME='nyanyiku-game';
+function defaultGame(){return {coins:30,xp:0,streak:0,lastCheck:'',day:'',
+  stat:{sing:0,best:0,room:0,buddy:0,fav:0},claimed:[],week:[],likes:{},fcmts:{}};}
+function loadGame(){let g=null;try{g=JSON.parse(localStorage.getItem(LS_GAME));}catch(e){}
+  g=Object.assign(defaultGame(),g||{}); g.stat=Object.assign(defaultGame().stat,g.stat||{}); return g;}
+let game=loadGame();
+function saveGame(){localStorage.setItem(LS_GAME,JSON.stringify(game));}
+function dateKey(d){d=d||new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+function yesterdayKey(){const d=new Date();d.setDate(d.getDate()-1);return dateKey(d);}
+function weekKey(){const d=new Date();const onejan=new Date(d.getFullYear(),0,1);
+  const wk=Math.ceil((((d-onejan)/86400000)+onejan.getDay()+1)/7);return d.getFullYear()+'-W'+wk;}
+function rollDay(){const t=dateKey();
+  if(game.day!==t){game.day=t;game.stat={sing:0,best:0,room:0,buddy:0,fav:0};game.claimed=[];saveGame();}}
+const LEVEL_TITLES=['Peminat Baru','Bintang Baru','Bintang Meningkat','Bintang Terang','Idola','Bintang Rockstar','Lagenda NyanyiKu'];
+const LEVEL_XP=[0,40,120,260,500,850,1300];
+function profileLevel(){let li=0;
+  for(let i=0;i<LEVEL_XP.length;i++){ if(game.xp>=LEVEL_XP[i]) li=i; }
+  const cur=LEVEL_XP[li], next=LEVEL_XP[li+1]??null;
+  return {level:li,title:LEVEL_TITLES[li],cur,next,
+    pct:next?Math.round((game.xp-cur)/(next-cur)*100):100};}
+const MISSIONS=[
+  {id:'sing', ico:'🎤',label:'Rakam 1 lagu hari ini',target:1,field:'sing',reward:15},
+  {id:'best', ico:'🏆',label:'Capai skor 70 atau lebih',target:1,field:'best',reward:25},
+  {id:'room', ico:'🚪',label:'Cipta 1 bilik baharu',target:1,field:'room',reward:10},
+  {id:'buddy',ico:'🎀',label:'Tukar teman Bilik Solo',target:1,field:'buddy',reward:5},
+  {id:'fav',  ico:'♥', label:'Tandai 1 lagu kegemaran',target:1,field:'fav',reward:5}
+];
+function trackMission(field,n=1){rollDay();
+  if(field==='best') game.stat.best=Math.max(game.stat.best,n?1:0);
+  else game.stat[field]=(game.stat[field]||0)+n;
+  saveGame(); if($('mis-list')) renderMissions();}
+function addCoins(n){game.coins+=n;game.xp+=Math.max(1,Math.round(n/2));saveGame();renderCoinHead();renderProfileCard();}
+function claimMission(id){rollDay();const m=MISSIONS.find(x=>x.id===id);if(!m)return;
+  if(game.claimed.includes(id))return;
+  if((game.stat[m.field]||0)<m.target){toast('Misi belum lengkap lagi');return;}
+  game.claimed.push(id);
+  game.coins+=m.reward;game.xp+=m.reward;saveGame();
+  toast(`+${m.reward} syiling 🪙 (${m.label})`);
+  renderCoinHead();renderProfileCard();renderMissions();}
+function doCheckin(){rollDay();const t=dateKey();
+  if(game.lastCheck===t){toast('Anda sudah daftar masuk hari ini ✅');return;}
+  game.streak=(game.lastCheck===yesterdayKey())?game.streak+1:1;
+  game.lastCheck=t;const reward=10+Math.min(7,game.streak-1)*2;
+  game.coins+=reward;game.xp+=reward;saveGame();
+  toast(`Daftar masuk hari ke-${game.streak}! +${reward} syiling 🪙`);
+  renderCoinHead();renderProfileCard();renderCheckin();}
+function renderCoinHead(){$('coin-num').textContent=game.coins;$('streak-num').textContent=game.streak;}
+function renderCheckin(){const done=game.lastCheck===dateKey();const b=$('btn-checkin');
+  b.disabled=done;b.textContent=done?'Sudah ✓':'Tuntut';
+  $('check-sub').textContent=done?'Jumpa lagi esok ya! 🔥'
+    :'Rangkaian berturut: '+game.streak+' hari — percuma sepenuhnya, tiada pembelian';}
+function renderMissions(){rollDay();
+  $('mis-list').innerHTML=MISSIONS.map(m=>{
+    const v=Math.min(m.target,game.stat[m.field]||0),done=game.claimed.includes(m.id),ready=v>=m.target&&!done;
+    return `<div class="mis-row ${done?'done':''}">
+      <span class="mi-ico">${m.ico}</span>
+      <div class="mi-meta"><b>${m.label}</b>
+        <div class="mis-bar"><i style="width:${Math.round(v/m.target*100)}%"></i></div></div>
+      <span class="mi-rw">🪙 ${m.reward}</span>
+      <button class="mini-btn" data-mis="${m.id}" style="padding:7px 11px;${done?'opacity:.55':ready?'background:linear-gradient(90deg,#8b5cf6,#ff5ea8);border:none;font-weight:700':''}">${done?'✅':ready?'Tuntut':v+'/'+m.target}</button>
+    </div>`;}).join('');
+  document.querySelectorAll('[data-mis]').forEach(b=>b.onclick=()=>claimMission(b.dataset.mis));
+}
+
+/* ---------------- Papan mata mingguan ---------------- */
+function hashStr(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))>>>0;return h;}
+function leaderboardRows(){const wk=weekKey();
+  const names=['Aisha 🎀','Faiz 🎸','Nina 🌸','Daniel 🎹','Maya 🎤','Hafiz 🥁','Siti 🌺','Zack 🎧','Emy 🌷'];
+  const rows=names.map(nm=>({name:nm,score:52+hashStr(wk+nm)%46,me:false}));
+  const myBest=game.week.filter(w=>w.week===wk).reduce((a,w)=>Math.max(a,w.score),0);
+  if(myBest>0) rows.push({name:profile.name+' (Anda)',score:myBest,me:true});
+  return rows.sort((a,b)=>b.score-a.score).slice(0,10);}
+function renderLeaderboard(){$('leaderboard').innerHTML=leaderboardRows().map((r,i)=>
+  `<div class="lb-row ${i<3?'top'+(i+1):''} ${r.me?'me':''}">
+    <span class="rk">${i+1}</span><span class="nm">${escapeHtml(r.name)}</span><span class="sc">${r.score}</span>
+  </div>`).join('');}
+
+/* ---------------- Galeri rakaman ---------------- */
+let myRecordings=[],galleryAudio=null;
+async function initRecordings(){try{myRecordings=await idbRecAll();}catch(e){myRecordings=[];}renderRecordings();}
+function fmtDate(ts){const d=new Date(ts);
+  if(dateKey(d)===dateKey()) return 'hari ini '+d.toLocaleTimeString('ms-MY',{hour:'2-digit',minute:'2-digit'});
+  return d.toLocaleDateString('ms-MY',{day:'numeric',month:'short'});}
+function recCover(r){
+  if(r.coverUrl) return `<img src="${r.coverUrl}" style="width:42px;height:42px;border-radius:11px;object-fit:cover;flex:none">`;
+  const cc=r.colors||['#8b5cf6','#ff5ea8'];
+  return `<div class="rr-cover" style="background:linear-gradient(135deg,${cc[0]},${cc[1]})">${r.cover||'🎵'}</div>`;
+}
+function renderRecordings(){
+  const box=$('my-recordings');if(!box)return;
+  if(!myRecordings.length){box.innerHTML='<p class="hint" style="margin:0 0 8px">Belum ada rakaman. Nyanyi dalam Bilik Solo — rakaman anda tersimpan di sini secara automatik. 🎙️</p>';return;}
+  box.innerHTML=myRecordings.map(r=>`<div class="rec-row" data-id="${r.id}">${recCover(r)}
+    <div class="rr-meta"><b>${escapeHtml(r.title)}</b>
+      <span>${r.score!=null?'Skor '+r.score+' · ':''}${fmtDate(r.createdAt)}</span></div>
+    <button class="rr-play" data-play="${r.id}">▶️</button>
+    <button class="rr-del" data-delrec="${r.id}">🗑️</button></div>`).join('');
+  box.querySelectorAll('[data-delrec]').forEach(b=>b.onclick=async e=>{e.stopPropagation();
+    if(!confirm('Padam rakaman ini?'))return;
+    stopGallery();
+    try{await idbRecDel(b.dataset.delrec);}catch(e){}
+    myRecordings=myRecordings.filter(x=>x.id!==b.dataset.delrec);
+    renderRecordings();renderFeed();toast('Rakaman dipadam 🗑️');});
+  box.querySelectorAll('[data-play]').forEach(b=>b.onclick=e=>{e.stopPropagation();toggleRecording(b.dataset.play,b);});
+}
+function stopGallery(){if(galleryAudio){try{galleryAudio.pause();galleryAudio.src='';}catch(e){}galleryAudio=null;}
+  document.querySelectorAll('.rr-play.playing,.fp-play.playing').forEach(b=>{b.classList.remove('playing');b.textContent='▶️';});}
+function toggleRecording(id,btn){
+  if(galleryAudio && galleryAudio.dataset.id===id && !galleryAudio.paused){stopGallery();return;}
+  const r=myRecordings.find(x=>x.id===id);
+  if(!r||!r.blob){toast('⚠️ Rakaman ini tidak dapat dimainkan');return;}
+  stopGallery();
+  galleryAudio=new Audio(URL.createObjectURL(r.blob));galleryAudio.dataset.id=id;
+  galleryAudio.onended=stopGallery;
+  galleryAudio.play().catch(()=>toast('⚠️ Format rakaman tidak disokong peranti ini'));
+  [btn,...document.querySelectorAll(`[data-fplay="${id}"]`)].forEach(x=>{if(x){x.classList.add('playing');x.textContent='⏸';}});
+}
+/* Simpan rakaman selepas skor */
+async function saveRecording(pct,radar){
+  try{
+    const rec={id:'rec-'+Date.now(),title:currentSong.title,artist:currentSong.artist||'',
+      cover:currentSong.cover,coverUrl:currentSong.coverUrl||'',colors:currentSong.colors,
+      score:(pct==null?null:pct),radar:radar||null,
+      companion:getCompanion().id,createdAt:Date.now(),blob:voiceBlob,mime:voiceBlob.type||'audio/webm'};
+    await idbRecPut(rec);
+    myRecordings.unshift(rec);
+    if(pct!=null){
+      game.week.push({week:weekKey(),score:pct,title:rec.title,date:dateKey()});
+      if(game.week.length>60) game.week=game.week.slice(-60);
+    }
+    game.coins+=3; game.xp+=(pct!=null?10+Math.round(pct/10):5);
+    saveGame();renderCoinHead();renderProfileCard();renderLeaderboard();
+    trackMission('sing'); if(pct>=70) trackMission('best',1);
+    renderRecordings&&renderRecordings(); renderFeed&&renderFeed();
+    toast('⭐ Rakaman tersimpan di tab Komuniti',2400);
+  }catch(e){toast('⚠️ Rakaman tidak dapat disimpan (ruang penuh?)');}
+}
+
+/* ---------------- Suapan komuniti (demo tempatan) ---------------- */
+const FEED_TITLES=['Bintang Malam','Senandung Rindu','Hujan di Jalanan','Malam Sunyi','Konsert Dapur',
+  'Lagu Untuk Ibu','Janji Pagi','Gitar Tua','Diari Sepi','Tepian Pantai'];
+const FEED_NAMES=['Aisha 🎀','Faiz 🎸','Nina 🌸','Daniel 🎹','Maya 🎤','Hafiz 🥁','Siti 🌺','Zack 🎧'];
+const SEED_CMTS=[['Faiz 🎸','Sedap gila 🔥'],['Nina 🌸','Saya suka, jom duet!'],['Aisha 🎀','Mantap 👏'],
+  ['Maya 🎤','Nota tinggi tadi padu!'],['Siti 🌺','Syahdu dengarnya 🥹']];
+function feedSeeds(){const wk=weekKey();
+  return FEED_NAMES.map((nm,i)=>{const h=hashStr(wk+nm+'suapan');
+    return {id:'seed-'+wk+'-'+i,seed:true,name:nm,title:FEED_TITLES[h%FEED_TITLES.length],
+      score:42+h%57,hours:1+h%28,likes:4+h%86,
+      seedCmts:(h%3===0)?[SEED_CMTS[h%SEED_CMTS.length]]:[]};});}
+function feedPosts(){
+  const mine=myRecordings.map(r=>({id:r.id,mine:true,name:profile.name,
+    title:r.title,score:r.score==null?null:r.score,hours:Math.max(0,Math.round((Date.now()-r.createdAt)/3600000)),
+    likes:r.feedLikes||0,rec:r}));
+  return [...mine,...feedSeeds()].sort((a,b)=>a.hours-b.hours);
+}
+function feedAvatarsHTML(name){return `<div class="fp-ava" style="${avatarStyle(name)}">${faceChar(name)}</div>`;}
+function likeLabel(p){
+  const liked=!!game.likes[p.id];
+  const base=p.seed?p.likes:(p.rec?(p.rec.feedLikes||0):p.likes||0);
+  return {liked,n:base+(liked?1:0)};
+}
+function renderFeed(){
+  const box=$('feed-list');if(!box)return;
+  box.innerHTML=feedPosts().map(p=>{
+    const L=likeLabel(p);
+    const stars=p.score==null?'':(p.score>=90?'🏆':p.score>=70?'🌟':'🎵');
+    const cover=p.rec?recCover(p.rec):`<div class="fs-cover" style="background:${avatarStyle(p.name)}">🎤</div>`;
+    const cmtSeed=p.seedCmts||[];
+    const cmtMine=game.fcmts[p.id]||[];
+    const cmts=[...cmtSeed.map(c=>({name:c[0],text:c[1],seed:true})),...cmtMine];
+    return `<div class="feed-post" data-fid="${p.id}">
+      <div class="fp-head">${feedAvatarsHTML(p.name)}
+        <div class="fp-meta"><b>${escapeHtml(p.name)}${p.mine?' (Anda)':''}</b>
+          <span>${p.hours===0?'baharu sahaja':p.hours+' jam lalu'}</span></div>
+        <span class="fp-badge">${stars}</span></div>
+      <div class="fp-song">${cover}
+        <div style="flex:1;min-width:0"><b>${escapeHtml(p.title)}</b>
+          <span>${p.score!=null?'Skor '+p.score+' · ':'Rakaman '}cover nyanyian</span></div>
+        <button class="fp-play" data-fplay="${p.mine?p.id:''}" ${p.mine?'':'disabled style="opacity:.45"'}>▶️</button>
+      </div>
+      <div class="fp-actions">
+        <span class="fp-like ${L.liked?'liked':''}" data-like="${p.id}">${L.liked?'❤️':'🤍'} ${L.n} suka</span>
+        <span>💬 ${cmts.length} komen</span>
+      </div>
+      <div class="fp-comments">${cmts.map(c=>`<div class="fp-cmt"><b>${escapeHtml(c.name)}:</b> ${escapeHtml(c.text)}</div>`).join('')}</div>
+      <div class="fp-cmt-in"><input type="text" maxlength="120" placeholder="Tulis komen…">
+        <button data-cmt="${p.id}">Hantar</button></div>
+    </div>`;}).join('');
+  box.querySelectorAll('[data-like]').forEach(el=>el.onclick=()=>{
+    const id=el.dataset.like;
+    let likedRec=null;
+    if(game.likes[id]){delete game.likes[id];}
+    else{game.likes[id]=true;
+      const post=feedPosts().find(p=>p.id===id);
+      if(post&&post.rec){post.rec.feedLikes=(post.rec.feedLikes||0)+1;likedRec=post.rec;}
+    }
+    saveGame();
+    if(likedRec) idbRecPut(likedRec).catch(()=>{});
+    renderFeed();
+  });
+  box.querySelectorAll('[data-cmt]').forEach(btn=>{
+    const inp=btn.parentElement.querySelector('input');
+    const send=()=>{const t=inp.value.trim();if(!t)return;
+      const id=btn.dataset.cmt;(game.fcmts[id]=game.fcmts[id]||[]).push({name:profile.name,text:t});
+      saveGame();renderFeed();};
+    btn.onclick=send; inp.onkeydown=e=>{if(e.key==='Enter')send();};
+  });
+  box.querySelectorAll('.fp-play').forEach(b=>b.onclick=()=>{if(b.dataset.fplay)toggleRecording(b.dataset.fplay,b);
+    else toast('Rakaman ahli simulasi — hanya contoh dalam mod demo 😉',2200);});
+}
+
+/* ---------------- Lagu kegemaran ---------------- */
+function getFavs(){try{return JSON.parse(localStorage.getItem('nyanyiku-favs'))||[];}catch(e){return[];}}
+function setFavs(a){localStorage.setItem('nyanyiku-favs',JSON.stringify(a));}
+function toggleFav(id){let a=getFavs();
+  if(a.includes(id)){a=a.filter(x=>x!==id);toast('♡ Dibuang dari kegemaran',1400);}
+  else{a.push(id);trackMission('fav');toast('♥ Ditambah ke Lagu Kegemaran',1600);}
+  setFavs(a);refreshHome();}
+
+function renderCommunity(){rollDay();renderCoinHead();renderCheckin();renderMissions();
+  renderLeaderboard();renderRecordings();renderFeed();}
+
 initMySongs();
 renderRoomLists();
+renderProfileCard();
+paintBuddy();
+initRecordings();
+/* Daftar pertama: pelawa lengkapkan profil (boleh langkau) */
+if(!localStorage.getItem('nyanyiku-profile')){
+  setTimeout(()=>openProfileEditor(true),600);
+}
 
 /* Butang kembali fizikal Android (plugin @capacitor/app) */
 (function(){
@@ -2051,7 +3083,8 @@ renderRoomLists();
       else if($('screen-result').classList.contains('active')) $('btn-result-home').click();
       else if($('screen-chat').classList.contains('active')) $('btn-chat-back').click();
       else if($('screen-choir').classList.contains('active')) $('btn-choir-back').click();
-      else if($('screen-rooms').classList.contains('active')||$('screen-create').classList.contains('active')) screen('home');
+      else if($('screen-rooms').classList.contains('active')||$('screen-create').classList.contains('active')
+        ||$('screen-community').classList.contains('active')) screen('home');
       else App.exitApp();
     });
   }
