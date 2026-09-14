@@ -1,6 +1,6 @@
 {
   "name": "nyanyiku",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "NyanyiKu — aplikasi karaoke dengan AI cipta lagu, bilik solo, sembang & koir",
   "private": true,
   "scripts": {
@@ -14,6 +14,7 @@
     "@capacitor/android": "^7.6.9",
     "@capacitor/app": "^7.1.2",
     "@capacitor/core": "^7.6.9",
+    "@capacitor/status-bar": "^7.0.6",
     "ws": "^8.18.0"
   },
   "devDependencies": {

@@ -741,6 +741,21 @@
   .primary:active{transform:scale(.97)}
   .primary.full{width:100%;padding:15px;font-size:15px;border-radius:16px}
   #contact-modal .mini-btn{border-radius:14px;padding:13px 10px;font-weight:700;font-size:13.5px;cursor:pointer}
+
+  /* ---------- v0.8.1: kerusi duduk dalam Bilik Sembang ---------- */
+  .chat-lounge{display:flex;align-items:flex-end;gap:10px;overflow-x:auto;padding:8px 12px 10px;
+    border-bottom:1px solid var(--glass-brd);background:linear-gradient(180deg,rgba(139,92,246,.10),rgba(0,0,0,0));
+    flex:none;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .chat-lounge::-webkit-scrollbar{display:none}
+  .chat-lounge .lounge-label{flex:none;align-self:center;font-size:10px;color:var(--dim);width:42px;line-height:1.3;text-align:center}
+  .chat-lounge .seat .face{width:46px;height:46px;font-size:19px}
+  .chat-lounge .seat{cursor:pointer}
+  .chat-lounge .seat.empty .face{width:46px;height:46px;font-size:20px}
+  .chat-lounge .seat .nm{max-width:54px;font-size:9.5px}
+  .chat-lounge .seat.sitting-me .face{border-color:var(--gold);box-shadow:0 0 14px rgba(255,215,94,.55)}
+  .chat-lounge .seat .mic-dot{position:absolute;top:-2px;right:2px;font-size:11px;z-index:2}
+  .lounge-sing{flex:none;margin-left:auto;align-self:center;border:none;border-radius:999px;cursor:pointer;
+    background:linear-gradient(90deg,#ff5ea8,#ff2d78);color:#fff;font-weight:700;font-size:11.5px;padding:9px 13px;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -754,9 +769,15 @@
         <b style="font-size:17px">🎵 Pilih Lagu</b>
         <div class="hint" style="text-align:left;margin:0">Bilik Solo — rakam, skor &amp; teman menemani anda</div>
       </div>
+      <button class="icon-btn" id="btn-home-search" title="Cari lagu dalam talian" style="font-size:16px">🔍</button>
+      <button class="icon-btn" id="btn-home-mic" title="Tukar teman Bilik Solo" style="background:linear-gradient(135deg,#ff5ea8,#ff2d78);border:none;font-size:17px">🎤</button>
       <img src="assets/icon.png" alt="logo" id="home-logo" width="40" height="40" style="border-radius:12px;cursor:pointer" title="Profil">
     </div>
     <div class="song-list" style="padding-bottom:92px">
+      <div style="display:flex;gap:10px;padding:4px 14px 10px">
+        <button id="solo-btn-search" style="flex:1;border:none;border-radius:14px;padding:13px 8px;font-weight:800;font-size:13.5px;color:#fff;cursor:pointer;background:linear-gradient(90deg,#4fd8ff,#8b5cf6);box-shadow:0 8px 20px rgba(79,216,255,.25)">🔍 Cari Lagu</button>
+        <button id="solo-btn-upload" style="flex:1;border:none;border-radius:14px;padding:13px 8px;font-weight:800;font-size:13.5px;color:#fff;cursor:pointer;background:linear-gradient(90deg,#3ddc84,#2bb673);box-shadow:0 8px 20px rgba(61,220,132,.22)">📂 Guna MP3 Penuh Saya</button>
+      </div>
       <div class="song-card" id="discover-card"
         style="background:linear-gradient(120deg,rgba(79,216,255,.2),rgba(139,92,246,.22));border-color:rgba(79,216,255,.4)">
         <span style="font-size:25px">🌐</span>
@@ -961,7 +982,8 @@ Tentang mimpi yang kita cari</textarea>
       <button class="icon-btn" id="btn-chat-lock" style="display:none" title="Kunci/buka bilik">🔓</button>
       <button class="icon-btn" id="btn-chat-info" title="Maklumat bilik/kenalan">ⓘ</button>
     </div>
-    <div class="chat-scroll" id="chat-msgs"></div>
+    <div class="chat-lounge" id="chat-lounge"></div>
+    <div class="chat-scroll" id="chat-msgs" style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch"></div>
     <div class="typing" id="chat-typing"></div>
     <div class="chat-input">
       <input type="text" id="chat-text" maxlength="200" placeholder="Taip mesej…">
@@ -1017,6 +1039,11 @@ Tentang mimpi yang kita cari</textarea>
       <button id="disc-go">🔎</button>
     </div>
     <div class="disc-chips chips" id="disc-genres"></div>
+    <div style="margin:2px 16px 6px;padding:10px 12px;border-radius:13px;background:rgba(255,215,94,.09);border:1px solid rgba(255,215,94,.28);font-size:11.5px;line-height:1.55;color:#e8ddb0">
+      ℹ️ Carian dalam talian memberi <b>pratonton rasmi 30 saat</b> daripada iTunes (had lesen — tiada sesiapa boleh beri lagu penuh secara percuma tanpa kebenaran).
+      Untuk <b>lagu penuh</b>, muat naik fail MP3/M4A anda sendiri — lirik dicari automatik dan fail kekal dalam peranti.
+      <button id="disc-upload" style="margin-top:7px;width:100%;border:none;border-radius:10px;padding:9px;font-weight:800;cursor:pointer;color:#0d0620;background:linear-gradient(90deg,#3ddc84,#2bb673)">📂 Guna MP3 Penuh Saya</button>
+    </div>
     <div class="page-scroll" id="disc-results" style="padding:8px 18px 96px"></div>
   </section>
 
@@ -1363,6 +1390,7 @@ Tentang mimpi yang kita cari</textarea>
       <div class="modal-body">
         <p class="hint" style="margin:0 0 4px">Pilih teman untuk Bilik Solo — dia akan bagi galakan semasa anda menyanyi dan mengulas skor anda.</p>
         <div class="buddy-pick" id="buddy-list"></div>
+        <button class="mini-btn" id="buddy-gosearch" style="width:100%;margin-top:8px;padding:11px;background:linear-gradient(90deg,#4fd8ff,#8b5cf6);border:none;font-weight:700">🔍 Cari Lagu Dalam Talian</button>
       </div>
     </div>
   </div>
@@ -1395,6 +1423,16 @@ Tentang mimpi yang kita cari</textarea>
    - Rakam suara + gema (echo), main semula bercampur
    ========================================================= */
 const $ = id => document.getElementById(id);
+/* Status bar Android: kandungan tidak ditindih takuk/status bar */
+(function(){
+  try{
+    const Plugins=window.Capacitor&&window.Capacitor.Plugins;
+    const SB=Plugins&&Plugins.StatusBar;
+    if(SB){ SB.setOverlaysWebView({overlay:false}).catch(()=>{});
+      if(SB.setBackgroundColor) SB.setBackgroundColor({color:'#150b33'}).catch(()=>{});
+      if(SB.setStyle) SB.setStyle({style:'DARK'}).catch(()=>{}); }
+  }catch(e){}
+})();
 let toastTimer;
 function toast(msg, ms=2600){
   const t=$('toast'); t.textContent=msg; t.classList.add('show');
@@ -1444,52 +1482,71 @@ const bmLines=[
   ['D4','E4','G4','A4','B4','A4','G4','E4'],
   ['G4','A4','B4','A4','G4','E4','D4','D4']
 ];
+/* Jana lirik bercap masa: setiap baris mula 8 rentak selepas intro 4 rentak */
+function linesToLrc(lines,bpm,introBeats=4){
+  const bs=60/bpm;
+  return lines.map((t,i)=>{
+    const sec=(introBeats+i*8)*bs+0.35;
+    const m=Math.floor(sec/60), ss=String((sec-m*60).toFixed(2)).padStart(5,'0');
+    return '['+String(m).padStart(2,'0')+':'+ss+']'+t;
+  }).join('\n');
+}
+/* Twinkle: 5 rangkap × 6 frasa (domain awam, bahasa Inggeris asal) */
+const TW_STANZAS=[
+ ['Twinkle, twinkle, little star,','How I wonder what you are!','Up above the world so high,','Like a diamond in the sky.','Twinkle, twinkle, little star,','How I wonder what you are!'],
+ ['When the blazing sun is gone,','When he nothing shines upon,','Then you show your little light,','Twinkle, twinkle, all the night.','Then you show your little light,','Twinkle, twinkle, all the night.'],
+ ['Then the traveller in the dark,','Thanks you for your tiny spark,','He could not see which way to go,','If you did not twinkle so.','He could not see which way to go,','If you did not twinkle so.'],
+ ['In the dark blue sky you keep,','Often through my curtains peep,','For you never shut your eye,','Till the sun is in the sky.','For you never shut your eye,','Till the sun is in the sky.'],
+ ['Twinkle, twinkle, little star,','How I wonder what you are!','Up above the world so high,','Like a diamond in the sky.','Twinkle, twinkle, little star,','How I wonder what you are!']
+];
+const TW_LINES=TW_STANZAS.flat();
+/* Bintang Malam: 4 rangkap ciptaan asli NyanyiKu */
+const BM_STANZAS=[
+ ['Bintang malam berkelipan','Membawa rindu di hati','Ku nyanyi lagu ini','Untukmu yang ku sayang'],
+ ['Angin malam berhembus perlahan','Membawa namamu pergi','Biar bulan jadi saksi','Setiaku sampai akhir nanti'],
+ ['Oh bintang teruslah bersinar','Temaniku di kegelapan','Esok pasti ada fajar','Harapan takkan pernah padam'],
+ ['Bintang malam berkelipan','Menemani sunyi hatiku','Lagu ini ku abadikan','Untukmu selamanya']
+];
+const BM_LINES=BM_STANZAS.flat();
 const DEMO_SONGS=[
   {
-    id:'demo-twinkle', title:'Twinkle Twinkle Little Star', artist:'Lagu Tradisional',
-    kind:'demo', bpm:120, bars:13, // 4 rentak intro + 6 baris*8 rentak = 52 rentak
+    id:'demo-twinkle', title:'Twinkle Twinkle Little Star', artist:'Lagu Tradisional (5 rangkap)',
+    kind:'demo', bpm:96, bars:Math.ceil((4+TW_LINES.length*8)/4),
     colors:['#f7b733','#fc4a1a'], cover:'⭐',
-    lrc:`[00:02.00]Twinkle, twinkle, little star,
-[00:06.00]How I wonder what you are!
-[00:10.00]Up above the world so high,
-[00:14.00]Like a diamond in the sky.
-[00:18.00]Twinkle, twinkle, little star,
-[00:22.00]How I wonder what you are!`,
+    lrc:linesToLrc(TW_LINES,96),
     build(beats,bps){
       const mel=[];
-      twLines.forEach((line,li)=>{
-        const st=4+li*8;
-        line.forEach((nn,k)=>{ const hold=(k===6)?2:1; mel.push([nn,st+k* (k<6?1:0), hold]); });
+      TW_LINES.forEach((txt,li)=>{
+        const line=twLines[li%6], st=4+li*8;
+        line.forEach((nn,k)=>{ const hold=(k===6)?2:1; mel.push([nn,st+k*(k<6?1:0),hold]); });
       });
+      const rootMap={C:note('C2'),F:note('F2'),G:note('G2')},
+            fifthMap={C:note('G2'),F:note('C3'),G:note('D3')};
       const roots=['C','F','G','F','C','F'];
-      const rootFreq={C:note('C2'),F:note('F2'),G:note('G2')}, fifth={C:note('G2'),F:note('C3'),G:note('D3')};
       const bass=[];
-      roots.forEach((r,li)=>{ const st=4+li*8;
-        bass.push([rootFreq[r],st,2],[fifth[r],st+2,2],[rootFreq[r],st+4,2],[fifth[r],st+6,2]); });
+      TW_LINES.forEach((txt,li)=>{ const r=roots[li%6], st=4+li*8;
+        bass.push([rootMap[r],st,2],[fifthMap[r],st+2,2],[rootMap[r],st+4,2],[fifthMap[r],st+6,2]); });
       return {mel,bass,drumStart:4};
     }
   },
   {
-    id:'demo-bintang', title:'Bintang Malam', artist:'Ciptaan Asli NyanyiKu',
-    kind:'demo', bpm:120, bars:10, // intro 4 + 4 baris*8 + outro 4 = 40 rentak
+    id:'demo-bintang', title:'Bintang Malam', artist:'Ciptaan Asli NyanyiKu (4 rangkap)',
+    kind:'demo', bpm:88, bars:Math.ceil((4+BM_LINES.length*8)/4), drums:'ballad',
     colors:['#8e2de2','#4a00e0'], cover:'🌙',
-    lrc:`[00:02.00]Bintang malam berkelipan
-[00:06.00]Membawa rindu di hati
-[00:10.00]Ku nyanyi lagu ini
-[00:14.00]Untukmu yang ku sayang`,
+    lrc:linesToLrc(BM_LINES,88),
     build(beats,bps){
       const mel=[];
-      bmLines.forEach((line,li)=>{
-        const st=4+li*8;
+      BM_LINES.forEach((txt,li)=>{
+        const line=bmLines[li%4], st=4+li*8;
         line.forEach((nn,k)=>{ const dur=(k===7)?2:0.5; mel.push([nn,st+0.5+k*0.5,dur]); });
       });
-      const prog=[ // [root, fifth] Hz
+      const prog=[
         [note('G2'),note('D3')],[note('C3'),note('G3')],
         [note('A2'),note('E3')],[note('G2'),note('D3')]];
       const bass=[];
-      prog.forEach(([r,f],li)=>{ const st=4+li*8;
+      BM_LINES.forEach((txt,li)=>{ const [r,f]=prog[li%4], st=4+li*8;
         bass.push([r,st,2],[f,st+2,2],[r,st+4,2],[f,st+6,2]); });
-      return {mel,bass,drumStart:4};
+      return {mel,bass,drumStart:4,drums:'ballad'};
     }
   }
 ];
@@ -1515,14 +1572,14 @@ function makeNoise(ctx,dur){
 }
 /* Jana AudioBuffer daripada spesifikasi lagu generik */
 async function renderSpec(spec){
-  const {bpm,bars}=spec, beatSec=60/bpm, totalBeats=bars*4, tail=1.6;
-  const dur=totalBeats*beatSec+tail, sr=44100;
-  const off=new (window.OfflineAudioContext||window.webkitOfflineAudioContext)(2,Math.ceil(dur*sr),sr);
+  const {bpm,bars}=spec, beatSec=60/bpm, totalBeats=bars*4, tail=1.2;
+  const dur=totalBeats*beatSec+tail, sr=24000; // iringan mono 24kHz: pantas dijana & kecil
+  const off=new (window.OfflineAudioContext||window.webkitOfflineAudioContext)(1,Math.ceil(dur*sr),sr);
   const master=off.createDynamicsCompressor();
   master.threshold.value=-18; master.ratio.value=4;
   const mGain=off.createGain(); mGain.gain.value=.9;
   master.connect(mGain); mGain.connect(off.destination);
-  const verb=off.createConvolver(); verb.buffer=makeImpulse(off);
+  const verb=off.createConvolver(); verb.buffer=makeImpulse(off,.55,2.1);
   const wet=off.createGain(); wet.gain.value=.22; verb.connect(wet); wet.connect(master);
   const dry=off.createGain(); dry.gain.value=.85; dry.connect(master);
 
@@ -1530,17 +1587,16 @@ async function renderSpec(spec){
   // melodi: nada lembut seperti music box / pad
   mel.forEach(([nn,st,durB])=>{
     const t=st*beatSec, f=typeof nn==='number'?nn:note(nn), len=durB*beatSec;
-    const o=off.createOscillator(), o2=off.createOscillator(), g=off.createGain(), lp=off.createBiquadFilter();
-    o.type='triangle'; o.frequency.value=f; o2.type='sine'; o2.frequency.value=f*2;
-    lp.type='lowpass'; lp.frequency.value=3200;
-    const g2=off.createGain(); g2.gain.value=.25;
-    o.connect(g); o2.connect(g2); g2.connect(g); g.connect(lp);
+    const o=off.createOscillator(), g=off.createGain(), lp=off.createBiquadFilter();
+    o.type='triangle'; o.frequency.value=f;
+    lp.type='lowpass'; lp.frequency.value=3600;
+    o.connect(g); g.connect(lp);
     lp.connect(dry); lp.connect(verb);
     g.gain.setValueAtTime(0,t);
-    g.gain.linearRampToValueAtTime(.32,t+.02);
-    g.gain.setTargetAtTime(.18,t+.05,.12);
+    g.gain.linearRampToValueAtTime(.4,t+.02);
+    g.gain.setTargetAtTime(.22,t+.05,.12);
     g.gain.setTargetAtTime(0,t+Math.max(.05,len-.18),.08);
-    o.start(t);o2.start(t); o.stop(t+len+.3);o2.stop(t+len+.3);
+    o.start(t); o.stop(t+len+.3);
   });
   // bes
   bass.forEach(([f,st,durB])=>{
@@ -1573,9 +1629,35 @@ async function renderSpec(spec){
   }
   return await off.startRendering();
 }
+const MIX_CACHE_VER='mixv2-';
+const demoRenderCache=new Map();
 async function renderDemo(song){
+  const key=MIX_CACHE_VER+song.id;
+  if(demoRenderCache.has(key)) return demoRenderCache.get(key);
+  try{ // cache kekal dalam peranti (sekali sahaja)
+    const cached=await idbMixGet(key);
+    if(cached&&cached.blob){
+      ensureCtx();
+      const arr=await cached.blob.arrayBuffer();
+      const buf=await actx.decodeAudioData(arr.slice(0));
+      demoRenderCache.set(key,buf); return buf;
+    }
+  }catch(e){}
   const built=song.build(song.bars*4,60/song.bpm);
-  return renderSpec(Object.assign({bpm:song.bpm,bars:song.bars,drums:'pop'},built));
+  const buf=await renderSpec(Object.assign({bpm:song.bpm,bars:song.bars,drums:'pop'},built));
+  demoRenderCache.set(key,buf);
+  try{ const wav=audioBufferToWav(buf); await idbMixPut(key,new Blob([wav],{type:'audio/wav'})); }catch(e){}
+  return buf;
+}
+/* Pra-jana iringan di latar belakang supaya buka lagu pantas (sekali sahaja) */
+function preRenderDemos(){
+  if(!(window.OfflineAudioContext||window.webkitOfflineAudioContext)) return;
+  let i=0;
+  const next=()=>{ if(i>=DEMO_SONGS.length) return;
+    const song=DEMO_SONGS[i++];
+    setTimeout(()=>renderDemo(song).then(()=>setTimeout(next,400)).catch(()=>setTimeout(next,400)),800);
+  };
+  next();
 }
 
 /* ---------------- Penjana Lagu AI ---------------- */
@@ -2167,7 +2249,7 @@ function buildMelodySchedule(song){
   }catch(e){ return null; }
 }
 async function openSong(song){
-  loader(true,'Memuatkan lagu…');
+  loader(true,song.kind==='demo'?'Menjana iringan percuma… (sekali sahaja)':'Memuatkan lagu…');
   try{
     currentSong=song;
     currentMelody=buildMelodySchedule(song);
@@ -2233,11 +2315,12 @@ function refreshHome(){
 let userSongs=[];
 function idb(){
   return new Promise((res,rej)=>{
-    const r=indexedDB.open('nyanyiku',2);
+    const r=indexedDB.open('nyanyiku',3);
     r.onupgradeneeded=()=>{
       const db=r.result;
       if(!db.objectStoreNames.contains('songs')) db.createObjectStore('songs',{keyPath:'id'});
       if(!db.objectStoreNames.contains('recordings')) db.createObjectStore('recordings',{keyPath:'id'});
+      if(!db.objectStoreNames.contains('mixcache')) db.createObjectStore('mixcache',{keyPath:'id'});
     };
     r.onsuccess=()=>res(r.result); r.onerror=()=>rej(r.error);
   });
@@ -2257,6 +2340,12 @@ async function idbAll(){ const db=await idb(); return new Promise((res,rej)=>{
 async function idbPut(o){ const db=await idb(); return new Promise((res,rej)=>{
   const t=db.transaction('songs','readwrite'); t.objectStore('songs').put(o);
   t.oncomplete=()=>res(); t.onerror=()=>rej(t.error); }); }
+async function idbMixGet(id){ const db=await idb(); return new Promise(res=>{
+  const q=db.transaction('mixcache').objectStore('mixcache').get(id);
+  q.onsuccess=()=>res(q.result||null); q.onerror=()=>res(null); }); }
+async function idbMixPut(id,blob){ const db=await idb(); return new Promise(res=>{
+  const t=db.transaction('mixcache','readwrite'); t.objectStore('mixcache').put({id,blob});
+  t.oncomplete=()=>res(); t.onerror=()=>res(); }); }
 let pendingAudio=null, pendingAudioName='';
 async function initMySongs(){
   try{ userSongs=await idbAll(); }catch(e){ userSongs=[]; }
@@ -2581,6 +2670,7 @@ $('discover-card').onclick=()=>{
   if(!discLoaded){ discLoaded=true; loadDiscover('top'); }
 };
 $('btn-disc-back').onclick=()=>{ discStop(); screen('home'); };
+$('disc-upload').onclick=()=>{ pendingAudio=null; $('file-audio').value=''; $('file-audio').click(); };
 $('disc-go').onclick=()=>{
   const q=$('disc-q').value.trim(); if(!q){ toast('Taip nama lagu atau artis'); return; }
   loadDiscover(q,true);
@@ -3148,6 +3238,7 @@ function paintBuddy(){
 }
 function openBuddyPicker(){ renderBuddyList(); $('buddy-modal').classList.add('show'); }
 $('buddy-close').onclick=()=>$('buddy-modal').classList.remove('show');
+$('buddy-gosearch').onclick=()=>{ $('buddy-modal').classList.remove('show'); screen('discover'); };
 $('btn-checkin')&&($('btn-checkin').onclick=doCheckin);
 $('buddy-face').onclick=openBuddyPicker;
 let buddySayTimer=null;
@@ -3277,6 +3368,7 @@ function openChatRoom(r){
       if(demoMode||!curNet||!curNet.live) scheduleBot(text,curChat);
     }});
   seedChat(curChat,r.id);
+  renderChatLounge(r);
   demoMode=false;
   curNet=joinServer(r.id,'chat',m=>handleRoomEvent(m,curChat,'chat-count'));
   startAmbient(curChat);
@@ -3352,6 +3444,58 @@ function renderSeats(list,myId){
     d.innerHTML=`<div class="face">＋</div><div class="nm">Kosong</div>`;
     box.appendChild(d);
   }
+}
+/* Kerusi duduk dalam Bilik Sembang */
+const LOUNGE_SEATS=8;
+function chatSitMap(){ try{ return JSON.parse(localStorage.getItem('nyanyiku-chatseat'))||{}; }catch(e){ return {}; } }
+function saveChatSit(m){ localStorage.setItem('nyanyiku-chatseat',JSON.stringify(m)); }
+function loungeOccupants(r){
+  const host=roomHostName(r);
+  const others=BOT_NAMES.filter(n=>n!==host);
+  const list=[{id:'host',name:host,host:true}];
+  const n=2+(hashStr(weekKey()+r.id+'lounge')%3);
+  for(let i=0;i<n;i++) list.push({id:'lb'+i,name:others[i%others.length],
+    singing:hashStr(weekKey()+r.id+'s'+i)%3===0});
+  return list;
+}
+function renderChatLounge(r){
+  const box=$('chat-lounge'); if(!box) return;
+  const sit=chatSitMap(); const mySeat=sit[r.id];
+  const occ=loungeOccupants(r);
+  let html='<div class="lounge-label">🪑<br>Kerusi</div>'
+    +'<button class="lounge-sing" id="lounge-sing">🎤 Nyanyi</button>';
+  for(let i=0;i<LOUNGE_SEATS;i++){
+    const p=occ[i], mine=mySeat===i;
+    if(p){
+      html+=`<div class="seat${p.host?' host':''}${p.singing?' singing':''}" data-occupied="${i}">
+        ${p.host?'<span class="crown">👑</span>':''}${p.singing?'<span class="mic-dot">🎤</span>':''}
+        <div class="face" style="${avatarStyle(p.name)}">${faceChar(p.name)}</div>
+        <div class="eq"><i></i><i></i><i></i></div>
+        <div class="nm">${escapeHtml(p.name.replace(/[^A-Za-z ]/g,''))}</div></div>`;
+    }else if(mine){
+      html+=`<div class="seat me sitting-me" data-myseat="${i}">
+        <div class="face" style="${profGradient(profile.name)}">${initialOf(profile.name)}</div>
+        <div class="nm">Anda ✓</div></div>`;
+    }else{
+      html+=`<div class="seat empty" data-sit="${i}"><div class="face">＋</div><div class="nm">Duduk</div></div>`;
+    }
+  }
+  box.innerHTML=html;
+  box.querySelectorAll('[data-sit]').forEach(el=>el.onclick=()=>{
+    const m=chatSitMap(); m[r.id]=+el.dataset.sit; saveChatSit(m);
+    toast('Anda duduk di kerusi '+(+el.dataset.sit+1)+' 🪑',1600);
+    renderChatLounge(r);
+  });
+  box.querySelectorAll('[data-myseat]').forEach(el=>el.onclick=()=>{
+    const m=chatSitMap(); delete m[r.id]; saveChatSit(m);
+    toast('Anda bangun dari kerusi',1400); renderChatLounge(r);
+  });
+  box.querySelectorAll('[data-occupied]').forEach(el=>el.onclick=()=>{
+    const p=occ[+el.dataset.occupied];
+    toast((p.host?'Hos ':'')+p.name+(p.singing?' sedang menyanyi 🎤':' sedang duduk di bilik ini'),1800);
+  });
+  const sg=$('lounge-sing');
+  if(sg) sg.onclick=()=>{ toast('Ke Bilik Solo — pilih teman & lagu 🎤',1600); openBuddyPicker(); };
 }
 function demoSeats(r){
   const host=BOT_NAMES[0], others=BOT_NAMES.slice(1,5);
@@ -4201,6 +4345,10 @@ $('btn-choir-info').onclick=()=>{ if(!curRoom) return; curRoom.mine?openFamily(c
    TETAPAN, pintasan profil, butang balik
    ========================================================= */
 $('btn-home-back').onclick=()=>screen('rooms');
+$('btn-home-search').onclick=()=>screen('discover');
+$('btn-home-mic').onclick=()=>openBuddyPicker();
+$('solo-btn-search').onclick=()=>screen('discover');
+$('solo-btn-upload').onclick=()=>$('upload-card').click();
 $('btn-create-back').onclick=()=>screen('home');
 $('home-ai-card').onclick=()=>screen('create');
 $('btn-result-home').onclick=()=>{ resultStopUI(); rNodes.off=0; screen('rooms'); };
@@ -4219,7 +4367,7 @@ $('btn-pf-share').onclick=()=>{
 };
 
 function initSettings(){
-  $('app-version').textContent='v0.8.0 ›';
+  $('app-version').textContent='v0.8.1 ›';
   $('ref-code').textContent=(profile.id||'—')+' ›';
   $('diag-val').textContent=(navigator.onLine?'Sedia diuji ›':'Luar talian ›');
   $('svr-val').textContent=(localStorage.getItem('nyanyiku-server')||'Auto/demo luar talian')+' ›';
@@ -4318,7 +4466,7 @@ $('set-referral').onclick=()=>{
    `<p>Kod jemputan anda:</p><p style="font-size:20px;text-align:center;letter-spacing:2px;font-weight:800">${code}</p>
     <p class="hint">Kod disalin. Jemput rakan memuat turun NyanyiKu percuma dari halaman GitHub — tiada ganjaran wang, sekadar label jemputan 😊</p>`);
 };
-$('set-about').onclick=()=>infoSheet('🎤 Tentang NyanyiKu v0.8.0',
+$('set-about').onclick=()=>infoSheet('🎤 Tentang NyanyiKu v0.8.1',
  `<p>NyanyiKu ialah karaoke percuma, jujur dan mesra semua umur. Semua ciri pro dalam app serupa diberikan <b>percuma</b>:
   bilik parti, Detik, teman Bilik Solo, analisis vokal, kesan studio, AI cipta lagu, misi &amp; syiling (tanpa nilai wang).</p>
   <p><b>Tiada</b> VIP, caj semula, kotak nasib, perjudian, iklan, atau tekanan bayaran. Boleh dimainkan sepenuhnya luar talian.</p>
@@ -4342,6 +4490,7 @@ $('set-reset').onclick=()=>{
 /* ---------------- Mula ---------------- */
 if(localStorage.getItem('nyanyiku-notifbanner')==='1'){ const b=$('notif-prompt'); if(b) b.style.display='none'; }
 initMySongs();
+if(typeof preRenderDemos==='function') preRenderDemos();
 renderRoomLists();
 renderProfilePage();
 paintBuddy();

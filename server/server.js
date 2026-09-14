@@ -44,7 +44,7 @@ const server = http.createServer((req, res) => {
   if (urlPath === '/app' || urlPath === '/app/' || urlPath === '/app/index.html') return sendFile(res, path.join(WWW, 'index.html'));
   // Muat turun APK terus dari folder apk/
   if (urlPath === '/download/nyanyiku.apk') {
-    const candidates = ['NyanyiKu-v0.8.0-release.apk', 'NyanyiKu-v0.7.0-release.apk'];
+    const candidates = ['NyanyiKu-v0.8.1-release.apk', 'NyanyiKu-v0.8.0-release.apk'];
     for (const c of candidates) {
       const f = path.join(ROOT, 'apk', c);
       if (fs.existsSync(f)) return sendFile(res, f, 'NyanyiKu.apk');
