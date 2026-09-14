@@ -444,19 +444,317 @@
   .lvl-pill{display:inline-block;font-size:10.5px;color:var(--gold);border:1px solid rgba(255,215,94,.4);
     background:rgba(255,215,94,.08);border-radius:99px;padding:2px 9px;margin-left:6px}
   .fav-btn{font-size:15px;flex:none;cursor:pointer;padding:4px}
+
+  /* ============================================================
+     v0.8 — WAJAH BAHARU ala StarMaker (olahan sendiri)
+     ============================================================ */
+  /* Tab bar 5 ruang dengan mic terangkat */
+  .tabbar{height:62px;padding-bottom:env(safe-area-inset-bottom)}
+  .tabbar button{flex:1;position:relative;gap:3px}
+  .tabbar button .ti{font-size:20px}
+  .tabbar .tab-badge{position:absolute;top:6px;left:calc(50% + 9px);background:#ff4060;color:#fff;
+    font-size:9px;font-weight:700;min-width:16px;height:16px;border-radius:99px;display:grid;place-items:center;padding:0 4px}
+  .tabbar .tab-mic{flex:0 0 64px;align-items:flex-start}
+  .tabbar .tab-mic span{width:56px;height:56px;border-radius:50%;margin-top:-22px;display:grid;place-items:center;
+    font-size:27px;color:#fff;background:linear-gradient(135deg,#ff5ea8,#ff2d78);
+    box-shadow:0 8px 22px rgba(255,45,120,.5);border:3px solid #1a0f3c}
+  .tabbar .tab-mic:active span{transform:scale(.93)}
+
+  /* Pengepala gaya Parti */
+  .party-head{display:flex;align-items:center;justify-content:space-between;padding:16px 16px 6px}
+  .party-tabs{display:flex;align-items:baseline;gap:16px;font-size:21px;font-weight:800}
+  .party-tabs .ptab{color:var(--dim);font-size:19px;font-weight:700;cursor:pointer}
+  .party-tabs .ptab.on{color:#fff;position:relative}
+  .party-tabs .ptab.on::after{content:"";position:absolute;left:15%;right:15%;bottom:-7px;height:3px;border-radius:2px;
+    background:linear-gradient(90deg,var(--pink),var(--gold))}
+  .party-head-actions{display:flex;align-items:center;gap:8px}
+  .party-head-actions .icon-btn{width:36px;height:36px;font-size:15px}
+
+  /* Bulatan cerita / hos */
+  .story-row{display:flex;gap:14px;overflow-x:auto;padding:12px 14px 8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .story-row::-webkit-scrollbar{display:none}
+  .story{flex:none;display:flex;flex-direction:column;align-items:center;gap:5px;width:72px;cursor:pointer;position:relative}
+  .story .s-tag{position:absolute;top:44px;left:50%;transform:translateX(-50%)}
+  .story .s-ring{width:62px;height:62px;border-radius:50%;padding:2.5px;background:conic-gradient(from -30deg,#ff5ea8,#8b5cf6,#4fd8ff,#ffd75e,#ff5ea8)}
+  .story .s-ring.inner{background:var(--glass)}
+  .story .s-face{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;font-size:24px;color:#fff;
+    border:2.5px solid #150b33;overflow:hidden}
+  .story .s-face img{width:100%;height:100%;object-fit:cover}
+  .story .s-name{font-size:10px;color:var(--dim);max-width:68px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-align:center}
+  .story .s-tag{position:absolute;margin-top:40px;font-size:7.5px;font-weight:800;color:#fff;background:#ff5ea8;border-radius:6px;padding:1px 5px}
+  .story.house .s-ring{background:linear-gradient(135deg,#8b5cf6,#ff5ea8);display:grid;place-items:center}
+  .story.house .s-face{background:#7c5ce8 !important;border:none;font-size:27px}
+  .story.house .s-ring{padding:0}
+  .story.house .s-face{width:56px;height:56px}
+
+  /* Kad kategori */
+  .cat-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;padding:6px 14px 4px}
+  .cat-card{position:relative;border-radius:17px;padding:14px 12px;min-height:92px;cursor:pointer;overflow:hidden;
+    display:flex;flex-direction:column;justify-content:flex-end;color:#fff}
+  .cat-card:active{transform:scale(.97)}
+  .cat-card b{font-size:15px;position:relative;z-index:1}
+  .cat-card span{font-size:10px;opacity:.9;position:relative;z-index:1}
+  .cat-card i{font-style:normal;font-size:10.5px;opacity:.85;position:relative;z-index:1;margin-top:2px}
+  .cat-card .cc-ico{position:absolute;top:8px;right:9px;font-size:30px;opacity:.55}
+  .cat-card.c1{background:linear-gradient(150deg,#ffb347,#ff7e5f)}
+  .cat-card.c2{background:linear-gradient(150deg,#c471f5,#fa71cd)}
+  .cat-card.c3{background:linear-gradient(150deg,#43cea2,#185a9d)}
+
+  /* Grid parti */
+  .party-chips{display:flex;gap:8px;overflow-x:auto;padding:12px 14px 6px;scrollbar-width:none}
+  .party-chips::-webkit-scrollbar{display:none}
+  .party-chips .chip{white-space:nowrap;font-size:12.5px;padding:7px 14px}
+  .party-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;padding:6px 14px 12px}
+  .pg-card{position:relative;border-radius:18px;overflow:hidden;height:210px;cursor:pointer;
+    border:1px solid var(--glass-brd);display:flex;flex-direction:column;justify-content:flex-end}
+  .pg-card:active{transform:scale(.975)}
+  .pg-cover{position:absolute;inset:0;display:grid;place-items:center;font-size:58px}
+  .pg-cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.78) 0%,rgba(0,0,0,.12) 45%,rgba(0,0,0,.25) 100%)}
+  .pg-cover span{position:relative;z-index:1;filter:drop-shadow(0 6px 14px rgba(0,0,0,.5))}
+  .pg-badge{position:absolute;top:9px;left:9px;z-index:2;font-size:9.5px;font-weight:800;color:#fff;
+    background:linear-gradient(90deg,#ff2d78,#ff5ea8);border-radius:8px;padding:3px 8px;display:flex;gap:4px;align-items:center}
+  .pg-badge.live{background:linear-gradient(90deg,#ff3b30,#ff7e5f)}
+  .pg-badge.chat{background:linear-gradient(90deg,#8b5cf6,#6aa6ff)}
+  .pg-del{position:absolute;top:7px;right:7px;z-index:3;width:26px;height:26px;border-radius:50%;border:none;
+    background:rgba(0,0,0,.5);color:#ff8095;font-size:12px;cursor:pointer}
+  .pg-info{position:relative;z-index:2;padding:10px 11px;color:#fff}
+  .pg-info b{font-size:13px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+  .pg-host{font-size:10px;opacity:.9;display:flex;align-items:center;gap:4px;margin-top:2px;white-space:nowrap;overflow:hidden}
+  .pg-host .hg{width:15px;height:15px;border-radius:50%;display:grid;place-items:center;font-size:8px;flex:none;color:#fff}
+  .pg-stats{display:flex;gap:9px;margin-top:5px;font-size:10px;opacity:.95}
+  .pg-grid-note{grid-column:1/3}
+
+  /* ============================================================
+     DETIK (suapan menegak gaya TikTok)
+     ============================================================ */
+  #screen-moments{background:#070312}
+  .mom-top{position:absolute;top:0;left:0;right:0;z-index:8;display:flex;align-items:center;justify-content:space-between;
+    padding:calc(env(safe-area-inset-top) + 10px) 16px 8px;background:linear-gradient(to bottom,rgba(0,0,0,.55),transparent)}
+  .mom-tabs{display:flex;gap:18px;color:rgba(255,255,255,.7);font-size:16px;font-weight:700}
+  .mom-tabs span{cursor:pointer}
+  .mom-tabs .on{color:#fff;position:relative}
+  .mom-tabs .on::after{content:"";position:absolute;left:20%;right:20%;bottom:-6px;height:2.5px;border-radius:2px;background:#fff}
+  .mom-top-r{display:flex;align-items:center;gap:10px;color:#fff}
+  .mom-brand{font-weight:900;letter-spacing:.5px;font-size:15px;font-style:italic;
+    background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .mom-feed{flex:1;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none}
+  .mom-feed::-webkit-scrollbar{display:none}
+  .moment{position:relative;height:100%;scroll-snap-align:start;scroll-snap-stop:always;overflow:hidden}
+  .mom-bg{position:absolute;inset:0;display:grid;place-items:center;font-size:120px}
+  .mom-bg img{width:100%;height:100%;object-fit:cover}
+  .mom-float{position:absolute;border-radius:50%;filter:blur(.3px);opacity:.22;animation:floaty 7s ease-in-out infinite}
+  @keyframes floaty{50%{transform:translateY(-24px) rotate(8deg)}}
+  .mom-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.72),transparent 32%),
+    linear-gradient(to bottom,rgba(0,0,0,.35),transparent 18%)}
+  .mom-demo-tag{position:absolute;top:calc(env(safe-area-inset-top) + 52px);left:14px;z-index:6;
+    font-size:9px;font-weight:800;letter-spacing:1px;color:#fff;background:rgba(139,92,246,.85);
+    border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:3px 8px}
+  .mom-rail{position:absolute;right:10px;bottom:118px;z-index:6;display:flex;flex-direction:column;align-items:center;gap:17px;color:#fff}
+  .mom-rail .mr-btn{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;font-size:11.5px;text-shadow:0 1px 4px #000}
+  .mom-rail .mr-ico{font-size:33px;line-height:1;filter:drop-shadow(0 3px 7px rgba(0,0,0,.5))}
+  .mom-rail .mr-ico.liked{animation:popHeart .35s}
+  @keyframes popHeart{40%{transform:scale(1.35)}}
+  .mom-rail .mr-follow{width:42px;height:42px;border-radius:50%;border:2px solid #fff;color:#fff;font-size:24px;
+    display:grid;place-items:center;background:linear-gradient(135deg,#ff5ea8,#ff2d78);cursor:pointer}
+  .mom-rail .mr-follow.done{background:#3ddc84;border:none;font-size:16px}
+  .mom-meta{position:absolute;left:14px;right:74px;bottom:84px;z-index:6;color:#fff}
+  .mom-meta .mm-name{font-weight:800;font-size:15px;text-shadow:0 1px 4px #000;display:flex;align-items:center;gap:7px}
+  .mom-meta .mm-face{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:15px;color:#fff;flex:none}
+  .mom-meta .mm-cap{font-size:12.5px;margin:7px 0;text-shadow:0 1px 4px #000;line-height:1.45}
+  .mom-song{display:flex;align-items:center;gap:9px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.18);
+    border-radius:99px;padding:6px 8px 6px 11px;backdrop-filter:blur(6px)}
+  .mom-song .ms-note{animation:spinNote 3.5s linear infinite;font-size:15px}
+  @keyframes spinNote{to{transform:rotate(360deg)}}
+  .mom-song .ms-txt{flex:1;min-width:0}
+  .mom-song b{font-size:11.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mom-song span{font-size:9.5px;opacity:.8}
+  .mom-song button{border:none;border-radius:99px;background:rgba(255,255,255,.18);color:#fff;font-size:11px;
+    font-weight:700;padding:7px 13px;cursor:pointer;flex:none}
+  .mom-coach{position:absolute;top:14%;right:14px;z-index:9;background:#ff4f8b;color:#fff;border-radius:16px 16px 2px 16px;
+    padding:12px 14px;font-size:12.5px;line-height:1.5;max-width:210px;display:none}
+  .mom-coach.show{display:block}
+  .mom-coach button{margin-top:9px;border:none;background:#fff;color:#ff4f8b;border-radius:99px;padding:6px 16px;font-weight:800;font-size:12px}
+  /* helaian komen Detik */
+  .cmt-sheet{position:absolute;left:0;right:0;bottom:62px;height:58%;z-index:48;background:#1c1240;border:1px solid var(--glass-brd);
+    border-radius:22px 22px 0 0;transform:translateY(105%);transition:transform .28s;display:flex;flex-direction:column;
+    padding-bottom:env(safe-area-inset-bottom)}
+  .cmt-sheet.show{transform:none}
+  .cmt-sheet .cs-head{padding:13px 16px;border-bottom:1px solid var(--glass-brd);display:flex;justify-content:space-between;align-items:center}
+  .cmt-sheet .cs-list{flex:1;overflow-y:auto;padding:12px 16px;display:flex;flex-direction:column;gap:11px}
+  .cs-c{display:flex;gap:9px;font-size:12.5px}
+  .cs-c .csc-face{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:14px;flex:none}
+  .cs-c b{display:block;font-size:12.5px}
+  .cs-c .csc-body{background:rgba(255,255,255,.07);border-radius:12px;padding:7px 11px;line-height:1.45}
+  .cs-c .csc-time{font-size:9.5px;color:var(--dim);margin-top:2px}
+  .cs-input{display:flex;gap:8px;padding:10px 14px 14px;border-top:1px solid var(--glass-brd)}
+  .cs-input input{flex:1;background:var(--glass);border:1px solid var(--glass-brd);border-radius:99px;padding:11px 15px;color:#fff;font-size:13px}
+  .cs-input button{border:none;border-radius:99px;padding:0 17px;background:linear-gradient(90deg,var(--violet),var(--pink));color:#fff;font-weight:700;font-size:13px}
+
+  /* ============================================================
+     MESEJ
+     ============================================================ */
+  .msg-head{padding:calc(env(safe-area-inset-top) + 12px) 16px 8px}
+  .msg-seg{display:flex;background:var(--glass);border:1px solid var(--glass-brd);border-radius:99px;padding:3px;margin-bottom:8px}
+  .msg-seg button{flex:1;background:none;border:none;color:var(--dim);font-size:15px;font-weight:800;padding:9px;border-radius:99px;
+    cursor:pointer;font-family:inherit;position:relative}
+  .msg-seg button.on{background:linear-gradient(90deg,var(--violet),var(--pink));color:#fff}
+  .msg-seg .seg-badge{position:absolute;top:2px;right:calc(50% - 30px);background:#ff4060;color:#fff;font-size:9px;
+    min-width:16px;height:16px;border-radius:99px;display:grid;place-items:center;padding:0 4px;font-weight:700}
+  .msg-seg button.on .seg-badge{background:#fff;color:#ff4060}
+  .notif-banner{display:flex;align-items:center;gap:10px;margin:8px 14px 4px;padding:10px 14px;border-radius:13px;
+    background:rgba(255,94,168,.12);border:1px solid rgba(255,94,168,.3);font-size:12.5px}
+  .notif-banner .nb-link{margin-left:auto;color:var(--pink);font-weight:700;cursor:pointer;white-space:nowrap}
+  .notif-banner .nb-x{cursor:pointer;color:var(--dim)}
+  .thread{display:flex;align-items:center;gap:11px;padding:10px 16px;cursor:pointer}
+  .thread:active{background:rgba(255,255,255,.04)}
+  .thread .th-face{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;font-size:21px;color:#fff;flex:none;position:relative}
+  .thread .th-face .th-lbl{position:absolute;bottom:-3px;left:50%;transform:translateX(-50%);font-size:7px;font-weight:800;
+    color:#fff;border-radius:5px;padding:1px 4px;white-space:nowrap}
+  .thread .th-meta{flex:1;min-width:0}
+  .thread .th-meta b{font-size:14px;display:flex;align-items:center;gap:6px}
+  .thread .th-meta span{font-size:11.5px;color:var(--dim);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+  .thread .th-side{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:none}
+  .thread .th-time{font-size:10px;color:var(--dim)}
+  .thread .th-unread{min-width:19px;height:19px;border-radius:99px;background:#ff4060;color:#fff;font-size:10px;font-weight:800;
+    display:grid;place-items:center;padding:0 6px}
+  .friend-row{display:flex;align-items:center;gap:11px;padding:9px 16px}
+  .friend-row .fr-face{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-size:19px;color:#fff;flex:none}
+  .friend-row .fr-meta{flex:1;min-width:0}
+  .friend-row b{font-size:13.5px;display:block}
+  .friend-row span{font-size:11px;color:var(--dim)}
+  .friend-row button{border:1px solid var(--pink);background:none;color:var(--pink);border-radius:99px;padding:7px 18px;
+    font-size:12.5px;font-weight:700;cursor:pointer}
+  .friend-row button.done{background:var(--glass);border-color:var(--glass-brd);color:var(--dim)}
+  .quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;padding:10px 14px}
+  .quick-card{background:var(--glass);border:1px solid var(--glass-brd);border-radius:15px;padding:14px 8px;text-align:center;
+    cursor:pointer;position:relative;font-size:11.5px;color:var(--text)}
+  .quick-card .qc-ico{font-size:25px;display:block;margin-bottom:6px}
+  .quick-card .qc-badge{position:absolute;top:7px;right:9px;background:#ff4060;color:#fff;font-size:9px;min-width:16px;height:16px;
+    border-radius:99px;display:grid;place-items:center;padding:0 4px}
+  .notif-row{display:flex;gap:12px;padding:13px 16px;border-bottom:1px solid rgba(255,255,255,.05)}
+  .notif-row .nr-ico{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:19px;flex:none;color:#fff}
+  .notif-row .nr-meta{flex:1;min-width:0}
+  .notif-row b{font-size:13.5px;display:flex;gap:7px;align-items:center}
+  .notif-row .rasmi{font-size:9px;background:rgba(255,94,168,.18);color:var(--pink);border:1px solid rgba(255,94,168,.4);
+    border-radius:6px;padding:1px 6px;font-weight:700}
+  .notif-row p{font-size:11.5px;color:var(--dim);line-height:1.45;margin-top:3px}
+  .notif-row .nr-time{font-size:10px;color:var(--dim);white-space:nowrap}
+  .notif-row.unread b::after{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#ff4060;margin-left:4px}
+
+  /* ============================================================
+     SAYA (PROFIL)
+     ============================================================ */
+  #screen-profile .page-scroll{padding:0 0 96px}
+  .pf-cover{height:200px;position:relative;overflow:visible;
+    background:linear-gradient(135deg,#3b1d80,#8b2fa0 45%,#c6508d)}
+  .pf-cover::before{content:"🎶";position:absolute;font-size:150px;opacity:.13;right:-18px;top:-26px;transform:rotate(-14deg)}
+  .pf-cover .pf-cover-acts{position:absolute;top:calc(env(safe-area-inset-top) + 10px);right:13px;display:flex;gap:8px;z-index:3}
+  .pf-cover .pf-cover-acts .icon-btn{background:rgba(0,0,0,.3);border-color:rgba(255,255,255,.25);width:36px;height:36px;font-size:14px}
+  .pf-ava-wrap{position:absolute;left:18px;bottom:-34px;z-index:2}
+  .pf-ava-wrap .prof-ava{width:86px;height:86px;font-size:34px;border:3px solid #150b33;
+    box-shadow:0 10px 26px rgba(0,0,0,.45)}
+  .pf-edit-ava{position:absolute;right:-2px;bottom:2px;width:30px;height:30px;border-radius:50%;border:2px solid #150b33;
+    background:linear-gradient(135deg,var(--violet),var(--pink));color:#fff;font-size:13px;cursor:pointer}
+  .pf-body{padding:44px 16px 0}
+  .pf-name-line{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .pf-name-line b{font-size:20px}
+  .pf-id{font-size:11px;color:var(--dim)}
+  .pf-bio{font-size:12.5px;color:var(--dim);margin-top:6px;line-height:1.5}
+  .pf-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
+  .pf-tag{font-size:10.5px;background:var(--glass);border:1px solid var(--glass-brd);border-radius:99px;padding:4px 11px;color:var(--dim)}
+  .pf-stats{display:flex;margin:16px 0 4px;background:var(--glass);border:1px solid var(--glass-brd);border-radius:17px;padding:13px 4px}
+  .pf-stats div{flex:1;text-align:center;cursor:pointer}
+  .pf-stats b{font-size:17px;display:block}
+  .pf-stats span{font-size:10.5px;color:var(--dim)}
+  .pf-mv{display:flex;align-items:center;gap:11px;margin:12px 0;padding:13px 15px;border-radius:16px;cursor:pointer;
+    background:linear-gradient(110deg,rgba(255,94,168,.22),rgba(139,92,246,.22));border:1px solid var(--glass-brd)}
+  .pf-mv .pm-ico{font-size:26px}
+  .pf-mv b{font-size:13.5px}
+  .pf-mv span{flex:1}
+  .pf-family{display:flex;align-items:center;gap:11px;background:var(--glass);border:1px solid var(--glass-brd);
+    border-radius:16px;padding:11px 13px;margin-bottom:11px}
+  .pf-family .pff-ico{width:48px;height:48px;border-radius:13px;display:grid;place-items:center;font-size:23px;color:#fff;flex:none}
+  .pf-family .pff-meta{flex:1;min-width:0}
+  .pf-family b{font-size:13.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pf-family .pff-tags{display:flex;gap:5px;margin-top:3px}
+  .pf-family .pff-tags i{font-style:normal;font-size:9px;border-radius:6px;padding:2px 7px;font-weight:700}
+  .tag-kapten{background:rgba(255,215,94,.18);color:var(--gold);border:1px solid rgba(255,215,94,.35)}
+  .tag-bossku{background:rgba(79,216,255,.16);color:var(--cyan);border:1px solid rgba(79,216,255,.35)}
+  .pf-xp{height:5px;border-radius:99px;background:rgba(255,255,255,.1);margin-top:5px;overflow:hidden}
+  .pf-xp i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#4fd8ff,#8b5cf6)}
+  .pf-family button{border:none;border-radius:99px;padding:8px 14px;font-size:11.5px;font-weight:700;cursor:pointer;
+    background:linear-gradient(90deg,var(--violet),var(--pink));color:#fff;flex:none}
+  .pf-quick{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:6px}
+  .pf-q{background:var(--glass);border:1px solid var(--glass-brd);border-radius:15px;padding:13px 4px;text-align:center;
+    cursor:pointer;font-size:10.5px;color:var(--dim)}
+  .pf-q .pq-ico{font-size:22px;display:block;margin-bottom:5px}
+  .set-group{background:var(--glass);border:1px solid var(--glass-brd);border-radius:16px;margin:0 14px 13px;overflow:hidden}
+  .set-row{display:flex;align-items:center;gap:11px;padding:14px 15px;cursor:pointer;border-bottom:1px solid rgba(255,255,255,.05);font-size:13.5px}
+  .set-row:last-child{border-bottom:none}
+  .set-row .sr-ico{font-size:17px;width:22px;text-align:center}
+  .set-row .sr-val{margin-left:auto;font-size:11.5px;color:var(--dim);display:flex;gap:6px;align-items:center}
+  .set-group .set-title{font-size:11px;color:var(--dim);letter-spacing:1.5px;text-transform:uppercase;padding:15px 18px 6px}
+  .set-switch{width:42px;height:24px;border-radius:99px;background:rgba(255,255,255,.15);position:relative;cursor:pointer;transition:.2s;flex:none}
+  .set-switch::after{content:"";position:absolute;top:2.5px;left:3px;width:19px;height:19px;border-radius:50%;background:#fff;transition:.2s}
+  .set-switch.on{background:linear-gradient(90deg,var(--violet),var(--pink))}
+  .set-switch.on::after{left:20px}
+  .set-danger{color:#ff8095;justify-content:center;font-weight:700;font-size:14px}
+  .home-pick-head{display:flex;align-items:center;gap:10px;padding:18px 16px 6px}
+  .home-pick-head .icon-btn{width:36px;height:36px;font-size:16px}
+
+  /* ---------- v0.8.1: Bilik Saya (keluarga) & kenalan ---------- */
+  .fam-hero{position:relative;padding:22px 18px 16px;text-align:center;color:#fff;
+    background:radial-gradient(120% 100% at 50% -20%,#5b2bb8,#2a0f55 70%,#160933)}
+  .fam-ico{width:64px;height:64px;margin:6px auto 8px;border-radius:20px;display:grid;place-items:center;
+    font-size:34px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+  .fam-sub{font-size:12px;opacity:.9;margin-top:3px}
+  .fam-shield{display:inline-block;margin-left:8px;background:linear-gradient(135deg,#ffd75e,#ff9d2e);
+    color:#3a2200;font-weight:800;border-radius:999px;padding:2px 9px;font-size:11px}
+  .fam-body{padding:14px 16px 18px}
+  .fam-exp-row{display:flex;justify-content:space-between;font-size:12.5px;margin:8px 0 4px}
+  .fam-exp-row.small{font-size:11.5px;color:var(--dim)}
+  .fam-xp{height:9px;border-radius:99px;background:rgba(124,92,232,.18);overflow:hidden}
+  .fam-xp i{display:block;height:100%;background:linear-gradient(90deg,#7c5ce8,#ff5ea8)}
+  .fam-xp.green i{background:linear-gradient(90deg,#22c55e,#7ddf64)}
+  .tag-free{background:rgba(34,197,94,.18);color:#2fae5a;border-radius:6px;padding:0 6px;font-weight:700;font-size:10.5px}
+  .fam-acts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0 6px}
+  .fam-acts>div{background:var(--card2,#1c1240);border:1px solid var(--glass-brd);border-radius:14px;padding:10px 4px;
+    text-align:center;font-size:11px;cursor:pointer;line-height:1.4}
+  .fam-acts span{display:block;font-size:22px;margin-bottom:3px}
+  .fam-role-tabs{display:flex;gap:6px;overflow-x:auto;margin:12px 0 8px;padding-bottom:2px}
+  .fam-role-tabs span{flex:none;font-size:11.5px;padding:6px 10px;border-radius:999px;background:var(--card2,#1c1240);
+    border:1px solid var(--glass-brd);color:var(--dim);cursor:pointer;white-space:nowrap}
+  .fam-role-tabs span.on{background:linear-gradient(90deg,#8b5cf6,#ff5ea8);color:#fff;border-color:transparent;font-weight:700}
+  .fam-member{display:flex;align-items:center;gap:10px;padding:8px 4px;border-bottom:1px solid var(--glass-brd)}
+  .fm-face{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-size:15px;font-weight:800;color:#fff;flex:none}
+  .fm-meta{flex:1;min-width:0}
+  .fm-meta b{font-size:13.5px;display:block}
+  .fm-meta span{font-size:11px;color:var(--dim)}
+  .fm-remove{background:none;border:1px solid var(--bad);color:var(--bad);border-radius:999px;font-size:10.5px;padding:3px 9px;cursor:pointer}
+  .ct-ava{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;margin:2px auto;font-size:32px;font-weight:800;color:#fff}
+  .ct-bio{font-style:italic;color:var(--dim);font-size:13px;margin:8px 2px;line-height:1.6}
+
+
+  /* butang utama generik (gaya sama btn-primary) */
+  .primary{border:none;border-radius:14px;padding:13px 16px;font-size:14px;font-weight:700;cursor:pointer;color:#fff;
+    background:linear-gradient(90deg,#8b5cf6,#ff5ea8);box-shadow:0 8px 20px rgba(255,94,168,.28)}
+  .primary:active{transform:scale(.97)}
+  .primary.full{width:100%;padding:15px;font-size:15px;border-radius:16px}
+  #contact-modal .mini-btn{border-radius:14px;padding:13px 10px;font-weight:700;font-size:13.5px;cursor:pointer}
 </style>
 </head>
 <body>
 <div id="app">
 
   <!-- ====== HOME ====== -->
-  <section class="screen active" id="screen-home">
-    <div class="home-head">
-      <img src="assets/icon.png" alt="logo" id="home-logo" style="cursor:pointer" title="Ketik untuk profil">
-      <div>
-        <h1>NyanyiKu 🎤</h1>
-        <p>Karaoke di tanganmu — nyanyi, rakam &amp; kongsi</p>
+  <section class="screen" id="screen-home">
+    <div class="home-pick-head">
+      <button class="icon-btn" id="btn-home-back">‹</button>
+      <div style="flex:1">
+        <b style="font-size:17px">🎵 Pilih Lagu</b>
+        <div class="hint" style="text-align:left;margin:0">Bilik Solo — rakam, skor &amp; teman menemani anda</div>
       </div>
+      <img src="assets/icon.png" alt="logo" id="home-logo" width="40" height="40" style="border-radius:12px;cursor:pointer" title="Profil">
     </div>
     <div class="song-list" style="padding-bottom:92px">
       <div class="song-card" id="discover-card"
@@ -465,6 +763,15 @@
         <div class="song-meta">
           <b>Cari lagu dalam talian</b>
           <span>Cari mana-mana artis · pilih jenis Pop, Balada, Rock</span>
+        </div>
+        <span class="go">›</span>
+      </div>
+      <div class="song-card" id="home-ai-card"
+        style="background:linear-gradient(120deg,rgba(139,92,246,.25),rgba(255,94,168,.2));border-color:rgba(139,92,246,.45)">
+        <span style="font-size:25px">🤖</span>
+        <div class="song-meta">
+          <b>AI Cipta Lagu</b>
+          <span>Taip lirik anda, AI ubah melodi &amp; iringan</span>
         </div>
         <span class="go">›</span>
       </div>
@@ -578,43 +885,50 @@
     </div>
   </section>
 
-  <!-- ====== ROOMS (BILIK) ====== -->
-  <section class="screen" id="screen-rooms">
-    <div class="page-head" style="padding-bottom:0">
-      <h2>🚪 Bilik NyanyiKu</h2>
+  <!-- ====== BILIK (PARTI) ====== -->
+  <section class="screen active" id="screen-rooms">
+    <div class="party-head">
+      <div class="party-tabs">
+        <span class="ptab on" data-ptab="party">🎉 Parti</span>
+        <span class="ptab" data-ptab="live">📡 Siaran Langsung</span>
+      </div>
+      <div class="party-head-actions">
+        <span class="coin-chip">🪙 <span class="coin-num">0</span></span>
+        <button class="icon-btn" id="btn-room-search" title="Cari">🔎</button>
+        <button class="icon-btn" id="btn-room-add" style="background:linear-gradient(135deg,#8b5cf6,#ff5ea8);border:none;font-size:20px" title="Cipta bilik">＋</button>
+      </div>
     </div>
-    <div class="page-scroll">
-      <div class="prof-card" id="prof-card">
-        <div class="prof-ava" id="prof-ava">🎤</div>
-        <div class="pc-meta">
-          <b id="prof-name">—</b>
-          <span class="pc-sub" id="prof-sub">Ketik untuk lengkapkan profil anda</span>
-        </div>
-        <span class="pc-edit">✏️ Profil</span>
+    <div class="page-scroll" id="party-scroll" style="padding-bottom:92px">
+      <div class="story-row" id="story-row"></div>
+      <div class="cat-cards">
+        <div class="cat-card c1" id="cat-family"><span class="cc-ico">🎭</span><b>Keluarga</b><span>Bilik koir</span><i id="cat-family-n"></i></div>
+        <div class="cat-card c2" id="room-solo"><span class="cc-ico">🎤</span><b>Nyanyi</b><span>Solo &amp; teman</span><i>Untuk anda</i></div>
+        <div class="cat-card c3" id="cat-chat"><span class="cc-ico">💬</span><b>Sembang</b><span>Bual santai</span><i id="cat-chat-n"></i></div>
       </div>
-      <div class="room-big" id="room-solo">
-        🎤
-        <div><b>Bilik Solo</b><span>Nyanyi &amp; rakam sendirian — boleh tukar teman</span></div>
+      <div class="party-chips chips" id="party-chips">
+        <span class="chip on" data-f="all">Disyorkan</span>
+        <span class="chip" data-f="karaoke">Karaoke</span>
+        <span class="chip" data-f="chat">Sembang</span>
+        <span class="chip" data-f="mine">Bilik Saya</span>
+        <span class="chip" data-f="history">Sejarah</span>
       </div>
-      <button class="btn-block" id="btn-new-room" style="margin:2px 0 12px;padding:13px">＋ Cipta Bilik Baharu (tema &amp; kunci)</button>
-      <div class="section-label" id="lbl-my-chat" style="display:none">⭐ Bilik Sembang Anda</div>
-      <div id="my-chat-rooms"></div>
-      <div class="section-label">💬 Bilik Sembang</div>
-      <div id="chat-rooms"></div>
-      <div class="section-label" id="lbl-my-choir" style="display:none">⭐ Bilik Koir Anda</div>
-      <div id="my-choir-rooms"></div>
-      <div class="section-label">🎶 Bilik Koir (Nyanyi Bersama)</div>
-      <div id="choir-rooms"></div>
-      <div class="server-row">
-        <span class="hint" id="server-state">Pelayan bilik: —</span>
+      <div class="party-grid" id="party-grid"></div>
+      <div class="server-row" style="padding:0 14px">
+        <span class="hint" id="server-state">Pelayan bilik: mod demo luar talian</span>
         <button class="mini-btn" id="btn-server">⚙️ Pelayan</button>
       </div>
+      <p class="hint" style="margin:8px 16px 0">Bilik berlabel <b>CONTOH</b> ialah simulasi luar talian supaya app tetap
+        meriah — tiada data peribadi dihantar ke mana-mana pelayan.</p>
     </div>
   </section>
 
   <!-- ====== AI CIPTA LAGU ====== -->
   <section class="screen" id="screen-create">
-    <div class="page-head"><h2>🤖 AI Cipta Lagu</h2></div>
+    <div class="sing-top" style="padding-bottom:0">
+      <button class="icon-btn" id="btn-create-back">‹</button>
+      <div class="sing-title"><b>🤖 AI Cipta Lagu</b></div>
+      <div style="width:40px"></div>
+    </div>
     <div class="page-scroll form">
       <label>Tajuk lagu</label>
       <input type="text" id="ai-title" maxlength="60" value="Lagu Ciptaan Saya">
@@ -645,6 +959,7 @@ Tentang mimpi yang kita cari</textarea>
         <span class="online-pill"><i></i><span id="chat-count">0</span> dalam bilik</span>
       </div>
       <button class="icon-btn" id="btn-chat-lock" style="display:none" title="Kunci/buka bilik">🔓</button>
+      <button class="icon-btn" id="btn-chat-info" title="Maklumat bilik/kenalan">ⓘ</button>
     </div>
     <div class="chat-scroll" id="chat-msgs"></div>
     <div class="typing" id="chat-typing"></div>
@@ -663,6 +978,7 @@ Tentang mimpi yang kita cari</textarea>
       </div>
       <button class="icon-btn" id="btn-choir-lock" style="display:none" title="Kunci/buka bilik">🔓</button>
       <button class="icon-btn" id="btn-choir-chat">💬</button>
+      <button class="icon-btn" id="btn-choir-info" title="Maklumat bilik/kenalan">ⓘ</button>
     </div>
     <div class="choir-body">
       <div class="stage">
@@ -704,42 +1020,241 @@ Tentang mimpi yang kita cari</textarea>
     <div class="page-scroll" id="disc-results" style="padding:8px 18px 96px"></div>
   </section>
 
-  <!-- ====== KOMUNITI ====== -->
-  <section class="screen" id="screen-community">
-    <div class="page-head" style="padding-bottom:0">
-      <div style="display:flex;align-items:center;justify-content:space-between">
-        <h2>🌟 Komuniti NyanyiKu</h2>
-        <div class="coin-head">
-          <span class="coin-chip">🪙 <span id="coin-num">0</span></span>
-          <span class="coin-chip" title="Hari berturut daftar masuk">🔥 <span id="streak-num">0</span></span>
-        </div>
+  <!-- ====== DETIK ====== -->
+  <section class="screen" id="screen-moments">
+    <div class="mom-top">
+      <div class="mom-tabs">
+        <span data-mtab="following">Ikuti</span>
+        <span class="on" data-mtab="foryou">Disyorkan</span>
+      </div>
+      <div class="mom-top-r">
+        <span class="mom-brand">NyanyiKu</span>
+        <button class="icon-btn" id="mom-mute" style="background:rgba(0,0,0,.35);border-color:rgba(255,255,255,.25);width:36px;height:36px">🔇</button>
       </div>
     </div>
-    <div class="page-scroll">
-      <div class="check-card">
-        <span class="cc-cal">📅</span>
-        <div class="cc-meta"><b>Daftar masuk hari ini</b>
-          <span id="check-sub">Tuntut syiling percuma — tanpa sebarang pembelian</span></div>
-        <button id="btn-checkin">Tuntut</button>
-      </div>
-      <div class="section-label" style="margin-top:2px">🎯 Misi hari ini</div>
-      <div class="mis-list" id="mis-list"></div>
-      <div class="section-label">🎤 Rakaman Saya</div>
-      <div id="my-recordings"></div>
-      <div class="section-label">🏆 Papan mata mingguan</div>
-      <div class="lb-card" id="leaderboard"></div>
-      <div class="section-label">📻 Suapan NyanyiKu</div>
-      <div id="feed-list"></div>
-      <p class="hint" style="margin:8px 10px 4px">Suapan & papan mata dalam mod demo memaparkan penyanyi simulasi
-        supaya app tetap meriah luar talian. Sebaik ada pelayan bilik, penyanyi sebenar yang menyertai bilik anda akan muncul.</p>
+    <div class="mom-feed" id="mom-feed"></div>
+    <div class="mom-coach" id="mom-coach">
+      Leret ke atas untuk Detik seterusnya, ketik butang untuk main/jeda, atau tekan kekunci kelantangan.
+      <br><button id="mom-coach-ok">Faham</button>
+    </div>
+    <div class="cmt-sheet" id="cmt-sheet">
+      <div class="cs-head"><b id="cmt-title">Komen</b><button class="mini-btn" id="cmt-close">✕</button></div>
+      <div class="cs-list" id="cmt-list"></div>
+      <div class="cs-input"><input type="text" id="cmt-input" maxlength="140" placeholder="Tulis komen yang baik-baik…">
+        <button id="cmt-send">Hantar</button></div>
     </div>
   </section>
 
+  <!-- ====== MESEJ ====== -->
+  <section class="screen" id="screen-messages">
+    <div class="msg-head">
+      <div class="msg-seg">
+        <button id="mseg-chat" class="on">Sembang <span class="seg-badge" id="chat-badge">0</span></button>
+        <button id="mseg-notis">Notis <span class="seg-badge" id="notis-badge">0</span></button>
+      </div>
+    </div>
+    <div id="pane-chat" style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:90px">
+      <div class="notif-banner" id="notif-prompt">
+        <span>🔔 Ingin lihat misi &amp; ganjaran harian anda?</span>
+        <span class="nb-link" id="notif-prompt-go">TETAPKAN</span>
+        <span class="nb-x" id="notif-prompt-x">✕</span>
+      </div>
+      <div class="story-row" id="msg-story-row"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 16px">
+        <h3 style="font-size:16px">Kenalan</h3>
+        <span class="hint" id="clear-threads" style="margin:0;cursor:pointer">🧹 Bersihkan mesej</span>
+      </div>
+      <div id="thread-list"></div>
+      <h3 style="font-size:15px;padding:10px 16px 2px">Cadangan Rakan-rakan</h3>
+      <div id="friend-list"></div>
+      <p class="hint" style="margin:10px 22px">Rakan &amp; kenalan di sini adalah simulasi demo luar talian.
+        Apabila anda menghidupkan pelayan bilik, mesej ahli sebenar akan muncul.</p>
+    </div>
+    <div id="pane-notis" style="display:none;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:90px">
+      <div class="quick-grid">
+        <div class="quick-card" id="qc-comments"><span class="qc-ico">💬</span>Komen Dan @<span class="qc-badge" id="qc-c-badge" style="display:none">0</span></div>
+        <div class="quick-card" id="qc-activity"><span class="qc-ico">🚩</span>Pusat Aktiviti</div>
+        <div class="quick-card" id="qc-friends"><span class="qc-ico">👥</span>Rakan Baru</div>
+        <div class="quick-card" id="qc-visitors"><span class="qc-ico">👁️</span>Jejak Pelawat</div>
+        <div class="quick-card" id="qc-gifts"><span class="qc-ico">🎁</span>Hadiah</div>
+        <div class="quick-card" id="qc-missions"><span class="qc-ico">🎯</span>Tugasan Harian</div>
+      </div>
+      <h3 style="font-size:15px;padding:6px 16px;display:flex;justify-content:space-between;align-items:center">
+        Pemberitahuan <span class="hint" id="clear-notifs" style="margin:0;cursor:pointer">🧹 Bersihkan</span></h3>
+      <div id="notif-list"></div>
+    </div>
+  </section>
+
+  <!-- ====== SAYA (PROFIL) ====== -->
+  <section class="screen" id="screen-profile">
+    <div class="page-scroll" style="padding-bottom:92px">
+      <div class="pf-cover" id="pf-cover">
+        <div class="pf-cover-acts">
+          <button class="icon-btn" id="btn-pf-share" title="Kongsi profil">↗</button>
+          <button class="icon-btn" id="btn-settings" title="Tetapan">⚙️</button>
+        </div>
+        <div class="pf-ava-wrap">
+          <div class="prof-ava" id="prof-ava">🎤</div>
+          <button class="pf-edit-ava" id="btn-edit-ava" title="Edit profil">✏️</button>
+        </div>
+      </div>
+      <div class="pf-body">
+        <div class="pf-name-line">
+          <b id="pf-name">—</b><span class="lvl-pill" id="pf-level">—</span>
+        </div>
+        <div class="pf-id">ID NyanyiKu: <span id="pf-id">000000</span></div>
+        <div class="pf-bio" id="pf-bio"></div>
+        <div class="pf-tags" id="pf-tags"></div>
+        <div class="pf-stats">
+          <div><b id="st-followers">0</b><span>Pengikut</span></div>
+          <div><b id="st-following">0</b><span>Ikuti</span></div>
+          <div><b id="st-rank">—</b><span>Kedudukan</span></div>
+          <div><b id="st-gifts">0</b><span>Hadiah</span></div>
+        </div>
+        <div class="pf-mv" id="pf-aimv">
+          <span class="pm-ico">🎬</span>
+          <span><b>AI MV</b><br><span class="hint" style="text-align:left;margin:0">Cipta lagu &amp; video muzik dengan AI</span></span>
+          <span style="color:var(--dim)">›</span>
+        </div>
+        <div class="pf-family" id="pf-family"></div>
+        <div class="pf-quick">
+          <div class="pf-q" id="pq-vip"><span class="pq-ico">💎</span>Semua<br>Percuma</div>
+          <div class="pf-q" id="pq-drafts"><span class="pq-ico">🎙️</span>Draf<br>Lagu</div>
+          <div class="pf-q" id="pq-songs"><span class="pq-ico">🎵</span>Lagu<br>Saya</div>
+          <div class="pf-q" id="pq-missions"><span class="pq-ico">📅</span>Tugasan<br>Harian</div>
+        </div>
+        <div class="coin-head" style="justify-content:center;margin:6px 0 2px">
+          <span class="coin-chip">🪙 <span class="coin-num">0</span> syiling</span>
+          <span class="coin-chip">🔥 <span class="streak-num">0</span> hari</span>
+        </div>
+        <div class="check-card" style="margin-top:12px">
+          <span class="cc-cal">📅</span>
+          <div class="cc-meta"><b>Daftar masuk hari ini</b>
+            <span id="check-sub">Tuntut syiling percuma — tanpa sebarang pembelian</span></div>
+          <button id="btn-checkin">Tuntut</button>
+        </div>
+        <div class="section-label">🎯 Tugasan hari ini</div>
+        <div class="mis-list" id="mis-list"></div>
+        <div class="section-label">🎤 Rakaman Saya</div>
+        <div id="my-recordings"></div>
+        <div class="section-label">🏆 Kedudukan mingguan</div>
+        <div class="lb-card" id="leaderboard"></div>
+        <p class="hint" style="margin:6px 14px">Pengikut, hadiah &amp; kedudukan sebahagiannya adalah
+          simulasi luar talian. Syiling hanyalah mata galakan dalam app — <b>tiada nilai wang, tiada
+          pembelian, tiada iklan</b>, dan semua data anda kekal dalam peranti ini.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TETAPAN ====== -->
+  <section class="screen" id="screen-settings">
+    <div class="sing-top">
+      <button class="icon-btn" id="btn-settings-back">‹</button>
+      <div class="sing-title"><b>Tetapan</b></div>
+      <div style="width:40px"></div>
+    </div>
+    <div class="page-scroll" style="padding-bottom:90px">
+      <div class="set-group">
+        <div class="set-title">Info Peribadi</div>
+        <div class="set-row" id="set-edit"><span class="sr-ico">✏️</span> Edit Profil <span class="sr-val">›</span></div>
+      </div>
+      <div class="set-group">
+        <div class="set-title">Privasi &amp; Akaun</div>
+        <div class="set-row" id="set-privacy"><span class="sr-ico">🔒</span> Privasi Data <span class="sr-val">›</span></div>
+        <div class="set-row" id="set-notif-switch"><span class="sr-ico">🔔</span> Pemberitahuan dalam app
+          <span class="set-switch on" id="sw-notif"></span></div>
+        <div class="set-row" id="set-autoplay-switch"><span class="sr-ico">▶️</span> Automain Detik
+          <span class="set-switch" id="sw-autoplay"></span></div>
+      </div>
+      <div class="set-group">
+        <div class="set-title">Bilik &amp; Rangkaian</div>
+        <div class="set-row" id="set-server"><span class="sr-ico">🛰️</span> Pelayan Bilik <span class="sr-val" id="svr-val">Auto/demo ›</span></div>
+        <div class="set-row" id="set-diag"><span class="sr-ico">📶</span> Diagnosis Rangkaian <span class="sr-val" id="diag-val">›</span></div>
+      </div>
+      <div class="set-group">
+        <div class="set-title">Storan &amp; Aset</div>
+        <div class="set-row" id="set-cache"><span class="sr-ico">🧹</span> Bersihkan Cache Demo
+          <span class="sr-val" id="cache-size">…</span></div>
+        <div class="set-row" id="set-referral"><span class="sr-ico">🎟️</span> Kod Jemputan Rakan <span class="sr-val" id="ref-code">›</span></div>
+      </div>
+      <div class="set-group">
+        <div class="set-title">Tentang</div>
+        <div class="set-row" id="set-about"><span class="sr-ico">🎤</span> Tentang NyanyiKu <span class="sr-val" id="app-version">›</span></div>
+        <div class="set-row" id="set-help"><span class="sr-ico">💬</span> Pusat Khidmat &amp; Kemas Kini <span class="sr-val">›</span></div>
+      </div>
+      <div class="set-group">
+        <div class="set-row set-danger" id="set-reset">↺ Set Semula Semua Data Peranti</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== BILIK SAYA (KELUARGA) ====== -->
+  <div class="modal-overlay" id="fam-modal">
+    <div class="modal" style="max-width:470px;padding:0;overflow:hidden">
+      <div class="fam-hero" id="fam-hero">
+        <button class="mini-btn" id="fam-close" style="position:absolute;right:10px;top:10px">✕</button>
+        <div class="fam-ico" id="fam-ico">🎭</div>
+        <b id="fam-name" style="font-size:18px">—</b>
+        <div class="fam-sub">ID Bilik: <span id="fam-id">—</span>
+          <span class="fam-shield" id="fam-shield">🛡️ Tahap I</span></div>
+      </div>
+      <div class="fam-body">
+        <div class="fam-exp-row"><span>Lv. <b id="fam-lv">1</b> · EXP Bilik</span><span id="fam-exp-text"></span></div>
+        <div class="fam-xp"><i id="fam-xp-bar" style="width:20%"></i></div>
+        <div class="fam-exp-row small" style="margin-top:10px"><span>EXP Hari Ini <span class="tag-free">Percuma</span></span><span id="fam-today-text"></span></div>
+        <div class="fam-xp green"><i id="fam-today-bar" style="width:8%"></i></div>
+        <p class="hint" style="margin:6px 0 4px;font-size:11.5px;text-align:left">Semua EXP diperoleh <b>percuma</b> melalui nyanyian &amp; galakan rakan — tiada belian emas, tiada caj.</p>
+        <div class="fam-acts">
+          <div id="fam-a-hearts"><span>💚</span>Sorakan<br>Bilik</div>
+          <div id="fam-a-report"><span>📊</span>Laporan<br>Bilik</div>
+          <div id="fam-a-gifts"><span>🎁</span>Senarai<br>Hadiah</div>
+          <div id="fam-a-course"><span>📚</span>Kursus<br>Nyanyian</div>
+        </div>
+        <div class="fam-role-tabs" id="fam-roles">
+          <span class="on" data-r="owners">Pemilik</span>
+          <span data-r="admins">Pentadbir</span>
+          <span data-r="hosts">Hos</span>
+          <span data-r="stars">Penyanyi Utama</span>
+        </div>
+        <div id="fam-members" class="fam-members"></div>
+        <button class="primary full" id="fam-enter" style="margin-top:12px">🎤 Masuk bilik saya</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== KENALAN SEMBANG ====== -->
+  <div class="modal-overlay" id="contact-modal">
+    <div class="modal" style="max-width:410px;position:relative">
+      <button class="mini-btn" id="ct-close" style="position:absolute;right:10px;top:10px">✕</button>
+      <div class="ct-ava" id="ct-ava">💬</div>
+      <h3 id="ct-name" style="margin:8px 0 2px;font-size:18px">—</h3>
+      <div class="hint" id="ct-id">—</div>
+      <p class="ct-bio" id="ct-bio">—</p>
+      <div style="display:flex;gap:8px;margin:8px 0 12px">
+        <button class="primary" style="flex:1" id="ct-follow">＋ Ikuti</button>
+        <button class="mini-btn" style="flex:1" id="ct-group">👥 Cipta Kumpulan</button>
+      </div>
+      <div class="set-group" style="margin:0">
+        <div class="set-row" id="ct-mute"><span class="sr-ico">🔕</span> Miutkan Pemberitahuan
+          <span class="set-switch" id="ct-sw-mute"></span></div>
+        <div class="set-row" id="ct-pin"><span class="sr-ico">📌</span> Pinkan Sembang
+          <span class="set-switch" id="ct-sw-pin"></span></div>
+        <div class="set-row" id="ct-clear"><span class="sr-ico">🧹</span> Kosongkan Sejarah Sembang
+          <span class="sr-val">›</span></div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:12px">
+        <button class="mini-btn" style="flex:1;color:#ff5e5e;border-color:#ff5e5e" id="ct-block">SEKAT</button>
+        <button class="mini-btn" style="flex:1;background:#b3261e;color:#fff;border:none" id="ct-report">LAPOR</button>
+      </div>
+    </div>
+  </div>
+
   <nav class="tabbar" id="tabbar">
-    <button data-tab="home" class="on"><span class="ti">🎵</span>Lagu</button>
-    <button data-tab="rooms"><span class="ti">🚪</span>Bilik</button>
-    <button data-tab="community"><span class="ti">🌟</span>Komuniti</button>
-    <button data-tab="create"><span class="ti">🤖</span>Cipta</button>
+    <button data-tab="rooms" class="on"><span class="ti">🎉</span>Bilik</button>
+    <button data-tab="moments"><span class="ti">🪐</span>Detik</button>
+    <button class="tab-mic" id="tab-mic" title="Nyanyi sekarang"><span>🎤</span></button>
+    <button data-tab="messages"><span class="ti">💬</span>Mesej<span class="tab-badge" id="tab-msg-badge" style="display:none">0</span></button>
+    <button data-tab="profile"><span class="ti">😀</span>Saya</button>
   </nav>
 
   <!-- MODAL CARI LIRIK -->
@@ -887,14 +1402,21 @@ function toast(msg, ms=2600){
 }
 function loader(show,text='Memuatkan…'){ $('loader-text').textContent=text; $('loader').classList.toggle('show',show); }
 function fmt(s){ s=Math.max(0,Math.floor(s)); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
-const TAB_SCREENS=['home','rooms','community','create'];
+const TAB_SCREENS=['rooms','moments','messages','profile'];
+let lastTab='rooms';
 function screen(name){
+  const from=document.querySelector('.screen.active');
+  if(from && TAB_SCREENS.includes(from.id.replace('screen-',''))) lastTab=from.id.replace('screen-','');
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   $('screen-'+name).classList.add('active');
   const tab=$('tabbar');
   tab.classList.toggle('hidden',!TAB_SCREENS.includes(name));
   tab.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.tab===name));
-  if(name==='community'&&typeof renderCommunity==='function') renderCommunity();
+  if(name==='rooms' && typeof renderParty==='function') renderParty();
+  if(name==='moments' && typeof renderMoments==='function') renderMoments();
+  if(name==='messages' && typeof renderMessages==='function') renderMessages();
+  if(name==='profile' && typeof renderProfilePage==='function') renderProfilePage();
+  if(name==='moments') stopGallery();
 }
 
 /* ---------------- Nota muzik ---------------- */
@@ -2070,8 +2592,11 @@ $('disc-q').onkeydown=e=>{ if(e.key==='Enter') $('disc-go').click(); };
    ========================================================= */
 $('tabbar').addEventListener('click',e=>{
   const b=e.target.closest('button'); if(!b) return;
+  if(b.id==='tab-mic'){ openBuddyPicker(); return; }
   screen(b.dataset.tab);
 });
+$('btn-room-add').onclick=()=>openRoomModal(partyLive?'choir':'chat');
+$('btn-room-search').onclick=()=>toast('Gunakan penapis di bawah untuk cari jenis bilik 🎭',2000);
 
 /* =========================================================
    AI CIPTA LAGU
@@ -2111,13 +2636,15 @@ $('btn-ai-generate').onclick=async()=>{
    ========================================================= */
 function defaultProfile(){
   return {name:'Peminat'+Math.floor(100+Math.random()*899), bio:'', negeri:'', status:'',
-    dp:'', logo:'', companion:'aisha'};
+    dp:'', logo:'', companion:'aisha', id:''};
 }
 function getProfile(){
   let p=null;
   try{ p=JSON.parse(localStorage.getItem('nyanyiku-profile')); }catch(e){}
   if(!p||!p.name){ const old=localStorage.getItem('nyanyiku-name'); p=Object.assign(defaultProfile(),old?{name:old}:{}); }
-  return Object.assign(defaultProfile(),p);
+  p=Object.assign(defaultProfile(),p);
+  if(!p.id) p.id=String(6200+Math.floor(Math.random()*89900))+String(Math.floor(10000+Math.random()*89999));
+  return p;
 }
 let profile=getProfile();
 let meName=profile.name;
@@ -2126,7 +2653,7 @@ function saveProfile(patch){
   if(patch.name) meName=patch.name.trim()||'Saya';
   localStorage.setItem('nyanyiku-profile',JSON.stringify(profile));
   localStorage.setItem('nyanyiku-name',meName);
-  renderProfileCard(); renderHomeLogo();
+  renderProfilePage(); renderHomeLogo(); renderParty&&renderParty();
 }
 function initialOf(name){ const c=(name||'?').replace(/[^\p{L} ]/gu,'').trim(); return (c[0]||'P').toUpperCase(); }
 function profGradient(name){
@@ -2137,15 +2664,68 @@ function avaHTML(sizeClass,name,extra){
   if(profile.dp) return `<div class="${sizeClass}" ${extra||''}><img src="${profile.dp}" alt=""></div>`;
   return `<div class="${sizeClass}" style="background:${profGradient(name)}" ${extra||''}>${initialOf(name)}</div>`;
 }
-function renderProfileCard(){
+function renderProfileCard(){ renderProfilePage(); }
+function getFollows(){ try{ return JSON.parse(localStorage.getItem('nyanyiku-follows'))||[]; }catch(e){ return []; } }
+function setFollows(a){ localStorage.setItem('nyanyiku-follows',JSON.stringify(a)); }
+function myRank(){
+  const rows=leaderboardRows();
+  const ix=rows.findIndex(r=>r.me);
+  return ix<0?'—':ix+1;
+}
+function myGifts(){ return myRecordings.reduce((a,r)=>a+(r.feedLikes||0),0); }
+function followersCount(){ const lv=profileLevel();
+  return 18+hashStr(profile.id||profile.name)%50+lv.level*7; }
+function renderFamilyCard(){
+  const box=$('pf-family'); if(!box) return;
+  const mine=myRooms[0];
+  if(mine){
+    const th=themeById(mine.theme);
+    box.innerHTML=`<div class="pff-ico" style="background:${th.sw}">${mine.ico}</div>
+      <div class="pff-meta">
+        <b>${escapeHtml(mine.name)}</b>
+        <div class="pff-tags"><i class="tag-kapten">Pemilik</i><i class="tag-bossku">Bilik ${roomKind(mine)==='choir'?'Koir':'Sembang'}</i></div>
+        <div class="pf-xp"><i style="width:${Math.min(100,15+game.xp%85)}%"></i></div>
+      </div>
+      <button id="pff-enter">Masuk bilik</button>`;
+    box.querySelector('#pff-enter').onclick=e=>{ e.stopPropagation(); enterGate(mine.id,roomKind(mine)); };
+    box.style.cursor='pointer';
+    box.onclick=e=>{ if(!e.target.closest('button')) openFamily(mine); };
+  }else{
+    box.innerHTML=`<div class="pff-ico" style="background:linear-gradient(135deg,#11998e,#38ef7d)">🎭</div>
+      <div class="pff-meta">
+        <b>Kelab NyanyiKu Ria</b>
+        <div class="pff-tags"><i class="tag-bossku">Keluarga demo</i></div>
+        <div class="hint" style="text-align:left;margin:3px 0 0">Cipta bilik anda sendiri untuk jadi Pemilik</div>
+      </div>
+      <button id="pff-create">Sertai</button>`;
+    box.querySelector('#pff-create').onclick=()=>openRoomModal('choir');
+  }
+}
+function renderProfilePage(){
+  if(!$('pf-name')) return;
+  // avatar besar di muka Saya
   const ava=$('prof-ava');
-  if(!ava) return;
   const inner=profile.dp?`<img src="${profile.dp}" alt="">`:profile.logo||initialOf(profile.name);
   const bg=profile.dp?'':` style="background:${profGradient(profile.name)}"`;
   ava.outerHTML=`<div class="prof-ava" id="prof-ava"${bg}>${inner}</div>`;
-  $('prof-name').textContent=profile.name+(profile.negeri?' · '+profile.negeri:'');
-  const lvl=profileLevel();
-  $('prof-sub').textContent=(lvl?lvl.title+' · ':'')+(profile.status||profile.bio||'Ketik untuk lengkapkan profil anda');
+  const lv=profileLevel();
+  $('pf-name').textContent=profile.name;
+  $('pf-level').textContent='⭐ Tahap '+(lv.level+1)+' · '+lv.title;
+  $('pf-id').textContent=profile.id||'—';
+  $('pf-bio').textContent=profile.bio||'Belum ada bio — ketik ✏️ untuk lengkapkan profil anda.';
+  const tags=[];
+  if(profile.negeri) tags.push('📍 '+profile.negeri);
+  if(profile.status) tags.push('💬 '+profile.status);
+  tags.push('🎤 '+getCompanion().name+' '+getCompanion().face);
+  $('pf-tags').innerHTML=tags.map(t=>`<span class="pf-tag">${escapeHtml(t)}</span>`).join('');
+  $('st-followers').textContent=followersCount();
+  $('st-following').textContent=getFollows().length+getFavs().length;
+  $('st-rank').textContent=myRank();
+  $('st-gifts').textContent=myGifts();
+  document.querySelectorAll('.coin-num').forEach(e=>e.textContent=game.coins);
+  document.querySelectorAll('.streak-num').forEach(e=>e.textContent=game.streak);
+  renderFamilyCard();
+  renderCheckin(); renderMissions(); renderLeaderboard(); renderRecordings();
 }
 const PROFILE_LOGOS=['🎤','🎀','🌟','🔥','🌸','🎸','🎧','🦋','⭐','🌙','💎','🐱','🎹','🥁','🌈','😎'];
 let profDraftLogo='';
@@ -2198,8 +2778,8 @@ function drawProfDP(){
   box.innerHTML=profDraftDP?`<img src="${profDraftDP}" alt="">`:profDraftLogo||initialOf(profile.name||'P');
 }
 function closeProfileEditor(){ $('prof-modal').classList.remove('show'); }
-$('prof-card').onclick=()=>openProfileEditor(false);
-$('home-logo')&&($('home-logo').onclick=()=>openProfileEditor(false));
+$('btn-edit-ava')&&($('btn-edit-ava').onclick=()=>openProfileEditor(false));
+$('home-logo')&&($('home-logo').onclick=()=>screen('profile'));
 $('prof-cam').onclick=()=>$('file-dp').click();
 $('file-dp').onchange=async e=>{
   const f=e.target.files[0]; if(!f) return;
@@ -2215,7 +2795,7 @@ $('prof-save').onclick=()=>{
   closeProfileEditor(); toast('✅ Profil disimpan');
 };
 $('prof-close').onclick=closeProfileEditor;
-$('prof-skip').onclick=()=>{ saveProfile({}); closeProfileEditor(); toast('Anda boleh isi profil bila-bila masa di tab Bilik 👤',2800); };
+$('prof-skip').onclick=()=>{ saveProfile({}); closeProfileEditor(); toast('Anda boleh isi profil bila-bila masa di tab Saya 😀',2800); };
 $('btn-server').onclick=()=>{
   const cur=localStorage.getItem('nyanyiku-server')||'';
   const v=prompt('Alamat pelayan bilik (wss://...). Kosongkan untuk auto / mod demo luar talian:',cur);
@@ -2261,44 +2841,126 @@ const BOT_NAMES=['Aisha 🎀','Faiz 🎸','Nina 🌸','Daniel 🎹','Maya 🎤',
 const AVAS=['#f7971e,#ffd200','#fc5c7d,#6a82fb','#11998e,#38ef7d','#8e2de2,#4a00e0','#f953c6,#b91d73','#43cea2,#185a9d'];
 /* Bilik ciptaan pengguna: cari & senarai */
 function findRoom(id){ return myRooms.find(r=>r.id===id)||CHAT_ROOMS.find(r=>r.id===id)||CHOIR_ROOMS.find(r=>r.id===id); }
-function roomCard(r,kind){
-  const th=themeById(r.theme);
-  const d=document.createElement('div'); d.className='room-card';
-  d.innerHTML=`<div class="ava" style="background:${th.sw}">${r.ico||'💬'}</div>
-    <div class="rm"><b>${r.pin?'<span class="rm-lock">🔒</span> ':''}${escapeHtml(r.name)}</b>
-      <span>${escapeHtml(r.d||'Bilik terbuka untuk semua')}</span></div>
-    <div class="live">${r.mine?'<span class="mini-del" title="Padam bilik">🗑️</span>':''}
-      <span class="online-pill"><i></i><b class="cnt">${r.n||0}</b> dalam</span></div>`;
-  d.onclick=ev=>{ if(ev.target.classList.contains('mini-del')) return; enterGate(r.id,kind); };
-  const del=d.querySelector('.mini-del');
-  if(del) del.onclick=ev=>{
-    ev.stopPropagation();
-    if(confirm(`Padam bilik anda "${r.name}"? Tindakan ini tidak boleh undur.`)){
-      myRooms=myRooms.filter(x=>x.id!==r.id); persistMyRooms(); renderRoomLists(); toast('🗑️ Bilik dipadam');
+function roomKind(r){
+  if(r.kind) return r.kind;
+  if(CHOIR_ROOMS.find(x=>x.id===r.id)) return 'choir';
+  return 'chat';
+}
+function roomHostName(r){ return BOT_NAMES[hashStr(weekKey()+r.id)%BOT_NAMES.length]; }
+function roomHearts(r){ return 4+hashStr(weekKey()+'hati'+r.id)%92; }
+function loadHistory(){ try{ return JSON.parse(localStorage.getItem('nyanyiku-room-history'))||[]; }catch(e){ return []; } }
+let roomHistory=loadHistory(), partyFilter='all', partyLive=false;
+function pushHistory(r){
+  roomHistory=roomHistory.filter(id=>id!==r.id);
+  roomHistory.unshift(r.id); roomHistory=roomHistory.slice(0,12);
+  localStorage.setItem('nyanyiku-room-history',JSON.stringify(roomHistory));
+}
+function partyAllRooms(){ return [...myRooms, ...CHAT_ROOMS, ...CHOIR_ROOMS]; }
+function partyRows(){
+  if(partyFilter==='mine') return myRooms;
+  if(partyFilter==='history') return roomHistory.map(findRoom).filter(Boolean);
+  let rows=partyAllRooms().filter(r=>!isBlocked(r.id));
+  if(partyFilter==='karaoke') rows=rows.filter(r=>roomKind(r)==='choir');
+  if(partyFilter==='chat') rows=rows.filter(r=>roomKind(r)==='chat');
+  if(partyLive) rows=rows.filter(r=>roomKind(r)==='choir');
+  // bilik sendiri diutamakan, kemudian pratetap mengikut bilangka
+  return rows.slice().sort((a,b)=> (b.mine?1:0)-(a.mine?1:0) || (b.n||0)-(a.n||0));
+}
+function partyCard(r){
+  const kind=roomKind(r), th=themeById(r.theme);
+  const host=roomHostName(r), hearts=roomHearts(r);
+  const badge=kind==='choir'
+    ? '<span class="pg-badge live">📡 Siaran Langsung</span>'
+    : '<span class="pg-badge chat">💬 Sembang</span>';
+  const cover=r.coverUrl
+    ? `<div class="pg-cover"><img src="${r.coverUrl}" style="width:100%;height:100%;object-fit:cover;position:relative;z-index:1"></div>`
+    : `<div class="pg-cover" style="background:${th.sw}"><span>${r.ico||'💬'}</span></div>`;
+  return `<div class="pg-card" data-pid="${r.id}">
+    ${cover}
+    ${r.mine?'<button class="pg-del" data-pdel="'+r.id+'" title="Padam">🗑️</button>':''}
+    ${r.pin?'<span class="pg-badge" style="right:9px;left:auto;background:rgba(0,0,0,.6)">🔒 PIN</span>':''}
+    ${badge}
+    <div class="pg-info">
+      <b>${escapeHtml(r.name)}</b>
+      <div class="pg-host"><span class="hg" style="${avatarStyle(host)}">${faceChar(host)}</span> ${r.mine?profile.name:host}</div>
+      <div class="pg-stats"><span>❤ ${hearts}</span><span>👤 ${(r.n||0)+1}</span></div>
+    </div>
+  </div>`;
+}
+function renderPartyGrid(){
+  const box=$('party-grid'); if(!box) return;
+  let rows=partyRows();
+  if(!rows.length){
+    const msg=partyFilter==='mine'?'Belum ada bilik ciptaan anda. Tekan ＋ di atas! 🎉'
+      :partyFilter==='history'?'Belum ada sejarah bilik. Masuk mana-mana bilik dahulu 🚪'
+      :'Tiada bilik untuk penapis ini.';
+    box.innerHTML=`<div class="pg-grid-note"><p class="hint">${msg}</p></div>`;
+    return;
+  }
+  box.innerHTML=rows.map(partyCard).join('');
+  box.querySelectorAll('[data-pid]').forEach(c=>c.onclick=ev=>{
+    if(ev.target.closest('[data-pdel]')) return;
+    enterGate(c.dataset.pid,roomKind(findRoom(c.dataset.pid)));
+  });
+  box.querySelectorAll('[data-pdel]').forEach(b=>b.onclick=ev=>{
+    ev.stopPropagation(); const r=findRoom(b.dataset.pdel);
+    if(r && confirm(`Padam bilik anda "${r.name}"?`)){
+      myRooms=myRooms.filter(x=>x.id!==r.id); persistMyRooms();
+      roomHistory=roomHistory.filter(id=>id!==r.id); localStorage.setItem('nyanyiku-room-history',JSON.stringify(roomHistory));
+      renderRoomLists(); toast('🗑️ Bilik dipadam');
     }
+  });
+}
+function renderStories(){
+  const hosts=BOT_NAMES.slice(0,7);
+  const pool=partyAllRooms().filter(r=>!isBlocked(r.id));
+  const h=(name,i)=>{
+    const r=pool[(i+1)%pool.length];
+    const tag=roomKind(r)==='choir'?'KARAOKE':'SEMBANG';
+    const sub=i%2?'Hangat':'Saling Ikuti';
+    return `<div class="story" data-sroom="${r.id}">
+      <div class="s-ring"><div class="s-face" style="${avatarStyle(name)}">${faceChar(name)}</div></div>
+      <span class="s-tag">${tag}</span>
+      <span class="s-name">${name.replace(/[^A-Za-z ]/g,'')} · ${sub}</span>
+    </div>`;
   };
-  return d;
+  const html=`<div class="story house" id="story-solo">
+      <div class="s-ring"><div class="s-face">🏠</div></div><span class="s-name">Nyanyi Solo</span>
+    </div>`+hosts.map(h).join('');
+  [$('story-row'),$('msg-story-row')].forEach((box,i)=>{
+    if(!box) return; box.innerHTML=html;
+    box.querySelectorAll('[data-sroom]').forEach(el=>el.onclick=()=>{
+      const r=findRoom(el.dataset.sroom); if(r) enterGate(r.id,roomKind(r));
+    });
+    const so=box.querySelector('#story-solo'); if(so) so.onclick=()=>openBuddyPicker();
+  });
 }
-function renderRoomLists(){
-  const myC=myRooms.filter(r=>r.kind==='chat'), myK=myRooms.filter(r=>r.kind==='choir');
-  $('lbl-my-chat').style.display=myC.length?'block':'none';
-  $('lbl-my-choir').style.display=myK.length?'block':'none';
-  const mc=$('my-chat-rooms'); mc.innerHTML=''; myC.forEach(r=>mc.appendChild(roomCard(r,'chat')));
-  const mk=$('my-choir-rooms'); mk.innerHTML=''; myK.forEach(r=>mk.appendChild(roomCard(r,'choir')));
-  const c=$('chat-rooms'); c.innerHTML='';
-  CHAT_ROOMS.forEach(r=>c.appendChild(roomCard(r,'chat')));
-  const k=$('choir-rooms'); k.innerHTML='';
-  CHOIR_ROOMS.forEach(r=>k.appendChild(roomCard(r,'choir')));
+function renderParty(){
+  document.querySelectorAll('.party-tabs .ptab').forEach(t=>t.classList.toggle('on',(t.dataset.ptab==='live')===partyLive));
+  document.querySelectorAll('#party-chips .chip').forEach(c=>c.classList.toggle('on',c.dataset.f===partyFilter));
+  renderPartyGrid(); renderStories();
+  const cn=CHOIR_ROOMS.reduce((a,r)=>a+r.n,0), cc=CHAT_ROOMS.reduce((a,r)=>a+r.n,0);
+  const el1=$('cat-family-n'), el2=$('cat-chat-n');
+  if(el1) el1.textContent='👤 '+(cn+myRooms.filter(r=>r.kind==='choir').length+12)+' hangat';
+  if(el2) el2.textContent='👤 '+(cc+myRooms.filter(r=>r.kind==='chat').length+10)+' online';
 }
-/* Bilangka yang berubah-ubah sedikit supaya terasa "hidup" (satu pemasa sahaja) */
-setInterval(()=>{ document.querySelectorAll('#screen-rooms .cnt').forEach(el=>{
-  const base=+el.textContent; if(Math.random()<.25) el.textContent=Math.max(1,base+(Math.random()<.5?-1:1));
-}); },4000);
+/* Nama lama dikekalkan untuk serasi kod lain */
+function renderRoomLists(){ renderPartyGrid(); renderStories(); if($('pf-family')) renderFamilyCard(); }
+document.querySelectorAll('#party-chips .chip').forEach(c=>c.onclick=()=>{
+  partyFilter=c.dataset.f; partyLive=false; renderParty();
+});
+document.querySelectorAll('.party-tabs .ptab').forEach(t=>t.onclick=()=>{
+  partyLive=t.dataset.ptab==='live';
+  if(partyLive){ partyFilter='karaoke'; }
+  renderParty();
+});
+$('cat-family').onclick=()=>{ partyLive=true; partyFilter='karaoke'; renderParty(); $('party-scroll').scrollTop=0; };
+$('cat-chat').onclick=()=>{ partyLive=false; partyFilter='chat'; renderParty(); $('party-scroll').scrollTop=0; };
 
 /* Pintu masuk bilik: semak PIN jika berkunci */
 function enterGate(id,kind){
   const r=findRoom(id); if(!r) return;
-  const go=()=> kind==='chat'?openChatRoom(r):openChoirRoom(r);
+  const go=()=>{ pushHistory(r); markThreadRead(r.id); kind==='chat'?openChatRoom(r):openChoirRoom(r); };
   if(r.pin) openPinModal('enter',r,ok=>{ if(ok) go(); });
   else go();
 }
@@ -2390,7 +3052,7 @@ $('room-lock-row').onclick=()=>{
   if(draftLock) setTimeout(()=>$('room-pin').focus(),80);
 };
 $('room-pin').oninput=e=>{ e.target.value=e.target.value.replace(/\D/g,''); };
-$('btn-new-room').onclick=()=>openRoomModal('chat');
+if($('btn-new-room')) $('btn-new-room').onclick=()=>openRoomModal('chat');
 $('room-modal-close').onclick=()=>$('room-modal').classList.remove('show');
 $('room-cancel').onclick=()=>$('room-modal').classList.remove('show');
 $('room-create').onclick=()=>{
@@ -2887,7 +3549,7 @@ function doCheckin(){rollDay();const t=dateKey();
   game.coins+=reward;game.xp+=reward;saveGame();
   toast(`Daftar masuk hari ke-${game.streak}! +${reward} syiling 🪙`);
   renderCoinHead();renderProfileCard();renderCheckin();}
-function renderCoinHead(){$('coin-num').textContent=game.coins;$('streak-num').textContent=game.streak;}
+function renderCoinHead(){document.querySelectorAll('.coin-num').forEach(e=>e.textContent=game.coins);document.querySelectorAll('.streak-num').forEach(e=>e.textContent=game.streak);}
 function renderCheckin(){const done=game.lastCheck===dateKey();const b=$('btn-checkin');
   b.disabled=done;b.textContent=done?'Sudah ✓':'Tuntut';
   $('check-sub').textContent=done?'Jumpa lagi esok ya! 🔥'
@@ -2939,14 +3601,23 @@ function renderRecordings(){
     <button class="rr-del" data-delrec="${r.id}">🗑️</button></div>`).join('');
   box.querySelectorAll('[data-delrec]').forEach(b=>b.onclick=async e=>{e.stopPropagation();
     if(!confirm('Padam rakaman ini?'))return;
-    stopGallery();
+    stopMomentAudio();
     try{await idbRecDel(b.dataset.delrec);}catch(e){}
     myRecordings=myRecordings.filter(x=>x.id!==b.dataset.delrec);
-    renderRecordings();renderFeed();toast('Rakaman dipadam 🗑️');});
-  box.querySelectorAll('[data-play]').forEach(b=>b.onclick=e=>{e.stopPropagation();toggleRecording(b.dataset.play,b);});
+    renderRecordings();
+    if($('screen-moments').classList.contains('active')) renderMoments();
+    renderProfilePage(); toast('Rakaman dipadam 🗑️');});
+  box.querySelectorAll('[data-play]').forEach(b=>b.onclick=e=>{e.stopPropagation();playRecMoment(b.dataset.play);});
 }
-function stopGallery(){if(galleryAudio){try{galleryAudio.pause();galleryAudio.src='';}catch(e){}galleryAudio=null;}
-  document.querySelectorAll('.rr-play.playing,.fp-play.playing').forEach(b=>{b.classList.remove('playing');b.textContent='▶️';});}
+function playRecMoment(id){
+  momTab='foryou';
+  document.querySelectorAll('.mom-tabs span').forEach(x=>x.classList.toggle('on',x.dataset.mtab==='foryou'));
+  screen('moments'); renderMoments();
+  const el=document.querySelector('#mom-feed .moment[data-mid="'+id+'"]');
+  if(el){ el.scrollIntoView({behavior:'smooth'});
+    setTimeout(()=>{ const m=findMoment(id); if(m) toggleMomentAudio(m); },450); }
+}
+function stopGallery(){ if(galleryAudio){try{galleryAudio.pause();galleryAudio.src='';}catch(e){}galleryAudio=null;} stopMomentAudio(); }
 function toggleRecording(id,btn){
   if(galleryAudio && galleryAudio.dataset.id===id && !galleryAudio.paused){stopGallery();return;}
   const r=myRecordings.find(x=>x.id===id);
@@ -2971,84 +3642,386 @@ async function saveRecording(pct,radar){
       if(game.week.length>60) game.week=game.week.slice(-60);
     }
     game.coins+=3; game.xp+=(pct!=null?10+Math.round(pct/10):5);
-    saveGame();renderCoinHead();renderProfileCard();renderLeaderboard();
+    saveGame();renderCoinHead();renderProfilePage();renderLeaderboard();
     trackMission('sing'); if(pct>=70) trackMission('best',1);
-    renderRecordings&&renderRecordings(); renderFeed&&renderFeed();
-    toast('⭐ Rakaman tersimpan di tab Komuniti',2400);
+    renderRecordings&&renderRecordings();
+    if($('screen-moments').classList.contains('active')) renderMoments();
+    toast('⭐ Detik tersimpan! Buka tab Detik untuk dengar & kongsi 🪐',2600);
+    scheduleDemoReactions(rec);
   }catch(e){toast('⚠️ Rakaman tidak dapat disimpan (ruang penuh?)');}
 }
 
-/* ---------------- Suapan komuniti (demo tempatan) ---------------- */
-const FEED_TITLES=['Bintang Malam','Senandung Rindu','Hujan di Jalanan','Malam Sunyi','Konsert Dapur',
-  'Lagu Untuk Ibu','Janji Pagi','Gitar Tua','Diari Sepi','Tepian Pantai'];
-const FEED_NAMES=['Aisha 🎀','Faiz 🎸','Nina 🌸','Daniel 🎹','Maya 🎤','Hafiz 🥁','Siti 🌺','Zack 🎧'];
-const SEED_CMTS=[['Faiz 🎸','Sedap gila 🔥'],['Nina 🌸','Saya suka, jom duet!'],['Aisha 🎀','Mantap 👏'],
-  ['Maya 🎤','Nota tinggi tadi padu!'],['Siti 🌺','Syahdu dengarnya 🥹']];
-function feedSeeds(){const wk=weekKey();
-  return FEED_NAMES.map((nm,i)=>{const h=hashStr(wk+nm+'suapan');
-    return {id:'seed-'+wk+'-'+i,seed:true,name:nm,title:FEED_TITLES[h%FEED_TITLES.length],
-      score:42+h%57,hours:1+h%28,likes:4+h%86,
-      seedCmts:(h%3===0)?[SEED_CMTS[h%SEED_CMTS.length]]:[]};});}
-function feedPosts(){
-  const mine=myRecordings.map(r=>({id:r.id,mine:true,name:profile.name,
-    title:r.title,score:r.score==null?null:r.score,hours:Math.max(0,Math.round((Date.now()-r.createdAt)/3600000)),
-    likes:r.feedLikes||0,rec:r}));
-  return [...mine,...feedSeeds()].sort((a,b)=>a.hours-b.hours);
-}
-function feedAvatarsHTML(name){return `<div class="fp-ava" style="${avatarStyle(name)}">${faceChar(name)}</div>`;}
-function likeLabel(p){
-  const liked=!!game.likes[p.id];
-  const base=p.seed?p.likes:(p.rec?(p.rec.feedLikes||0):p.likes||0);
-  return {liked,n:base+(liked?1:0)};
-}
-function renderFeed(){
-  const box=$('feed-list');if(!box)return;
-  box.innerHTML=feedPosts().map(p=>{
-    const L=likeLabel(p);
-    const stars=p.score==null?'':(p.score>=90?'🏆':p.score>=70?'🌟':'🎵');
-    const cover=p.rec?recCover(p.rec):`<div class="fs-cover" style="background:${avatarStyle(p.name)}">🎤</div>`;
-    const cmtSeed=p.seedCmts||[];
-    const cmtMine=game.fcmts[p.id]||[];
-    const cmts=[...cmtSeed.map(c=>({name:c[0],text:c[1],seed:true})),...cmtMine];
-    return `<div class="feed-post" data-fid="${p.id}">
-      <div class="fp-head">${feedAvatarsHTML(p.name)}
-        <div class="fp-meta"><b>${escapeHtml(p.name)}${p.mine?' (Anda)':''}</b>
-          <span>${p.hours===0?'baharu sahaja':p.hours+' jam lalu'}</span></div>
-        <span class="fp-badge">${stars}</span></div>
-      <div class="fp-song">${cover}
-        <div style="flex:1;min-width:0"><b>${escapeHtml(p.title)}</b>
-          <span>${p.score!=null?'Skor '+p.score+' · ':'Rakaman '}cover nyanyian</span></div>
-        <button class="fp-play" data-fplay="${p.mine?p.id:''}" ${p.mine?'':'disabled style="opacity:.45"'}>▶️</button>
-      </div>
-      <div class="fp-actions">
-        <span class="fp-like ${L.liked?'liked':''}" data-like="${p.id}">${L.liked?'❤️':'🤍'} ${L.n} suka</span>
-        <span>💬 ${cmts.length} komen</span>
-      </div>
-      <div class="fp-comments">${cmts.map(c=>`<div class="fp-cmt"><b>${escapeHtml(c.name)}:</b> ${escapeHtml(c.text)}</div>`).join('')}</div>
-      <div class="fp-cmt-in"><input type="text" maxlength="120" placeholder="Tulis komen…">
-        <button data-cmt="${p.id}">Hantar</button></div>
-    </div>`;}).join('');
-  box.querySelectorAll('[data-like]').forEach(el=>el.onclick=()=>{
-    const id=el.dataset.like;
-    let likedRec=null;
-    if(game.likes[id]){delete game.likes[id];}
-    else{game.likes[id]=true;
-      const post=feedPosts().find(p=>p.id===id);
-      if(post&&post.rec){post.rec.feedLikes=(post.rec.feedLikes||0)+1;likedRec=post.rec;}
-    }
-    saveGame();
-    if(likedRec) idbRecPut(likedRec).catch(()=>{});
-    renderFeed();
+/* =========================================================
+   DETIK — suapan menegak (gaya TikTok), main rakaman sendiri
+   ========================================================= */
+const FEED_NAMES=['Aisha 🎀','Faiz 🎸','Nina 🌸','Daniel 🎹','Maya 🎤','Hafiz 🥁','Siti 🌺'];
+const FEED_TITLES=['Kau Sakiti','Setia','Jampi','Malam Semakin Dingin','Bukan Cinta Biasa','Hati Emas','Suaramu Syairku'];
+const SEED_CMTS=[['Aisha 🎀','Sedapnya suara! Boleh duet tak? 🎤💕'],
+  ['Faiz 🎸','Wah, power! 👏👏'],['Nina 🌸','Terasa liriknya 😭🔥'],
+  ['Daniel 🎹','Falset kemas gila 🌟'],['Maya 🎤','Rasa nak masuk bilik ni jom nyanyi ramai-ramai 🎶']];
+const MOMENT_GRADS=[['#3b1d80','#ff5ea8'],['#0b4a6b','#36d1dc'],['#7a2d52','#ff7e5f'],
+  ['#10243a','#00e0ff'],['#3d1430','#ff6fa5'],['#1c1408','#ffd75e'],['#2b1055','#7597de']];
+const MOMENT_EMOJI=['🌙','🎤','🔥','💝','🎧','🌟','🦋','🌹','🎸','💎'];
+const MOMENT_CAPS=['Nyanyi dari hati, siapa dengar mesti rasa 🎵','Malam sunyi paling sesuai nyanyi lagu jiwang 🌙',
+  'Cuba teka saya nyanyi lagu apa? 😆','Latihan hari ini, esok lebih baik 💪','Dengar sampai habis ya 🎧',
+  'Siapa nak duet? Jom! 👯','Lagu ini untuk semua yang mengejar mimpi ⭐'];
+function momentSeeds(){
+  const wk=weekKey();
+  return FEED_NAMES.map((nm,i)=>{
+    const h=hashStr(wk+'detik'+nm+i);
+    return {id:'mseed-'+wk+'-'+i,seed:true,name:nm,
+      grad:MOMENT_GRADS[h%MOMENT_GRADS.length],emoji:MOMENT_EMOJI[h%MOMENT_EMOJI.length],
+      title:FEED_TITLES[h%FEED_TITLES.length],caption:MOMENT_CAPS[h%MOMENT_CAPS.length],
+      likes:12+h%230,gifts:1+h%48,shares:1+h%24,
+      cmts:(h%4===0)?[SEED_CMTS[h%SEED_CMTS.length]]:(h%5===0)?[SEED_CMTS[(h+2)%SEED_CMTS.length]]:[],
+      hours:1+h%26};
   });
-  box.querySelectorAll('[data-cmt]').forEach(btn=>{
-    const inp=btn.parentElement.querySelector('input');
-    const send=()=>{const t=inp.value.trim();if(!t)return;
-      const id=btn.dataset.cmt;(game.fcmts[id]=game.fcmts[id]||[]).push({name:profile.name,text:t});
-      saveGame();renderFeed();};
-    btn.onclick=send; inp.onkeydown=e=>{if(e.key==='Enter')send();};
+}
+function myMoment(rec){
+  return {id:rec.id,mine:true,rec,name:profile.name,
+    grad:rec.colors||['#8b5cf6','#ff5ea8'],emoji:rec.cover||'🎤',coverUrl:rec.coverUrl||'',
+    title:rec.title,artist:rec.artist||'',
+    caption:rec.caption||'Nyanyian baharu saya 🎵 dengar sampai habis ya',
+    likes:rec.feedLikes||0,gifts:rec.feedGifts||0,shares:rec.feedShares||0,cmts:[],
+    hours:Math.max(0,Math.round((Date.now()-rec.createdAt)/3600000))};
+}
+function momentList(tab){
+  const mine=myRecordings.map(myMoment);
+  if(tab==='following') return mine;
+  return [...mine,...momentSeeds()].sort((a,b)=>a.hours-b.hours);
+}
+function momentComments(m){
+  const extra=(game.fcmts['mom:'+m.id]||[]).map(c=>({name:c.name,text:c.text,mine:true}));
+  return [...(m.cmts||[]).map(c=>({name:c[0],text:c[1]})),...extra];
+}
+function momentCounts(m){
+  const liked=!!game.likes['mom:'+m.id];
+  return {liked,
+    likes:(m.mine?(m.rec.feedLikes||0):m.likes)+(liked?1:0),
+    cmts:momentComments(m).length,
+    gifts:(m.mine?(m.rec.feedGifts||0):m.gifts)+((game.momGifts&&game.momGifts[m.id])||0),
+    shares:m.shares};
+}
+let momTab='foryou', momMuted=true, momActiveId=null, momAudio=null, cmtMoment=null;
+let momObs=null;
+function renderMoments(){
+  const box=$('mom-feed'); if(!box) return;
+  box.innerHTML=momentList(momTab).map(m=>{
+    const c=momentCounts(m), [c1,c2]=m.grad;
+    const followed=getFollows().includes(m.name);
+    const cover=m.coverUrl
+      ? `<div class="mom-bg"><img src="${m.coverUrl}" alt=""></div>`
+      : `<div class="mom-bg" style="background:radial-gradient(120% 90% at 30% 0%,${c1},${c2})">
+           <span class="mom-float" style="font-size:46px;top:16%;left:12%">✨</span>
+           <span class="mom-float" style="font-size:34px;bottom:26%;right:14%;animation-delay:1.4s">🎶</span>
+           <span>${m.emoji}</span></div>`;
+    return `<div class="moment" data-mid="${m.id}">
+      ${cover}<div class="mom-shade"></div>
+      ${m.seed?'<span class="mom-demo-tag">CONTOH · SIMULASI</span>':''}
+      <div class="mom-rail">
+        ${m.seed?`<div class="mr-follow ${followed?'done':''}" data-follow="${m.id}">${followed?'✓':'+'}</div>`:''}
+        <div class="mr-btn"><span class="mr-ico ${c.liked?'liked':''}" data-like="${m.id}">${c.liked?'❤️':'🤍'}</span>${c.likes}</div>
+        <div class="mr-btn"><span class="mr-ico" data-cmtopen="${m.id}">💬</span>${c.cmts}</div>
+        <div class="mr-btn"><span class="mr-ico" data-gift="${m.id}">🎁</span>${c.gifts}</div>
+        <div class="mr-btn"><span class="mr-ico" data-share="${m.id}">↗️</span>${c.shares}</div>
+      </div>
+      <div class="mom-meta">
+        <div class="mm-name"><span class="mm-face" style="${avatarStyle(m.name)}">${faceChar(m.name)}</span>@${escapeHtml(m.name)}${m.mine?' (Anda)':''}</div>
+        <div class="mm-cap">${escapeHtml(m.caption)}</div>
+        <div class="mom-song">
+          <span class="ms-note">🎵</span>
+          <div class="ms-txt"><b>${escapeHtml(m.title)}</b>
+            <span>${m.artist?(escapeHtml(m.artist)+' · '):''}${m.score!=null?'skor '+m.score:'cover nyanyian'}</span></div>
+          <button data-sing="${m.id}">${m.mine?'Nyanyi Lagi':'Nyanyi'}</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('') || '<div style="position:absolute;inset:0;display:grid;place-items:center;color:var(--dim);text-align:center;padding:30px;font-size:13.5px;line-height:1.7">Belum ada Detik.<br>Rakam satu lagu dalam Bilik Solo 🎤<br>dan Detik anda akan muncul di sini.</div>';
+  document.querySelectorAll('#mom-feed [data-like]').forEach(el=>el.onclick=e=>{
+    e.stopPropagation(); momLike(el.dataset.like);
   });
-  box.querySelectorAll('.fp-play').forEach(b=>b.onclick=()=>{if(b.dataset.fplay)toggleRecording(b.dataset.fplay,b);
-    else toast('Rakaman ahli simulasi — hanya contoh dalam mod demo 😉',2200);});
+  document.querySelectorAll('#mom-feed [data-follow]').forEach(el=>el.onclick=e=>{
+    e.stopPropagation(); momFollow(el.dataset.follow);
+  });
+  document.querySelectorAll('#mom-feed [data-cmtopen]').forEach(el=>el.onclick=e=>{
+    e.stopPropagation(); const m=findMoment(el.dataset.cmtopen); if(m) openComments(m);
+  });
+  document.querySelectorAll('#mom-feed [data-gift]').forEach(el=>el.onclick=e=>{
+    e.stopPropagation(); momGift(el.dataset.gift,el);
+  });
+  document.querySelectorAll('#mom-feed [data-share]').forEach(el=>el.onclick=e=>{
+    e.stopPropagation(); momShare(el.dataset.share);
+  });
+  document.querySelectorAll('#mom-feed [data-sing]').forEach(el=>el.onclick=e=>{
+    e.stopPropagation(); const m=findMoment(el.dataset.sing); momSing(m);
+  });
+  document.querySelectorAll('#mom-feed .moment').forEach(mm=>{
+    mm.onclick=()=>{ const m=findMoment(mm.dataset.mid); if(m&&m.mine) toggleMomentAudio(m);
+      else if(m) { $('mom-mute').textContent=momMuted?'🔇':'🔊'; toast('Ini Detik contoh simulasi — tiada audio 😉',1600); } };
+  });
+  setupMomObserver();
+  if(!localStorage.getItem('nyanyiku-coach')){ $('mom-coach').classList.add('show'); }
+}
+function findMoment(id){ return momentList(momTab).find(x=>x.id===id); }
+function momLike(id){
+  const key='mom:'+id;
+  let rec=null;
+  if(game.likes[key]){ delete game.likes[key];
+    const m=findMoment(id); if(m&&m.mine){ m.rec.feedLikes=Math.max(0,(m.rec.feedLikes||1)-1); rec=m.rec; }
+  } else { game.likes[key]=true;
+    const m=findMoment(id); if(m&&m.mine){ m.rec.feedLikes=(m.rec.feedLikes||0)+1; rec=m.rec; }
+  }
+  saveGame(); if(rec) idbRecPut(rec).catch(()=>{});
+  renderMoments();
+  if($('screen-profile').classList.contains('active')) renderProfilePage();
+}
+function momFollow(id){
+  const m=findMoment(id); if(!m) return;
+  let a=getFollows();
+  if(a.includes(m.name)){ a=a.filter(x=>x!==m.name); toast('Berhenti mengikuti',1200); }
+  else{ a.push(m.name); toast('Anda kini mengikuti '+m.name+' 💞',1600); trackMission('fav'); }
+  setFollows(a); renderMoments(); renderFriendsSafe();
+}
+function momGift(id,el){
+  const m=findMoment(id); if(!m) return;
+  if(m.mine){ toast('Kongsi Detik ini untuk menerima hadiah dari rakan 🎁',2000); return; }
+  game.momGifts=game.momGifts||{}; game.momGifts[id]=(game.momGifts[id]||0)+1;
+  saveGame(); renderMoments();
+  const msgs=['🎁 Hadiah bunga dihantar — sekadar demo, percuma!','🎀 Hadiah comel untuk penyanyi kegemaran anda!','💝 Dihantar! Syiling anda kekal penuh (tiada bayaran) 😉'];
+  toast(msgs[Math.floor(Math.random()*msgs.length)],2200);
+}
+function momShare(id){
+  const m=findMoment(id); if(!m) return;
+  if(m.mine&&m.rec){ m.rec.feedShares=(m.rec.feedShares||0)+1; idbRecPut(m.rec).catch(()=>{}); }
+  const text='Dengar nyanyian saya di NyanyiKu: '+(m.title||'Detik')+' 🎤';
+  if(navigator.share){ navigator.share({title:'NyanyiKu Detik',text}).catch(()=>{}); }
+  else{ navigator.clipboard&&navigator.clipboard.writeText(text);
+    toast('Pautan/tajuk disalin — kongsi di WhatsApp atau rakan 📲',2400); }
+  renderMoments();
+}
+function momSing(m){
+  if(!m||!m.mine){
+    toast('Ini Detik contoh — rakam lagu anda sendiri untuk punya Detik sebenar 🎤',2400); return;
+  }
+  const hit=[...DEMO_SONGS,...userSongs].find(x=>x.title===m.title);
+  if(hit){ screen('sing'); openSong(hit); } else screen('home');
+}
+/* Audio Detik (rakaman sendiri sahaja) */
+function stopMomentAudio(){
+  if(momAudio){ try{momAudio.pause();momAudio.src='';}catch(e){} momAudio=null; }
+  momActiveId=null;
+}
+function toggleMomentAudio(m){
+  if(!m||!m.mine||!m.rec||!m.rec.blob){ toast('Rakaman ini tiada fail audio',1600); return; }
+  if(momAudio&&momActiveId===m.id&&!momAudio.paused){ stopMomentAudio(); return; }
+  stopMomentAudio();
+  momAudio=new Audio(URL.createObjectURL(m.rec.blob)); momActiveId=m.id;
+  momAudio.onended=()=>stopMomentAudio();
+  momAudio.play().catch(()=>toast('Ketik sekali lagi untuk main 🔊',1400));
+}
+function setupMomObserver(){
+  if(!('IntersectionObserver' in window)) return;
+  if(momObs) momObs.disconnect();
+  momObs=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(e.intersectionRatio>.7){
+        const id=e.target.dataset.mid; const m=findMoment(id);
+        if(id!==momActiveId) stopMomentAudio();
+        momActiveId=id;
+        if(localStorage.getItem('nyanyiku-autoplay')==='1' && m && m.mine && m.rec && m.rec.blob && !momMuted){
+          if(!momAudio||momActiveId!==id){ toggleMomentAudio(m); }
+        }
+      }
+    });
+  },{root:$('mom-feed'),threshold:[.75]});
+  document.querySelectorAll('#mom-feed .moment').forEach(el=>momObs.observe(el));
+}
+function openComments(m){
+  cmtMoment=m; $('cmt-title').textContent='Komen · '+m.title;
+  renderCmtSheet();
+  $('cmt-sheet').classList.add('show');
+}
+function renderCmtSheet(){
+  if(!cmtMoment) return;
+  const cmts=momentComments(cmtMoment);
+  $('cmt-list').innerHTML=cmts.length?cmts.map(c=>`<div class="cs-c">
+    <span class="csc-face" style="${avatarStyle(c.name)}">${faceChar(c.name)}</span>
+    <div><b>${escapeHtml(c.name)}</b><div class="csc-body">${escapeHtml(c.text)}</div></div></div>`).join('')
+    :'<p class="hint">Jadi orang pertama memberi komen 💬</p>';
+}
+$('cmt-close').onclick=()=>$('cmt-sheet').classList.remove('show');
+$('cmt-send').onclick=()=>{
+  const inp=$('cmt-input'), t=inp.value.trim(); if(!t||!cmtMoment) return;
+  const key='mom:'+cmtMoment.id;
+  (game.fcmts[key]=game.fcmts[key]||[]).push({name:profile.name,text:t});
+  saveGame(); inp.value=''; renderCmtSheet(); renderMoments();
+};
+$('cmt-input').onkeydown=e=>{ if(e.key==='Enter') $('cmt-send').click(); };
+document.querySelectorAll('.mom-tabs span').forEach(t=>t.onclick=()=>{
+  momTab=t.dataset.mtab;
+  document.querySelectorAll('.mom-tabs span').forEach(x=>x.classList.toggle('on',x===t));
+  stopMomentAudio(); renderMoments(); $('mom-feed').scrollTop=0;
+});
+$('mom-mute').onclick=()=>{ momMuted=!momMuted;
+  $('mom-mute').textContent=momMuted?'🔇':'🔊';
+  toast(momMuted?'Senyap':'Bunyi hidup — ketik Detik rakaman anda untuk dengar',1800);
+  if(momMuted) stopMomentAudio();
+};
+$('mom-coach-ok').onclick=()=>{ $('mom-coach').classList.remove('show'); localStorage.setItem('nyanyiku-coach','1'); };
+
+/* =========================================================
+   MESEJ — kenalan (bilik) + cadangan rakan
+   ========================================================= */
+function defaultUnread(){ const u={}; [['umum',1],['duet',0],['req',0],['koir-pop',2],['koir-balada',0],['koir-party',1]]
+  .forEach(([k,v])=>u[k]=v); myRooms.forEach(r=>u[r.id]=0); return u; }
+function loadUnread(){
+  try{ const u=JSON.parse(localStorage.getItem('nyanyiku-unread')); if(u) return u; }catch(e){}
+  const u=defaultUnread(); localStorage.setItem('nyanyiku-unread',JSON.stringify(u)); return u;
+}
+let unreadMap=loadUnread();
+function saveUnread(){ localStorage.setItem('nyanyiku-unread',JSON.stringify(unreadMap)); }
+function markThreadRead(id){ if(id in unreadMap){ unreadMap[id]=0; saveUnread(); updateMsgBadges(); } }
+function lastMsgOf(r){
+  const seeds={umum:'Hai semua! Siapa nak nyanyi malam ni? 🎤','koir-pop':'Siapa atas pentas sekarang? Sedapnya! 👏',
+    'koir-balada':'Suasana syahdu malam ni 🕯️','koir-party':'Ayo-ayo semua nyanyi! 🎶',
+    duet:'Cari partner untuk lagu duet perlahan',req:'Boleh tambah lagu raya tak?'};
+  return seeds[r.id]||r.d||'Mari masuk bilik! 🎤';
+}
+function timeLabelOf(r){ const h=hashStr(weekKey()+r.id)%28; return h===0?'Semalam':h+'j'; }
+function threadRows(){ return [...myRooms,...CHAT_ROOMS,...CHOIR_ROOMS]; }
+function renderThreads(){
+  const box=$('thread-list'); if(!box) return;
+  const rows=threadRows().filter(r=>!isBlocked(r.id))
+    .sort((a,b)=>(isPinned(b.id)?1:0)-(isPinned(a.id)?1:0));
+  box.innerHTML=rows.map(r=>{
+    const th=themeById(r.theme), u=unreadMap[r.id]||0;
+    return `<div class="thread" data-th="${r.id}">
+      <div class="th-face" style="background:${th.sw}">${r.ico||'💬'}${isPinned(r.id)?'':''}
+        <span class="th-lbl" style="background:${roomKind(r)==='choir'?'#ff4f8b':'#7c5ce8'}">${roomKind(r)==='choir'?'KARAOKE':'SEMBANG'}</span></div>
+      <div class="th-meta"><b>${isPinned(r.id)?'📌 ':''}${r.pin?'🔒 ':''}${escapeHtml(r.name)}</b>
+        <span>${escapeHtml(lastMsgOf(r))}</span></div>
+      <div class="th-side"><span class="th-time">${timeLabelOf(r)}</span>
+        ${u?'<span class="th-unread">'+u+'</span>':''}</div>
+    </div>`;
+  }).join('');
+  box.querySelectorAll('[data-th]').forEach(el=>el.onclick=()=>{
+    const r=findRoom(el.dataset.th); if(!r) return;
+    enterGate(r.id,roomKind(r));
+  });
+}
+function renderFriends(){
+  const box=$('friend-list'); if(!box) return;
+  const follows=getFollows();
+  const list=BOT_NAMES.slice(0,5).filter(n=>!follows.includes(n));
+  box.innerHTML=list.map(nm=>{
+    const h=hashStr(weekKey()+nm);
+    return `<div class="friend-row">
+      <div class="fr-face" style="${avatarStyle(nm)}">${faceChar(nm)}</div>
+      <div class="fr-meta"><b>${escapeHtml(nm)}</b><span>Bintang yang anda mungkin suka</span></div>
+      <button data-follow="${escapeHtml(nm)}">Ikuti</button></div>`;
+  }).join('') || '<p class="hint">Anda sudah mengikuti semua cadangan 💕</p>';
+  box.querySelectorAll('[data-follow]').forEach(b=>b.onclick=()=>{
+    let a=getFollows(); if(!a.includes(b.dataset.follow)){ a.push(b.dataset.follow); setFollows(a); trackMission('fav'); }
+    toast('Anda mengikuti '+b.dataset.follow+' 💞',1600); renderFriends();
+  });
+}
+function renderFriendsSafe(){ if($('friend-list')) renderFriends(); }
+
+/* =========================================================
+   NOTIS (pemberitahuan tempatan)
+   ========================================================= */
+function loadNotifs(){
+  try{ return JSON.parse(localStorage.getItem('nyanyiku-notif')); }catch(e){ return null; }
+}
+let notifs=loadNotifs();
+if(!notifs){
+  notifs=[
+    {id:'n1',ico:'📣',bg:'linear-gradient(135deg,#ff5ea8,#ff2d78)',title:'Sistem',rasmi:true,
+     body:'Selamat datang ke NyanyiKu v0.8 — semua ciri pro PERCUMA selamanya, tiada VIP, tiada bayaran 🎉',time:'Baharu',read:false,type:'home'},
+    {id:'n2',ico:'🎯',bg:'linear-gradient(135deg,#8b5cf6,#ff5ea8)',title:'Pemberitahuan Aktiviti',rasmi:true,
+     body:'Rakam 1 lagu hari ini untuk tuntut 15 syiling. Buka tab Saya → Tugasan Harian.',time:'Baharu',read:false,type:'missions'},
+    {id:'n3',ico:'🪐',bg:'linear-gradient(135deg,#ff7e5f,#feb47b)',title:'Detik Rakan',
+     body:'Aisha 🎀 menyiarkan Detik baharu — buka tab Detik untuk dengar',time:'Semalam',read:false,type:'moments'},
+    {id:'n4',ico:'🔒',bg:'linear-gradient(135deg,#f7b733,#fc4a1a)',title:'Pemberitahuan Keselamatan',rasmi:true,
+     body:'Semua data anda disimpan dalam peranti ini sahaja. Tiada akaun, tiada data dikumpul.',time:'Semalam',read:true,type:'privacy'},
+    {id:'n5',ico:'⭐',bg:'linear-gradient(135deg,#11998e,#38ef7d)',title:'Pembantu PRO',
+     body:'Tip: pakai fon kepala ketika merakam supaya meter pic lebih tepat 🎧',time:'2 hari',read:true,type:'tip'}
+  ];
+  saveNotifs();
+}
+function saveNotifs(){ localStorage.setItem('nyanyiku-notif',JSON.stringify(notifs)); }
+function pushNotif(n){
+  const notifOn=localStorage.getItem('nyanyiku-notif-on')!=='0';
+  n.id='n'+Date.now()+Math.floor(Math.random()*99); n.read=!notifOn; n.time='Baharu';
+  notifs.unshift(n); if(notifs.length>40) notifs.pop();
+  saveNotifs(); updateMsgBadges(); if($('notif-list')&&$('pane-notis').style.display!=='none') renderNotifs();
+}
+function renderNotifs(){
+  const box=$('notif-list'); if(!box) return;
+  box.innerHTML=notifs.map(n=>`<div class="notif-row ${n.read?'':'unread'}" data-nid="${n.id}">
+    <span class="nr-ico" style="background:${n.bg}">${n.ico}</span>
+    <div class="nr-meta"><b>${escapeHtml(n.title)} ${n.rasmi?'<span class="rasmi">Rasmi</span>':''}</b>
+      <p>${escapeHtml(n.body)}</p></div><span class="nr-time">${n.time}</span></div>`).join('')
+    ||'<p class="hint" style="margin-top:26px">Tiada pemberitahuan lagi.</p>';
+  box.querySelectorAll('[data-nid]').forEach(el=>el.onclick=()=>{
+    const n=notifs.find(x=>x.id===el.dataset.nid); if(!n) return;
+    n.read=true; saveNotifs(); renderNotifs(); updateMsgBadges();
+    if(n.type==='moments') screen('moments');
+    else if(n.type==='missions'||n.type==='tip') { screen('profile'); setTimeout(()=>$('mis-list').scrollIntoView({behavior:'smooth'}),250); }
+  });
+}
+function updateMsgBadges(){
+  const cu=Object.keys(unreadMap).reduce((a,k)=>a+(isMuted(k)?0:(unreadMap[k]||0)),0);
+  const cn=notifs.filter(n=>!n.read).length;
+  $('chat-badge').style.display=cu?'':'none'; $('chat-badge').textContent=cu;
+  $('notis-badge').style.display=cn?'':'none'; $('notis-badge').textContent=cn;
+  const tb=$('tab-msg-badge'); const tot=cu+cn;
+  tb.style.display=tot?'':'none'; tb.textContent=tot>99?'99+':tot;
+}
+let msgPane='chat';
+function renderMessages(){
+  renderThreads(); renderFriends(); renderNotifs(); updateMsgBadges();
+  $('pane-chat').style.display=msgPane==='chat'?'block':'none';
+  $('pane-notis').style.display=msgPane==='notis'?'block':'none';
+  $('mseg-chat').classList.toggle('on',msgPane==='chat');
+  $('mseg-notis').classList.toggle('on',msgPane==='notis');
+}
+$('mseg-chat').onclick=()=>{ msgPane='chat'; renderMessages(); };
+$('mseg-notis').onclick=()=>{ msgPane='notis'; renderMessages(); };
+$('clear-threads').onclick=()=>{ Object.keys(unreadMap).forEach(k=>unreadMap[k]=0); saveUnread(); renderMessages(); toast('Tanda dibaca dibersihkan ✅',1400); };
+$('clear-notifs').onclick=()=>{ notifs=[]; saveNotifs(); renderMessages(); toast('Pemberitahuan dibersihkan 🧹',1400); };
+$('notif-prompt-go').onclick=()=>{ screen('profile'); setTimeout(()=>$('mis-list').scrollIntoView({behavior:'smooth'}),250); };
+$('notif-prompt-x').onclick=()=>{ $('notif-prompt').style.display='none'; localStorage.setItem('nyanyiku-notifbanner','1'); };
+if(localStorage.getItem('nyanyiku-notifbanner')==='1'){ setTimeout(()=>{ const b=$('notif-prompt'); if(b) b.style.display='none'; },0); }
+$('qc-comments').onclick=()=>screen('moments');
+$('qc-activity').onclick=()=>{ screen('profile'); setTimeout(()=>$('mis-list').scrollIntoView({behavior:'smooth'}),250); };
+$('qc-friends').onclick=()=>{ msgPane='chat'; renderMessages(); $('pane-chat').scrollTop=$('friend-list').offsetTop-90; };
+$('qc-visitors').onclick=()=>toast('👁️ Jejak pelawat: 3 rakan demo melawat anda minggu ini (contoh luar talian)',2400);
+$('qc-gifts').onclick=()=>screen('profile');
+$('qc-missions').onclick=()=>{ screen('profile'); setTimeout(()=>$('mis-list').scrollIntoView({behavior:'smooth'}),250); };
+
+/* Reaksi simulasi selepas merakam (suka + komen pada Detik baharu) */
+function scheduleDemoReactions(rec){
+  const fans=[...BOT_NAMES].sort(()=>Math.random()-.5);
+  [8000,22000,45000].forEach((ms,i)=>{
+    setTimeout(()=>{
+      const fan=fans[i%fans.length];
+      if(i===1){
+        const key='mom:'+rec.id;
+        game.fcmts[key]=game.fcmts[key]||[];
+        game.fcmts[key].push({name:fan,text:SEED_CMTS[i%SEED_CMTS.length][1]});
+        pushNotif({ico:'💬',bg:'linear-gradient(135deg,#4fd8ff,#8b5cf6)',title:fan,
+          body:'memberi komen pada Detik anda: “'+SEED_CMTS[i%SEED_CMTS.length][1]+'”',type:'moments'});
+      }else{
+        rec.feedLikes=(rec.feedLikes||0)+1; idbRecPut(rec).catch(()=>{});
+        pushNotif({ico:'❤️',bg:'linear-gradient(135deg,#ff5ea8,#c44dd6)',title:fan,
+          body:'menyukai Detik anda "'+rec.title+'"',type:'moments'});
+      }
+      saveGame();
+      if($('screen-moments').classList.contains('active')) renderMoments();
+      if($('screen-profile').classList.contains('active')) renderProfilePage();
+    },ms);
+  });
 }
 
 /* ---------------- Lagu kegemaran ---------------- */
@@ -3059,15 +4032,321 @@ function toggleFav(id){let a=getFavs();
   else{a.push(id);trackMission('fav');toast('♥ Ditambah ke Lagu Kegemaran',1600);}
   setFavs(a);refreshHome();}
 
-function renderCommunity(){rollDay();renderCoinHead();renderCheckin();renderMissions();
-  renderLeaderboard();renderRecordings();renderFeed();}
 
+
+/* =========================================================
+   v0.8: Bilik Saya (gaya keluarga) + helaian kenalan
+   ========================================================= */
+function loadStrList(k){try{return JSON.parse(localStorage.getItem(k))||[];}catch(e){return[];}}
+function saveStrList(k,a){localStorage.setItem(k,JSON.stringify(a));}
+const muteList=()=>loadStrList('nyanyiku-mute');
+const pinList=()=>loadStrList('nyanyiku-pin');
+const blockList=()=>loadStrList('nyanyiku-block');
+function toggleStrList(k,id){let a=loadStrList(k);a=a.includes(id)?a.filter(x=>x!==id):[...a,id];saveStrList(k,a);return a.includes(id);}
+const isMuted=id=>muteList().includes(id);
+const isPinned=id=>pinList().includes(id);
+const isBlocked=id=>blockList().includes(id);
+
+let famRoom=null, famRole='owners';
+const FAM_SHIELDS=['I','II','III','IV','V'];
+function famNumericId(r){ return '81'+String(10000+hashStr('bilik'+r.id)%89999); }
+function openFamily(r){
+  famRoom=r; famRole='owners';
+  const th=themeById(r.theme);
+  const hero=$('fam-hero');
+  hero.style.background='radial-gradient(120% 100% at 50% -20%,'+(th.sw.match(/#[0-9a-fA-F]{6}/g)?.[1]||'#5b2bb8')+',#2a0f55 72%,#160933)';
+  $('fam-ico').style.background=th.sw; $('fam-ico').textContent=r.ico||'🎭';
+  $('fam-name').textContent=r.name;
+  $('fam-id').textContent=famNumericId(r);
+  const lv=1+hashStr(r.id)%5;
+  $('fam-lv').textContent=lv;
+  $('fam-shield').textContent='🛡️ Tahap '+FAM_SHIELDS[lv-1];
+  const cur=30000+(hashStr(r.id+'exp')%120)*1000;
+  const max=Math.round(cur*1.8/1000)*1000;
+  $('fam-exp-text').textContent=cur.toLocaleString('ms-MY')+' / '+max.toLocaleString('ms-MY');
+  $('fam-xp-bar').style.width=Math.round(cur/max*100)+'%';
+  const today=(game.stat.sing||0)+(game.stat.room||0);
+  $('fam-today-text').textContent=today+' / 10';
+  $('fam-today-bar').style.width=Math.min(100,today*10)+'%';
+  document.querySelectorAll('#fam-roles span').forEach(t=>t.classList.toggle('on',t.dataset.r==='owners'));
+  renderFamMembers();
+  $('fam-modal').classList.add('show');
+}
+function famRoleMembers(role){
+  const me={name:profile.name,me:true,id:profile.id,tag:'Pemilik'};
+  const pick=n=>BOT_NAMES.slice(0,6).map((nm,i)=>({name:nm,id:'62'+String(20000+hashStr(nm)%70000),
+    tag:['Pentadbir','Hos','Penyanyi Utama'][[,'admins','hosts','stars'].indexOf(role)-1]||''}));
+  if(role==='owners') return [me];
+  if(role==='admins') return [me,...pick().slice(0,1).map(x=>({...x,tag:'Pentadbir'}))];
+  if(role==='hosts') return pick().slice(0,2).map(x=>({...x,tag:'Hos'}));
+  return pick().slice(0,3).map(x=>({...x,tag:'Penyanyi Utama'}));
+}
+function renderFamMembers(){
+  const box=$('fam-members');
+  const rows=famRoleMembers(famRole);
+  box.innerHTML=rows.map(m=>`<div class="fam-member">
+    <span class="fm-face" style="${m.me?'':avatarStyle(m.name)}">${m.me?(m.name[0]||'A'):faceChar(m.name)}</span>
+    <div class="fm-meta"><b>${escapeHtml(m.name)}${m.me?' (Anda)':''}</b>
+      <span>ID ${m.id} · ${m.tag}</span></div>
+    ${m.me?'':`<button class="fm-remove" data-rm="${escapeHtml(m.name)}">Alih Keluar</button>`}
+  </div>`).join('');
+  box.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>toast('Ini senarai ahli demo luar talian — ahli sebenar muncul bila pelayan bilik dihidupkan 🙂',2600));
+}
+document.querySelectorAll('#fam-roles span').forEach(t=>t.onclick=()=>{
+  famRole=t.dataset.r;
+  document.querySelectorAll('#fam-roles span').forEach(x=>x.classList.toggle('on',x===t));
+  renderFamMembers();
+});
+$('fam-close').onclick=()=>$('fam-modal').classList.remove('show');
+$('fam-enter').onclick=()=>{ $('fam-modal').classList.remove('show'); if(famRoom) enterGate(famRoom.id,roomKind(famRoom)); };
+$('fam-a-hearts').onclick=()=>{
+  if(!famRoom) return; const h=40+hashStr(weekKey()+famRoom.id)%400, sing=2+hashStr('s'+famRoom.id)%12;
+  infoSheet('💚 Sorakan Bilik',
+   `<p>Statistik mingguan bilik <b>${escapeHtml(famRoom.name)}</b> (contoh luar talian):</p>
+    <p>❤️ Hati terkumpul: <b>${h}</b><br>🎤 Sesi nyanyian: <b>${sing}</b><br>💬 Mesej semangat: <b>${12+h%30}</b></p>
+    <p class="hint">Semua galakan adalah percuma — nyanyi bersama untuk tambah EXP bilik.</p>`);
+};
+$('fam-a-report').onclick=()=>infoSheet('📊 Laporan Bilik',
+ `<p>✅ Tiada kandungan berbahaya dikesan dalam seminggu terakhir.</p>
+  <p>• Mesej melapor: 0<br>• Penyalahgunaan kandungan: 0<br>• Akaun bermasalah: 0</p>
+  <p class="hint">NyanyiKu tidak mempunyai pelayan pusat yang memantau bilik demo. Jika anda menghidupkan pelayan sendiri, laporan ini kekal dalam peranti anda.</p>`);
+$('fam-a-gifts').onclick=()=>{
+  const g=[['🌸','Bunga','Aisha 🎀'],['🎂','Kek hari jadi','Faiz 🎸'],['⭐','Bintang','Nina 🌸'],['🧸','Teddy bear','Siti 🌺']];
+  infoSheet('🎁 Senarai Hadiah',
+   `<p>Hadiah yang diterima bilik anda (contoh):</p>`+
+   g.map(x=>`<p>${x[0]} <b>${x[1]}</b> — daripada ${x[2]}</p>`).join('')+
+   `<p class="hint">Hadiah di NyanyiKu hanyalah <b>ikon galakan percuma</b> — tiada nilai wang, tiada belian, tiada caj semula.</p>`);
+};
+$('fam-a-course').onclick=()=>infoSheet('📚 Kursus Nyanyian (percuma)',
+ `<p>Tip harian dari guru vokal NyanyiKu:</p>
+  <ul style="padding-left:18px;line-height:1.8">
+   <li><b>Pernafasan diafragma:</b> tarik nafas sehingga perut kembung, bukan dada.</li>
+   <li><b>Pemanasan:</b> nyanyi sisik "ma-me-mi-mo-mu" 2 minit sebelum lagu sebenar.</li>
+   <li><b>Pic:</b> rakam &amp; lihat Kad Vokal anda — mata radar melonjak jika pic stabil.</li>
+   <li><b>Emosi:</b> senyum semasa menyanyi, nada kedengaran lebih cerah 😊</li>
+   <li><b>Fon kepala:</b> paka untuk elak mikrofon menangkap iringan.</li>
+  </ul>`);
+
+/* ---- Helaian kenalan sembang ---- */
+let ctRoom=null;
+const CT_BIOS=['Dalam secawan kopi dan sebaris lirik, kita kawan ☕🎵',
+  'Nyanyi waktu hujan paling syahdu 🌧️🎤','Mencari partner duet yang sabar 🙈💕',
+  'Hidup ini lagu — nyanyi kuat-kuat! 🎶','Lagu jiwang penenang hati malam 🌙'];
+function openContact(r){
+  ctRoom=r;
+  const nm=roomHostName(r);
+  $('ct-ava').style.background=avatarStyle(nm);
+  $('ct-ava').textContent=faceChar(nm);
+  $('ct-name').textContent=nm;
+  $('ct-id').textContent='ID: 62'+String(20000+hashStr(nm)%70000)+' · hos '+r.name;
+  $('ct-bio').textContent=CT_BIOS[hashStr(r.id+'bio')%CT_BIOS.length];
+  renderContactFollow();
+  $('ct-sw-mute').classList.toggle('on',isMuted(r.id));
+  $('ct-sw-pin').classList.toggle('on',isPinned(r.id));
+  $('contact-modal').classList.add('show');
+}
+function renderContactFollow(){
+  if(!ctRoom) return; const nm=roomHostName(ctRoom);
+  const f=getFollows().includes(nm);
+  $('ct-follow').textContent=f?'✓ Mengikuti':'＋ Ikuti';
+}
+$('ct-close').onclick=()=>$('contact-modal').classList.remove('show');
+$('ct-follow').onclick=()=>{
+  const nm=roomHostName(ctRoom); let a=getFollows();
+  if(a.includes(nm)){ a=a.filter(x=>x!==nm); toast('Berhenti mengikuti '+nm,1400); }
+  else{ a.push(nm); toast('Anda mengikuti '+nm+' 💞',1800); trackMission('fav'); }
+  setFollows(a); renderContactFollow(); renderFriendsSafe();
+};
+$('ct-group').onclick=()=>{ $('contact-modal').classList.remove('show');
+  toast('Cipta bilik kumpulan anda sendiri — percuma 🎉',2000); openRoomModal(roomKind(ctRoom)); };
+$('ct-mute').onclick=()=>{ const on=toggleStrList('nyanyiku-mute',ctRoom.id);
+  $('ct-sw-mute').classList.toggle('on',on);
+  if(on){ unreadMap[ctRoom.id]=0; saveUnread(); updateMsgBadges(); }
+  toast(on?'🔕 Sembang dimiutkan':'🔔 Pemberitahuan dihidupkan',1500); };
+$('ct-pin').onclick=()=>{ const on=toggleStrList('nyanyiku-pin',ctRoom.id);
+  $('ct-sw-pin').classList.toggle('on',on); renderMessages();
+  toast(on?'📌 Disematkan':'Tidak disemat',1400); };
+$('ct-clear').onclick=()=>{
+  if(confirm('Kosongkan sejarah sembang bilik ini pada peranti anda?')){
+    if(curRoom&&curRoom.id===ctRoom.id){ if(curChat) $('chat-msgs').innerHTML=''; if(choirChat) $('cchat-msgs').innerHTML=''; }
+    toast('Sejarah sembang dibersihkan 🧹',1600);
+  }
+};
+$('ct-block').onclick=()=>{
+  if(confirm('SEKAT bilik "'+ctRoom.name+'"?\n\nBilik ini akan hilang dari grid & mesej. Anda boleh nyahsekat dari Tetapan.')){
+    let a=blockList(); if(!a.includes(ctRoom.id)) a.push(ctRoom.id); saveStrList('nyanyiku-block',a);
+    unreadMap[ctRoom.id]=0; saveUnread();
+    $('contact-modal').classList.remove('show');
+    if(curRoom&&curRoom.id===ctRoom.id) leaveRoom();
+    renderMessages(); renderParty&&renderParty();
+    toast('Bilik disekat 🚫 (Nyahsekat: Tetapan → Privasi)',2600);
+  }
+};
+$('ct-report').onclick=()=>{
+  const why=prompt('Nyatakan sebab laporan (contoh: gangguan, kandungan tidak sesuai).\nLaporan ini hanya disimpan dalam peranti anda kerana NyanyiKu tiada pelayan pusat:','Gangguan / kandungan tidak sesuai');
+  if(why&&why.trim()){
+    const rep=JSON.parse(localStorage.getItem('nyanyiku-reports')||'[]');
+    rep.push({room:ctRoom.id,host:roomHostName(ctRoom),reason:why.trim(),time:new Date().toISOString()});
+    localStorage.setItem('nyanyiku-reports',JSON.stringify(rep));
+    infoSheet('Laporan Diterima',
+     `<p>Terima kasih. Laporan anda <b>disimpan setempat</b> untuk rujukan anda.</p>
+      <p class="hint">NyanyiKu tidak menghantar data ke pelayan pusat. Untuk berhenti melihat bilik ini, gunakan SEKAT — anda juga boleh tutup/cipta semula bilik bila-bila masa.</p>`);
+  }
+};
+$('btn-chat-info').onclick=()=>{ if(!curRoom) return; curRoom.mine?openFamily(curRoom):openContact(curRoom); };
+$('btn-choir-info').onclick=()=>{ if(!curRoom) return; curRoom.mine?openFamily(curRoom):openContact(curRoom); };
+
+
+/* =========================================================
+   TETAPAN, pintasan profil, butang balik
+   ========================================================= */
+$('btn-home-back').onclick=()=>screen('rooms');
+$('btn-create-back').onclick=()=>screen('home');
+$('home-ai-card').onclick=()=>screen('create');
+$('btn-result-home').onclick=()=>{ resultStopUI(); rNodes.off=0; screen('rooms'); };
+$('btn-settings').onclick=()=>{ initSettings(); screen('settings'); };
+$('btn-settings-back').onclick=()=>screen('profile');
+$('pf-aimv').onclick=()=>screen('create');
+$('pq-vip').onclick=()=>toast('💎 Semua ciri PERCUMA — tiada VIP, tiada bayaran, tiada iklan 🎉',2600);
+$('pq-drafts').onclick=()=>screen('create');
+$('pq-songs').onclick=()=>screen('home');
+$('pq-missions').onclick=()=>$('mis-list').scrollIntoView({behavior:'smooth'});
+$('btn-pf-share').onclick=()=>{
+  const t='NyanyiKu — karaoke percuma & luar talian 🎤 https://github.com/yusarmy/NyanyiKu';
+  if(navigator.share) navigator.share({title:'NyanyiKu',text:t}).catch(()=>{});
+  else if(navigator.clipboard){ navigator.clipboard.writeText(t); toast('Pautan disalin 📲',1800); }
+  else toast('NyanyiKu di GitHub: github.com/yusarmy/NyanyiKu',2600);
+};
+
+function initSettings(){
+  $('app-version').textContent='v0.8.0 ›';
+  $('ref-code').textContent=(profile.id||'—')+' ›';
+  $('diag-val').textContent=(navigator.onLine?'Sedia diuji ›':'Luar talian ›');
+  $('svr-val').textContent=(localStorage.getItem('nyanyiku-server')||'Auto/demo luar talian')+' ›';
+  const swN=$('sw-notif'), swA=$('sw-autoplay');
+  swN.classList.toggle('on',localStorage.getItem('nyanyiku-notif-on')!=='0');
+  swA.classList.toggle('on',localStorage.getItem('nyanyiku-autoplay')==='1');
+  estimateCache();
+}
+function estimateCache(){
+  const el=$('cache-size');
+  if(navigator.storage&&navigator.storage.estimate){
+    navigator.storage.estimate().then(e=>{
+      const mb=(e.usage||0)/1048576;
+      el.textContent=(mb<0.1?'< 0.1':mb.toFixed(1))+' MB ›';
+    }).catch(()=>el.textContent='Kira ›');
+  } else el.textContent='Kira ›';
+}
+$('sw-notif')&&($('sw-notif').onclick=()=>{
+  const on=localStorage.getItem('nyanyiku-notif-on')!=='0';
+  localStorage.setItem('nyanyiku-notif-on',on?'0':'1');
+  $('sw-notif').classList.toggle('on',!on);
+  toast(on?'Pemberitahuan dalam app dimatikan 🔕':'Pemberitahuan dalam app dihidupkan 🔔',1800);
+});
+$('sw-autoplay')&&($('sw-autoplay').onclick=()=>{
+  const on=localStorage.getItem('nyanyiku-autoplay')==='1';
+  localStorage.setItem('nyanyiku-autoplay',on?'0':'1');
+  $('sw-autoplay').classList.toggle('on',!on);
+  toast(on?'Automain Detik dimatikan ⏸️':'Automain Detik dihidupkan ▶️',1800);
+});
+/* Helaian maklumat ringkas */
+let infoOverlay=null;
+function infoSheet(title,html){
+  if(!infoOverlay){
+    infoOverlay=document.createElement('div');
+    infoOverlay.className='modal-overlay'; infoOverlay.id='info-overlay';
+    infoOverlay.innerHTML=`<div class="modal" style="max-width:430px"><h3 id="info-title" style="margin:0 0 8px"></h3>
+      <div id="info-body" style="font-size:13.5px;line-height:1.7;max-height:60vh;overflow:auto"></div>
+      <button class="primary full" id="info-ok" style="margin-top:12px">Faham</button></div>`;
+    $('app').appendChild(infoOverlay);
+    infoOverlay.onclick=e=>{ if(e.target===infoOverlay) infoOverlay.classList.remove('show'); };
+    $('info-ok').onclick=()=>infoOverlay.classList.remove('show');
+  }
+  $('info-title').textContent=title; $('info-body').innerHTML=html;
+  infoOverlay.classList.add('show');
+}
+$('set-edit').onclick=()=>openProfileEditor(false);
+$('set-privacy').onclick=()=>{ infoSheet('🔒 Privasi Data',
+ `<p>NyanyiKu direka tanpa pendaftaran, tanpa pelayan awan, dan tanpa pengiklan.</p>
+  <ul style="padding-left:18px;margin:6px 0">
+   <li>Profil, lagu diimport, rakaman, bilik &amp; syiling disimpan <b>dalam peranti anda sahaja</b> (localStorage &amp; IndexedDB).</li>
+   <li>Carian lagu menggunakan API awam LRCLIB (lirik) dan iTunes (pratonton 30 saat &amp; sampul) melalui peranti anda.</li>
+   <li>Bilik sembang hanya hidup jika anda sendiri hidupkan pelayan; secara lalai semua bilik ialah demo luar talian.</li>
+   <li>Tiada penjejak, tiada pengenal pasti peranti dihantar keluar.</li>
+   <li>Anda boleh padam semua data bila-bila masa di <b>Set Semula Semua Data Peranti</b>.</li>
+  </ul>
+  <p><b>Bilik disekat:</b> ${blockList().length?(blockList().map(id=>{const r=findRoom(id);return (r?r.name:id)+' <a data-unblock="'+id+'" style="color:var(--accent2)">nyahsekat</a>';}).join(' &nbsp;·&nbsp; ')):'tiada'}</p>`);
+  const ov=document.getElementById('info-overlay');
+  ov.querySelectorAll('[data-unblock]').forEach(a=>a.onclick=e=>{
+    e.preventDefault(); const id=a.dataset.unblock;
+    saveStrList('nyanyiku-block',blockList().filter(x=>x!==id));
+    renderParty&&renderParty(); renderMessages&&renderMessages();
+    toast('Nyahsekat berjaya ✅',1500); a.closest('p').remove();
+  });
+};
+$('set-server').onclick=()=>$('btn-server').click();
+$('set-diag').onclick=async()=>{
+  $('diag-val').textContent='Menguji…';
+  const tests=[['LRCLIB (lirik)','https://lrclib.net/api/search?track_name=uji&artist_name='],
+    ['iTunes (klip & sampul)','https://itunes.apple.com/search?term=uji&media=music&limit=1&country=MY']];
+  const out=[];
+  for(const [nm,u] of tests){
+    if(!navigator.onLine){ out.push('• '+nm+': <b style="color:var(--bad)">luar talian</b>'); continue; }
+    try{
+      const ctl=new AbortController(); const t=setTimeout(()=>ctl.abort(),6000);
+      const r=await fetch(u,{signal:ctl.signal}); clearTimeout(t);
+      out.push('• '+nm+': '+(r.ok?'<b style="color:var(--good)">OK ✅</b>':'<b style="color:var(--bad)">gagal ('+r.status+')</b>'));
+    }catch(e){ out.push('• '+nm+': <b style="color:var(--bad)">tidak capai</b> (firewall/luar talian)'); }
+  }
+  $('diag-val').textContent=(navigator.onLine?'Selesai ›':'Luar talian ›');
+  infoSheet('📶 Diagnosis Rangkaian',
+    '<p>Keputusan ujian dari peranti anda:</p>'+out.join('<br>')+
+    '<p class="hint" style="margin-top:10px">App tetap berfungsi penuh semasa luar talian menggunakan data demo.</p>');
+};
+const CACHE_KEYS=['nyanyiku-notif','nyanyiku-unread','nyanyiku-room-history','nyanyiku-notifbanner','nyanyiku-coach'];
+$('set-cache').onclick=()=>{
+  CACHE_KEYS.forEach(k=>localStorage.removeItem(k));
+  notifs=[]; saveNotifs(); unreadMap={}; Object.keys(unreadMap).forEach(()=>{});
+  roomHistory=[];
+  estimateCache(); renderMessages&&renderMessages();
+  toast('🧹 Cache demo dibersihkan (profil, lagu & rakaman kekal)',2400);
+};
+$('set-referral').onclick=()=>{
+  const code='NYK-'+(profile.id||'');
+  if(navigator.clipboard) navigator.clipboard.writeText(code);
+  infoSheet('🎟️ Kod Jemputan Rakan',
+   `<p>Kod jemputan anda:</p><p style="font-size:20px;text-align:center;letter-spacing:2px;font-weight:800">${code}</p>
+    <p class="hint">Kod disalin. Jemput rakan memuat turun NyanyiKu percuma dari halaman GitHub — tiada ganjaran wang, sekadar label jemputan 😊</p>`);
+};
+$('set-about').onclick=()=>infoSheet('🎤 Tentang NyanyiKu v0.8.0',
+ `<p>NyanyiKu ialah karaoke percuma, jujur dan mesra semua umur. Semua ciri pro dalam app serupa diberikan <b>percuma</b>:
+  bilik parti, Detik, teman Bilik Solo, analisis vokal, kesan studio, AI cipta lagu, misi &amp; syiling (tanpa nilai wang).</p>
+  <p><b>Tiada</b> VIP, caj semula, kotak nasib, perjudian, iklan, atau tekanan bayaran. Boleh dimainkan sepenuhnya luar talian.</p>
+  <p class="hint">Klip lagu 30 saat &amp; sampul ialah hak milik iTunes/rakaman masing-masing; rakaman kekal dalam peranti anda dan tidak dimuat naik.</p>`);
+$('set-help').onclick=()=>infoSheet('💬 Pusat Khidmat &amp; Kemas Kini',
+ `<p>NyanyiKu dikemas kini di GitHub (percuma, tanpa iklan):</p>
+  <p style="word-break:break-all"><b>github.com/yusarmy/NyanyiKu/releases</b></p>
+  <p>Di sana anda boleh muat turun APK versi terkini, lihat nota versi dan kemukakan cadangan/isu.</p>
+  <p class="hint">Untuk permintaan ciri, beritahu sahaja pembangun anda — kemas kini terus dihantar ke telefon anda 😊</p>`);
+$('set-reset').onclick=()=>{
+  if(confirm('Set semula SEMUA data dalam peranti ini?\n\nProfil, lagu diimport, rakaman, bilik, syiling dan tetapan akan dipadam. Tindakan ini tidak boleh diundur.')){
+    if(confirm('Anda pasti? Semua rakaman anda akan hilang!')){
+      try{ indexedDB.deleteDatabase('nyanyiku'); }catch(e){}
+      localStorage.clear();
+      toast('Data dipadam. Memuatkan semula…',1800);
+      setTimeout(()=>location.reload(),1500);
+    }
+  }
+};
+
+/* ---------------- Mula ---------------- */
+if(localStorage.getItem('nyanyiku-notifbanner')==='1'){ const b=$('notif-prompt'); if(b) b.style.display='none'; }
 initMySongs();
 renderRoomLists();
-renderProfileCard();
+renderProfilePage();
 paintBuddy();
-initRecordings();
-/* Daftar pertama: pelawa lengkapkan profil (boleh langkau) */
+initRecordings().then(()=>{ renderProfilePage(); });
+renderMessages();
 if(!localStorage.getItem('nyanyiku-profile')){
   setTimeout(()=>openProfileEditor(true),600);
 }
@@ -3078,13 +4357,21 @@ if(!localStorage.getItem('nyanyiku-profile')){
   const App=Cap && Cap.Plugins && Cap.Plugins.App;
   if(App){
     App.addListener('backButton',()=>{
+      if($('info-overlay')&&$('info-overlay').classList.contains('show')){ $('info-ok').click(); return; }
+      if($('cmt-sheet').classList.contains('show')){ $('cmt-close').click(); return; }
+      if($('buddy-modal').classList.contains('show')){ $('buddy-close').click(); return; }
+      if(document.querySelector('.modal-overlay.show')){ document.querySelector('.modal-overlay.show').classList.remove('show'); return; }
       if($('screen-sing').classList.contains('active')) $('btn-back').click();
       else if($('screen-discover').classList.contains('active')) $('btn-disc-back').click();
       else if($('screen-result').classList.contains('active')) $('btn-result-home').click();
       else if($('screen-chat').classList.contains('active')) $('btn-chat-back').click();
       else if($('screen-choir').classList.contains('active')) $('btn-choir-back').click();
-      else if($('screen-rooms').classList.contains('active')||$('screen-create').classList.contains('active')
-        ||$('screen-community').classList.contains('active')) screen('home');
+      else if($('screen-settings').classList.contains('active')) screen('profile');
+      else if($('screen-create').classList.contains('active')) screen('home');
+      else if($('screen-home').classList.contains('active')) screen('rooms');
+      else if($('screen-moments').classList.contains('active')||$('screen-messages').classList.contains('active')
+        ||$('screen-profile').classList.contains('active')) screen('rooms');
+      else if(!$('screen-rooms').classList.contains('active')) screen('rooms');
       else App.exitApp();
     });
   }

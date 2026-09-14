@@ -1,6 +1,6 @@
-# 🎤 NyanyiKu — Aplikasi Karaoke (v0.7.0)
+# 🎤 NyanyiKu — Aplikasi Karaoke (v0.8.0)
 
-> **📱 Muat turun APK siap pasang:** [NyanyiKu-v0.7.0-release.apk](https://github.com/yusarmy/NyanyiKu/releases/download/v0.7.0/NyanyiKu-v0.7.0-release.apk) (7.4 MB, Android 6.0+) · [Semua keluaran](https://github.com/yusarmy/NyanyiKu/releases)
+> **📱 Muat turun APK siap pasang:** [NyanyiKu-v0.8.0-release.apk](https://github.com/yusarmy/NyanyiKu/releases/download/v0.8.0/NyanyiKu-v0.8.0-release.apk) (Android 6.0+) · [Semua keluaran](https://github.com/yusarmy/NyanyiKu/releases)
 
 Aplikasi karaoke ala **StarMaker** untuk Android, dibina dengan HTML/CSS/JavaScript
 dan dibungkus sebagai APK asli menggunakan **Capacitor**. Boleh berfungsi luar talian,
@@ -50,6 +50,33 @@ dan menyokong bilik sembang/koir berbilang pengguna apabila pelayan dijalankan.
 - **6 tema bilik** (Malam Ungu, Senja, Lautan, Emas Mewah, Sakura, Neon) pada gelembung
   sembang & pentas koir
 
+### 🪐 Wajah baharu v0.8 — 5 tab ala StarMaker
+- **Tab bawah 5 ruang**: 🎉 Bilik, 🪐 Detik, butang 🎤 bulat di tengah (Bilik Solo pantas),
+  💬 Mesej (dengan lencana kiraan) dan 😀 Saya
+- **Tab Bilik (Parti)**: segmen Parti/Siaran Langsung, bar kalangan cerita hos aktif
+  (lencana SEMBANG/KARAOKE), kad kategori Keluarga/Nyanyi/Sembang, sub-tab
+  Disyorkan/Karaoke/Sembang/Bilik Saya/Sejarah, dan grid kad bilik 2 lajur dengan
+  lencana Siaran Langsung, kunci PIN, kiraan hati & penonton
+- **Tab Detik**: suapan video menegak penuh skrin (Ikuti/Disyorkan) dengan rel kanan
+  ikut/suka/komen/hadiah/kongsi, helaian komen, butang redam, lagu + butang Nyanyi;
+  Detik menggunakan rakaman anda sendiri manakala Detik lain dilabel **CONTOH · SIMULASI**
+- **Tab Mesej**: sub-tab Sembang/Notis, senarai kenalan (bilik) dengan lencana belum
+  dibaca, cadangan rakan dengan butang Ikuti, kad pintas (Komen Dan @, Pusat Aktiviti,
+  Rakan Baru, Jejak Pelawat, Hadiah, Tugasan) dan pemberitahuan tempatan berkumpulan
+- **Tab Saya**: muka depan profil penuh (cover, avatar berbingkai, ID, gelaran tahap,
+  tag), 4 statistik, pintasan AI MV, kad keluarga, grid ikon (Semua Percuma, Draf, Lagu
+  Saya, Tugasan Harian), syiling, daftar masuk, misi, rakaman & papan mata
+- **Tetapan berkumpul**: Edit Profil, Privasi Data (dengan senarai nyahsekat),
+  pemberitahuan & automain, pelayan, diagnosis rangkaian, saiz cache, kod jemputan,
+  Tentang dan set semula data peranti
+- **Bilik Saya gaya keluarga**: helaian ID bilik + perisai tahap, bar EXP bilik & EXP
+  hari ini (semua percuma — tiada belian emas), Sorakan/Laporan/Senarai Hadiah/Kursus,
+  tab peranan Pemilik/Pentadbir/Hos/Penyanyi Utama dan butang "Masuk bilik saya"
+- **Helaian kenalan sembang**: bio, Ikuti, Cipta Kumpulan, toggle miut/pinkan,
+  kosongkan sejarah, serta **SEKAT** dan **LAPOR** (laporan disimpan setempat sahaja)
+- Kekal berprinsip: **tiada VIP, tiada caj semula, tiada kotak nasib/judi, tiada iklan**;
+  syiling sekadar galakan tanpa nilai wang dan semua data kekal dalam peranti
+
 ### 🚪 Bilik
 - **Bilik Solo** 🎤 — pilih teman, kemudian pilih lagu untuk nyanyi & rakam sendirian
 - **Bilik Sembang** 💬 — 3 ruang pratetap: Sembang Santai, Cari Kawan Duet, Permintaan Lagu
@@ -80,7 +107,7 @@ dan menyokong bilik sembang/koir berbilang pengguna apabila pelayan dijalankan.
 
 ## 📦 Pasang APK
 
-Muat turun APK siap dari **[halaman GitHub Releases](https://github.com/yusarmy/NyanyiKu/releases)** (fail `NyanyiKu-v0.7.0-release.apk`).
+Muat turun APK siap dari **[halaman GitHub Releases](https://github.com/yusarmy/NyanyiKu/releases)** (fail `NyanyiKu-v0.8.0-release.apk`).
 Salin ke telefon Android 6.0+ → buka fail → benarkan pemasangan dari sumber ini → Pasang.
 Semasa pertama kali merakam atau naik pentas, benarkan akses **mikrofon**.
 🎧 Pakai fon kepala semasa menyanyi/koir untuk elak dengung.
@@ -150,4 +177,4 @@ karaoke-app/
 Hanya muzik domain awam dan gubahan asli/terjana disertakan. Lagu komersial
 memerlukan fail instrumental yang sah dan lesen pemegang hak cipta.
 
-- Pakej: `app.nyanyiku.karaoke` · versi 0.7.0 (versionCode 8) · minSdk 23, targetSdk 35
+- Pakej: `app.nyanyiku.karaoke` · versi 0.8.0 (versionCode 9) · minSdk 23, targetSdk 35
