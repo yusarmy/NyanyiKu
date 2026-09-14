@@ -292,6 +292,10 @@
     background:linear-gradient(90deg,var(--violet),var(--pink));color:#fff;font-weight:700}
   .disc-chips{display:flex;gap:8px;padding:12px 18px 4px;overflow-x:auto;-webkit-overflow-scrolling:touch}
   .disc-chips .chip{white-space:nowrap}
+  .dsrc{flex:1;border:1px solid var(--glass-brd);background:var(--glass);color:var(--dim);
+    border-radius:12px;padding:9px 4px;font-size:12px;font-weight:800;cursor:pointer}
+  .dsrc.on{background:linear-gradient(90deg,#4fd8ff,#8b5cf6);color:#fff;border-color:transparent;
+    box-shadow:0 6px 16px rgba(79,216,255,.25)}
   .disc-row{display:flex;align-items:center;gap:11px;background:var(--glass);border:1px solid var(--glass-brd);
     border-radius:15px;padding:9px 12px;margin-bottom:9px}
   .disc-row img{width:46px;height:46px;border-radius:11px;flex:none;object-fit:cover;
@@ -1030,18 +1034,22 @@ Tentang mimpi yang kita cari</textarea>
       <button class="icon-btn" id="btn-disc-back">‹</button>
       <div class="sing-title">
         <b>🌐 Cari Lagu Dalam Talian</b>
-        <span>Pratonton percuma · iTunes / LRCLIB</span>
+        <span id="disc-sub">Lagu penuh artis bebas · Audius</span>
       </div>
       <div style="width:40px"></div>
     </div>
     <div class="disc-search">
-      <input type="text" id="disc-q" placeholder="Nama lagu atau artis… cth: Wings">
+      <input type="text" id="disc-q" placeholder="Cari lagu penuh indie… cth: instrumental, akustik">
       <button id="disc-go">🔎</button>
     </div>
+    <div id="disc-source" style="display:flex;gap:7px;padding:10px 16px 0">
+      <button data-src="itunes" class="dsrc" type="button">⭐ Pratonton 0:30</button>
+      <button data-src="audius" class="dsrc on" type="button">🎵 Lagu Penuh Indie</button>
+    </div>
     <div class="disc-chips chips" id="disc-genres"></div>
-    <div style="margin:2px 16px 6px;padding:10px 12px;border-radius:13px;background:rgba(255,215,94,.09);border:1px solid rgba(255,215,94,.28);font-size:11.5px;line-height:1.55;color:#e8ddb0">
-      ℹ️ Carian dalam talian memberi <b>pratonton rasmi 30 saat</b> daripada iTunes (had lesen — tiada sesiapa boleh beri lagu penuh secara percuma tanpa kebenaran).
-      Untuk <b>lagu penuh</b>, muat naik fail MP3/M4A anda sendiri — lirik dicari automatik dan fail kekal dalam peranti.
+    <div id="disc-notebox" style="margin:2px 16px 6px;padding:10px 12px;border-radius:13px;background:rgba(255,215,94,.09);border:1px solid rgba(255,215,94,.28);font-size:11.5px;line-height:1.55;color:#e8ddb0">
+      ℹ️ Carian dalam talian memberi <b>pratonton rasmi 30 saat</b> daripada iTunes (had lesen — tiada sesiapa boleh beri lagu artis terkenal secara penuh tanpa kebenaran).
+      Untuk <b>lagu penuh</b>, cuba tab <b>🎵 Lagu Penuh Indie</b> di atas atau muat naik fail MP3/M4A anda sendiri — fail kekal dalam peranti.
       <button id="disc-upload" style="margin-top:7px;width:100%;border:none;border-radius:10px;padding:9px;font-weight:800;cursor:pointer;color:#0d0620;background:linear-gradient(90deg,#3ddc84,#2bb673)">📂 Guna MP3 Penuh Saya</button>
     </div>
     <div class="page-scroll" id="disc-results" style="padding:8px 18px 96px"></div>
@@ -2285,7 +2293,8 @@ function songCard(s){
     :`<div class="cover" style="background:${g}">${s.cover||'🎵'}</div>`;
   const badge=s.kind==='demo'?'<span class="badge">PERCUMA</span>'
     :s.kind==='ai'?'<span class="badge" style="background:rgba(139,92,246,.18);color:#c4b5fd;border-color:rgba(139,92,246,.4)">AI ✨</span>'
-    :s.kind==='online'?'<span class="badge" style="background:rgba(79,216,255,.14);color:var(--cyan);border-color:rgba(79,216,255,.4)">🌐</span>':'';
+    :s.kind==='audius'?'<span class="badge" style="background:rgba(61,220,132,.16);color:#3ddc84;border-color:rgba(61,220,132,.4)">🎵 PENUH</span>'
+    :s.kind==='online'?'<span class="badge" style="background:rgba(79,216,255,.14);color:var(--cyan);border-color:rgba(79,216,255,.4)">🌐 0:30</span>':'';
   d.innerHTML=`${coverArt}
     <div class="song-meta"><b>${escapeHtml(s.title)}</b><span>${escapeHtml(s.artist||'—')}</span></div>
     ${badge}<span class="fav-btn" data-fav="${s.id}">${getFavs().includes(s.id)?'♥':'♡'}</span><span class="go">›</span>`;
@@ -2536,6 +2545,26 @@ const DISC_GENRES=[
   {id:'rock',   label:'🎸 Rock',          feed:'genre=21/'}
 ];
 let discAudio=null, discPlayingId=null, discLoaded=false;
+let discSource='audius', audHost='https://api.audius.co';
+const AUD_HOSTS=['https://api.audius.co','https://discoveryprovider.audius.co'];
+const AUDIUS_CATS=[
+  {id:'hangat', label:'🔥 Hangat', mode:'trending'},
+  {id:'inst',   label:'🎹 Instrumental', q:'instrumental'},
+  {id:'akustik', label:'🎸 Akustik', q:'acoustic instrumental'},
+  {id:'beat',   label:'🎧 Beat', q:'beat instrumental'},
+  {id:'pop',    label:'🎶 Pop Indie', q:'pop'}
+];
+const NOTE_ITUNES='ℹ️ Carian dalam talian memberi <b>pratonton rasmi 30 saat</b> daripada iTunes (had lesen — tiada sesiapa boleh beri lagu artis terkenal secara penuh tanpa kebenaran). Untuk <b>lagu penuh</b>, cuba tab <b>🎵 Lagu Penuh Indie</b> di atas atau muat naik fail MP3/M4A anda sendiri — fail kekal dalam peranti.';
+const NOTE_AUDIUS='🎵 Ini <b>lagu PENUH</b> daripada artis bebas melalui platform <b>Audius</b> — percuma dan sah (artis muat naik sendiri). Kebanyakan pilihan <b>instrumental</b> sesuai dijadikan iringan nyanyian anda. Tekan <b>Nyanyi 🎤</b> untuk simpan lagu penuh dalam peranti (boleh main luar talian selepas itu). Lagu artis terkenal tiada di sini atas sebab hak cipta.';
+function renderDiscNote(){
+  const up='<button id="disc-upload" style="margin-top:7px;width:100%;border:none;border-radius:10px;padding:9px;font-weight:800;cursor:pointer;color:#0d0620;background:linear-gradient(90deg,#3ddc84,#2bb673)">📂 Guna MP3 Penuh Saya</button>';
+  const box=$('disc-notebox');
+  box.innerHTML=(discSource==='audius'?NOTE_AUDIUS:NOTE_ITUNES)+up;
+  box.style.background=discSource==='audius'?'rgba(61,220,132,.09)':'rgba(255,215,94,.09)';
+  box.style.borderColor=discSource==='audius'?'rgba(61,220,132,.30)':'rgba(255,215,94,.28)';
+  box.style.color=discSource==='audius'?'#bff3d4':'#e8ddb0';
+  $('disc-upload').onclick=()=>{ pendingAudio=null; $('file-audio').value=''; $('file-audio').click(); };
+}
 function genreColors(g){
   g=(g||'').toLowerCase();
   if(g.includes('rock')||g.includes('metal')||g.includes('punk')) return ['#c31432','#240b36'];
@@ -2572,12 +2601,53 @@ async function discSearch(term){
 }
 function renderGenres(active){
   const box=$('disc-genres'); box.innerHTML='';
-  DISC_GENRES.forEach(g=>{
+  const cats=discSource==='audius'?AUDIUS_CATS:DISC_GENRES;
+  cats.forEach(g=>{
     const d=document.createElement('div');
     d.className='chip'+(g.id===active?' on':''); d.textContent=g.label;
     d.onclick=()=>loadDiscover(g.id);
     box.appendChild(d);
   });
+}
+async function audEnsureHost(){
+  try{
+    const j=await discFetch('https://api.audius.co');
+    if(j.data&&j.data[0]) audHost=j.data[0];
+  }catch(e){ /* kekal hos lalai */ }
+}
+function audArt(t){
+  const a=t.artwork||{};
+  return a['480x480']||a['150x150']||(t.user&&(t.user.cover_photo&&t.user.cover_photo['640x'] ) )||'';
+}
+function normAud(t){
+  return {aid:String(t.id), title:t.title||'Tanpa tajuk',
+    artist:(t.user&&t.user.name)||'Artis bebas', genre:t.genre||'—',
+    dur:t.duration||0, art:audArt(t)};
+}
+async function audFetchPages(baseUrl,pages){
+  // Carian Audius menghadkan 10 lagu/halaman — gabung beberapa halaman serentak
+  const out=[], seen=new Set();
+  await Promise.all(Array.from({length:pages},(_,p)=>{
+    const u=baseUrl+'&'+new URLSearchParams({per_page:'10',offset:String(p*10)});
+    return discFetch(u).then(j=>{
+      (j.data||[]).forEach(t=>{ const id=String(t.id); if(!seen.has(id)){ seen.add(id); out.push(t); } });
+    }).catch(()=>{});
+  }));
+  return out;
+}
+async function audList(catOrTerm,isSearch){
+  await audEnsureHost();
+  let base;
+  if(isSearch){
+    base=audHost+'/v1/tracks/search?'+new URLSearchParams({query:catOrTerm,app_name:'NyanyiKu'});
+  }else{
+    const cat=AUDIUS_CATS.find(c=>c.id===catOrTerm)||AUDIUS_CATS[0];
+    base=cat.mode==='trending'
+      ? audHost+'/v1/tracks/trending?'+new URLSearchParams({app_name:'NyanyiKu'})
+      : audHost+'/v1/tracks/search?'+new URLSearchParams({query:cat.q,app_name:'NyanyiKu'});
+  }
+  const raw=await audFetchPages(base,isSearch?4:5);
+  return raw.filter(t=>{ const du=t.duration||0; return du>=60&&du<=600 && !t.is_delete; }).map(normAud);
 }
 function discStop(){
   if(discAudio){ discAudio.pause(); discAudio.src=''; discAudio=null; }
@@ -2589,6 +2659,7 @@ async function loadDiscover(idOrTerm,isSearch){
   box.innerHTML='<div class="disc-note">🔎 Memuatkan…</div>';
   renderGenres(isSearch?'':idOrTerm);
   try{
+    if(discSource==='audius') return await loadAudius(idOrTerm,isSearch);
     const list=isSearch?await discSearch(idOrTerm)
       :await discCharts((DISC_GENRES.find(g=>g.id===idOrTerm)||DISC_GENRES[0]).feed);
     if(!list.length){ box.innerHTML='<div class="disc-note">Tiada hasil dijumpai. Cuba kata kunci lain.</div>'; return; }
@@ -2605,7 +2676,7 @@ async function loadDiscover(idOrTerm,isSearch){
           <button class="dr-btn add" title="Nyanyi lagu ini">Nyanyi 🎤</button>
         </div>
       </div>`).join('')
-      +'<div class="disc-note">⚠️ Klip 30 saat ini mengandungi vokal asal — untuk latihan & penerokaan lagu sahaja.<br>Untuk nyanyian penuh dengan lirik bergerak, muat naik MP3 anda sendiri di halaman Lagu.</div>';
+      +'<div class="disc-note">⚠️ Klip 30 saat ini mengandungi vokal asal — untuk latihan & penerokaan lagu sahaja.<br>Untuk nyanyian penuh, cuba tab 🎵 Lagu Penuh Indie atau muat naik MP3 anda sendiri.</div>';
     box.querySelectorAll('.disc-row').forEach(row=>{
       const t=list.find(x=>x.trackId===row.dataset.id);
       const pv=row.querySelector('.preview'), add=row.querySelector('.add');
@@ -2622,6 +2693,44 @@ async function loadDiscover(idOrTerm,isSearch){
     });
   }catch(e){
     box.innerHTML='<div class="disc-note">⚠️ Tiada sambungan internet atau perkhidmatan lagu tidak dapat dicapai.<br>Cuba lagi kemudian, atau muat naik MP3 anda sendiri.</div>';
+  }
+}
+async function loadAudius(idOrTerm,isSearch){
+  const box=$('disc-results');
+  try{
+    const list=await audList(idOrTerm,isSearch);
+    if(!list.length){ box.innerHTML='<div class="disc-note">Tiada hasil dijumpai. Cuba kata kunci lain, cth: <i>instrumental</i>, <i>akustik</i>.</div>'; return; }
+    box.innerHTML=list.map(t=>`
+      <div class="disc-row" data-id="${t.aid}">
+        ${t.art?`<img src="${t.art}" alt="" loading="lazy">`:'<div style="width:46px;height:46px;border-radius:11px;flex:none;display:grid;place-items:center;background:linear-gradient(135deg,#43cea2,#185a9d);font-size:22px">🎵</div>'}
+        <div class="dr-meta">
+          <b>${escapeHtml(t.title)}</b>
+          <span>${escapeHtml(t.artist)}</span>
+          <span class="lb" style="display:inline-block;margin-top:3px">${escapeHtml(t.genre)} · ${fmt(t.dur)} · <b style="color:#3ddc84">lagu penuh</b></span>
+        </div>
+        <div class="dr-btns">
+          <button class="dr-btn preview" title="Dengar penuh">▶</button>
+          <button class="dr-btn add" title="Nyanyi & simpan">Nyanyi 🎤</button>
+        </div>
+      </div>`).join('')
+      +'<div class="disc-note">🎵 Lagu penuh artis bebas melalui Audius. Selepas tekan <b>Nyanyi 🎤</b>, lagu disimpan dalam peranti untuk main luar talian.<br>Lirik tidak disediakan untuk lagu indie — kebanyakan pilihan instrumental memang untuk anda nyanyi sendiri.</div>';
+    box.querySelectorAll('.disc-row').forEach(row=>{
+      const t=list.find(x=>x.aid===row.dataset.id);
+      const pv=row.querySelector('.preview'), add=row.querySelector('.add');
+      pv.onclick=()=>{
+        if(discPlayingId==='aud-'+t.aid){ discStop(); return; }
+        discStop();
+        discAudio=new Audio(`${audHost}/v1/tracks/${encodeURIComponent(t.aid)}/stream?app_name=NyanyiKu`);
+        discPlayingId='aud-'+t.aid;
+        pv.classList.add('playing'); pv.textContent='⏸';
+        discAudio.onended=()=>{ pv.classList.remove('playing'); pv.textContent='▶'; discPlayingId=null; };
+        discAudio.onerror=()=>toast('⚠️ Lagu tidak dapat dimainkan (perlukan internet)');
+        discAudio.play().catch(()=>{});
+      };
+      add.onclick=()=>addAudiusSong(t);
+    });
+  }catch(e){
+    box.innerHTML='<div class="disc-note">⚠️ Perkhidmatan lagu penuh tidak dapat dicapai (semak sambungan internet), atau cuba pratonton iTunes / muat naik MP3 anda sendiri.</div>';
   }
 }
 async function addOnlineSong(t){
@@ -2665,9 +2774,101 @@ async function addOnlineSong(t){
 function blobToDataURL(blob){
   return new Promise((res,rej)=>{ const r=new FileReader(); r.onload=()=>res(r.result); r.onerror=rej; r.readAsDataURL(blob); });
 }
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+function nativeHttp(){
+  try{ const C=window.Capacitor; return (C&&C.isNativePlatform&&C.isNativePlatform()&&C.Plugins&&C.Plugins.CapacitorHttp)||null; }catch(e){ return null; }
+}
+function b64ToBuf(b64){
+  const bin=atob(b64); const n=bin.length, buf=new ArrayBuffer(n), u=new Uint8Array(buf);
+  for(let i=0;i<n;i++) u[i]=bin.charCodeAt(i);
+  return buf;
+}
+// Muat turun binari — guna HTTP natif dalam APK (tiada sekatan CORS storan Audius), fallback fetch di web
+async function httpGetArrayBuffer(urls,timeoutMs){
+  const list=Array.isArray(urls)?urls:[urls];
+  const NH=nativeHttp();
+  let lastErr=null;
+  for(const u of list){
+    try{
+      if(NH){
+        const r=await NH.request({method:'GET',url:u,responseType:'arraybuffer',connectTimeout:20000,readTimeout:timeoutMs||120000});
+        let d=r.data;
+        if(typeof d==='string') d=b64ToBuf(d);
+        if(d&&d.byteLength>50000) return d;
+      }else{
+        const r=await fetch(u,{signal:AbortSignal.timeout(timeoutMs||120000)});
+        if(!r.ok) throw new Error('HTTP '+r.status);
+        const b=await r.arrayBuffer();
+        if(b&&b.byteLength>50000) return b;
+      }
+      throw new Error('fail terlalu kecil');
+    }catch(e){ lastErr=e; await sleep(400); }
+  }
+  throw lastErr||new Error('muat turun gagal');
+}
+async function httpGetDataUrl(urls,mime){
+  const list=Array.isArray(urls)?urls:[urls];
+  const NH=nativeHttp();
+  for(const u of list){
+    try{
+      if(NH){
+        const r=await NH.request({method:'GET',url:u,responseType:'arraybuffer',connectTimeout:15000,readTimeout:15000});
+        let d=r.data; if(typeof d==='string') d=b64ToBuf(d);
+        if(!d) throw new Error('kosong');
+        let bin=''; const u8=new Uint8Array(d); for(let i=0;i<u8.length;i+=8192) bin+=String.fromCharCode(...u8.subarray(i,i+8192));
+        return 'data:'+(mime||'image/jpeg')+';base64,'+btoa(bin);
+      }else{
+        const r=await fetch(u,{signal:AbortSignal.timeout(15000)});
+        return await blobToDataURL(await r.blob());
+      }
+    }catch(e){ /* cuba URL seterusnya */ }
+  }
+  return null;
+}
+function audStreamUrls(aid){
+  // Berbilang nod penemuan + cache-buster supaya setiap percubaan dapat redirect storan yang lain
+  const seed=Date.now();
+  return AUD_HOSTS.flatMap((h,k)=>[
+    `${h}/v1/tracks/${encodeURIComponent(aid)}/stream?app_name=NyanyiKu&n=${seed}-${k}a`,
+    `${h}/v1/tracks/${encodeURIComponent(aid)}/stream?app_name=NyanyiKu&n=${seed}-${k}b`
+  ]);
+}
+async function audDownload(aid){ return httpGetArrayBuffer(audStreamUrls(aid),120000); }
+async function addAudiusSong(t){
+  loader(true,'Memuat turun lagu penuh… (kekal dalam peranti)');
+  try{
+    const [audioBuf,artUrl]=await Promise.all([
+      audDownload(t.aid).catch(e=>{ console.warn(e); return null; }),
+      t.art?httpGetDataUrl([t.art],'image/jpeg').catch(()=>null):Promise.resolve(null)
+    ]);
+    if(!audioBuf) throw new Error('audio gagal');
+    let lrc='', plain=null;
+    try{ // sesetengah lagu indie mungkin ada lirik di LRCLIB
+      const q=new URLSearchParams({track_name:t.title,artist_name:t.artist});
+      const list=await discFetch('https://lrclib.net/api/search?'+q);
+      const best=(list||[])[0];
+      if(best&&best.syncedLyrics) lrc=best.syncedLyrics;
+      else if(best&&best.plainLyrics) plain=best.plainLyrics;
+    }catch(e){ /* luar talian — tiada lirik */ }
+    if(!lrc&&!plain){
+      plain='🎵 Lagu penuh artis bebas (Audius) — nyanyilah mengikut melodi\n♪ ♫ ♪';
+    }
+    const song={id:'audius-'+t.aid, title:t.title, artist:t.artist,
+      lrc, plainLrc:plain, audio:audioBuf, colors:genreColors(t.genre),
+      cover:'🎵', coverUrl:artUrl, kind:'audius', createdAt:Date.now()};
+    await idbPut(song);
+    const ix=userSongs.findIndex(s=>s.id===song.id);
+    if(ix>=0) userSongs[ix]=song; else userSongs.unshift(song);
+    refreshHome(); discStop();
+    toast('✅ Lagu penuh disimpan — boleh main luar talian');
+    openSong(song);
+  }catch(e){
+    toast('❌ Lagu ini tidak dapat disimpan — cuba lagu lain (butang ▶ masih boleh dengar)');
+  }finally{ loader(false); }
+}
 $('discover-card').onclick=()=>{
   screen('discover');
-  if(!discLoaded){ discLoaded=true; loadDiscover('top'); }
+  if(!discLoaded){ discLoaded=true; loadDiscover('inst'); }
 };
 $('btn-disc-back').onclick=()=>{ discStop(); screen('home'); };
 $('disc-upload').onclick=()=>{ pendingAudio=null; $('file-audio').value=''; $('file-audio').click(); };
@@ -2676,6 +2877,17 @@ $('disc-go').onclick=()=>{
   loadDiscover(q,true);
 };
 $('disc-q').onkeydown=e=>{ if(e.key==='Enter') $('disc-go').click(); };
+$('disc-source').addEventListener('click',e=>{
+  const b=e.target.closest('.dsrc'); if(!b) return;
+  discSource=b.dataset.src;
+  [...$('disc-source').children].forEach(x=>x.classList.toggle('on',x===b));
+  const aud=discSource==='audius';
+  $('disc-sub').textContent=aud?'Lagu penuh artis bebas · Audius':'Pratonton percuma · iTunes / LRCLIB';
+  $('disc-q').placeholder=aud?'Cari lagu penuh indie… cth: instrumental, akustik':'Nama lagu atau artis… cth: Wings';
+  renderDiscNote();
+  loadDiscover(aud?'inst':'top');
+});
+renderDiscNote();
 
 /* =========================================================
    TAB NAVIGASI
@@ -4347,7 +4559,7 @@ $('btn-choir-info').onclick=()=>{ if(!curRoom) return; curRoom.mine?openFamily(c
 $('btn-home-back').onclick=()=>screen('rooms');
 $('btn-home-search').onclick=()=>screen('discover');
 $('btn-home-mic').onclick=()=>openBuddyPicker();
-$('solo-btn-search').onclick=()=>screen('discover');
+$('solo-btn-search').onclick=()=>$('discover-card').click();
 $('solo-btn-upload').onclick=()=>$('upload-card').click();
 $('btn-create-back').onclick=()=>screen('home');
 $('home-ai-card').onclick=()=>screen('create');
@@ -4367,7 +4579,7 @@ $('btn-pf-share').onclick=()=>{
 };
 
 function initSettings(){
-  $('app-version').textContent='v0.8.1 ›';
+  $('app-version').textContent='v0.8.2 ›';
   $('ref-code').textContent=(profile.id||'—')+' ›';
   $('diag-val').textContent=(navigator.onLine?'Sedia diuji ›':'Luar talian ›');
   $('svr-val').textContent=(localStorage.getItem('nyanyiku-server')||'Auto/demo luar talian')+' ›';
@@ -4466,7 +4678,7 @@ $('set-referral').onclick=()=>{
    `<p>Kod jemputan anda:</p><p style="font-size:20px;text-align:center;letter-spacing:2px;font-weight:800">${code}</p>
     <p class="hint">Kod disalin. Jemput rakan memuat turun NyanyiKu percuma dari halaman GitHub — tiada ganjaran wang, sekadar label jemputan 😊</p>`);
 };
-$('set-about').onclick=()=>infoSheet('🎤 Tentang NyanyiKu v0.8.1',
+$('set-about').onclick=()=>infoSheet('🎤 Tentang NyanyiKu v0.8.2',
  `<p>NyanyiKu ialah karaoke percuma, jujur dan mesra semua umur. Semua ciri pro dalam app serupa diberikan <b>percuma</b>:
   bilik parti, Detik, teman Bilik Solo, analisis vokal, kesan studio, AI cipta lagu, misi &amp; syiling (tanpa nilai wang).</p>
   <p><b>Tiada</b> VIP, caj semula, kotak nasib, perjudian, iklan, atau tekanan bayaran. Boleh dimainkan sepenuhnya luar talian.</p>
